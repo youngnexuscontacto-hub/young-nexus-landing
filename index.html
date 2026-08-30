@@ -138,7 +138,8 @@
   .submit-btn{background:var(--electric); color:#001217; padding:14px; border:none; border-radius:10px; font-weight:600; font-size:15px; cursor:pointer; transition:transform .15s ease;}
   .submit-btn:hover{transform:translateY(-2px);}
   .submit-btn:focus-visible, .btn-primary:focus-visible, .btn-secondary:focus-visible, .nav-cta:focus-visible{outline:2px solid var(--electric); outline-offset:3px;}
-  .form-status{font-size:13.5px; color:var(--text-dim); min-height:18px;}
+  .form-status{font-size:13.5px; color:var(--text-dim); min-height:18px;}  .form-legal{font-size:12px; color:var(--text-dim); line-height:1.5; margin-top:14px;}
+  .form-legal a{color:var(--electric); text-decoration:underline;}
 
   /* [10] FOOTER */
   footer{padding:40px 0; border-top:1px solid var(--line); color:var(--text-dim); font-size:13px;}
@@ -342,13 +343,25 @@
         <div><label for="negocio">Tu negocio o actividad</label><input type="text" id="negocio" name="negocio" required></div>
         <div><label for="mensaje">¿Qué te gustaría resolver?</label><textarea id="mensaje" name="mensaje" required></textarea></div>
         <button type="submit" class="submit-btn">Enviar</button>
-        <p class="form-status" id="form-status"></p>
+        <p class="form-status" id="form-status"></p>        <p class="form-legal">Al enviar aceptás que usemos tus datos solo para responderte y preparar una propuesta. No los compartimos con nadie. Podés pedir acceso, corrección o borrado cuando quieras. <a href="#privacidad">Cómo tratamos tus datos</a>.</p>
       </form>
     </div>
   </div>
 </section>
 
-<!-- [10] FOOTER -->
+<section class="section border-top" id="privacidad">
+  <div class="wrap">
+    <div class="eyebrow">Tus datos</div>
+    <h2>Cómo tratamos tu información</h2>
+    <p><strong>Quién es responsable.</strong> Young Nexus, Ciudad Autónoma de Buenos Aires, Argentina. Contacto: youngnexus.contacto@gmail.com</p>
+    <p><strong>Qué guardamos y para qué.</strong> Solo lo que nos dejás en el formulario: tu nombre, tu actividad y lo que nos contás. Lo usamos únicamente para responderte y preparar una propuesta.</p>
+    <p><strong>Con quién lo compartimos.</strong> Con nadie. Se almacena en servicios de Google, que actúan solo como proveedores de infraestructura.</p>
+    <p><strong>Cuánto tiempo.</strong> Mientras dure la conversación comercial y hasta 24 meses después. Luego se eliminan.</p>
+    <p><strong>Tus derechos.</strong> Podés pedirnos acceder a tus datos, corregirlos o borrarlos escribiendo a youngnexus.contacto@gmail.com. Respondemos dentro de los 10 días corridos que fija la Ley 25.326.</p>
+    <p class="mono" style="font-size:12.5px;">La Agencia de Acceso a la Información Pública es el órgano de control de la Ley 25.326 y recibe denuncias por incumplimiento.</p>
+  </div>
+</section>
+  <!-- [10] FOOTER -->
 <footer>
   <div class="wrap">
     <div class="foot-brand">
@@ -358,7 +371,7 @@
     <div class="foot-links">
       <a href="#servicios">Servicios</a>
       <a href="#faq">FAQ</a>
-      <a href="#contacto">Contacto</a>
+      <a href="#contacto">Contacto</a>      <a href="#privacidad">Privacidad</a>
     </div>
   </div>
 </footer>
