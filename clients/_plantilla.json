@@ -1,0 +1,169 @@
+{
+  "lang": "es-AR",
+  "site": {
+    "url": "https://www.DOMINIO.com.ar",
+    "domain": "www.DOMINIO.com.ar"
+  },
+  "business": {
+    "name": "",
+    "tagline": "",
+    "schemaType": "LocalBusiness",
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "region": "CABA",
+    "country": "AR",
+    "geoRegion": "AR-C",
+    "street": "",
+    "postalCode": "",
+    "phone": "+54 9 11 ",
+    "email": "",
+    "priceRange": "$$",
+    "openingHours": [
+      "Mo-Fr 09:00-18:00"
+    ],
+    "areaServed": [
+      ""
+    ],
+    "sameAs": [
+      ""
+    ]
+  },
+  "theme": {
+    "accent": "#00D4FF",
+    "accent2": "#7B2FBE"
+  },
+  "seo": {
+    "title": "",
+    "description": "",
+    "ogDescription": "",
+    "ogImage": "/og.jpg"
+  },
+  "nav": [
+    {
+      "href": "#servicios",
+      "label": "Servicios"
+    },
+    {
+      "href": "#precios",
+      "label": "Precios"
+    },
+    {
+      "href": "#faq",
+      "label": "Preguntas"
+    },
+    {
+      "href": "#contacto",
+      "label": "Contacto"
+    }
+  ],
+  "cta": {
+    "navLabel": "",
+    "primaryLabel": "",
+    "primaryHref": "",
+    "primaryExternal": true,
+    "secondaryLabel": "",
+    "secondaryHref": "",
+    "secondaryExternal": true
+  },
+  "hero": {
+    "eyebrow": "",
+    "title": "Titular con <em>parte resaltada</em>.",
+    "subtitle": "",
+    "promo": ""
+  },
+  "copy": {
+    "problemsTitle": "",
+    "servicesTitle": "Servicios",
+    "servicesIntro": "",
+    "stepsTitle": "Cómo trabajamos",
+    "pricingTitle": "Precios",
+    "pricingIntro": "",
+    "pricingNote": "",
+    "faqTitle": "Preguntas frecuentes"
+  },
+  "problems": [
+    {
+      "quote": "",
+      "fix": ""
+    }
+  ],
+  "services": [
+    {
+      "name": "",
+      "description": ""
+    }
+  ],
+  "steps": [
+    {
+      "title": "",
+      "description": ""
+    }
+  ],
+  "plans": [
+    {
+      "tier": "",
+      "amount": "",
+      "unit": "",
+      "abono": "",
+      "featured": false,
+      "features": [
+        ""
+      ],
+      "excluded": [],
+      "ctaLabel": "",
+      "ctaHref": "",
+      "ctaExternal": true
+    }
+  ],
+  "area": {
+    "title": "Zona de atención",
+    "text": "",
+    "points": [
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "",
+      "a": ""
+    }
+  ],
+  "contact": {
+    "title": "",
+    "text": "",
+    "channels": [
+      {
+        "tag": "WHATSAPP",
+        "value": "",
+        "href": "https://wa.me/549",
+        "external": true
+      },
+      {
+        "tag": "CORREO",
+        "value": "",
+        "href": "mailto:"
+      }
+    ],
+    "calEmbed": "",
+    "calTitle": "Agenda en vivo",
+    "calText": ""
+  },
+  "legal": {
+    "title": "Privacidad y datos personales",
+    "subtitle": "",
+    "text": ""
+  },
+  "footerLinks": [
+    {
+      "href": "#contacto",
+      "label": "Contacto"
+    },
+    {
+      "href": "https://www.youngnexus.com.ar",
+      "label": "Sitio por Young Nexus",
+      "external": true
+    }
+  ]
+}
