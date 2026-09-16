@@ -72,6 +72,28 @@ En `hero.title`, `hero.promo`, `copy.pricingNote` y `legal.text` se acepta HTML
 (usá `<em>` para el resaltado celeste del título y `<strong>` para negritas).
 El resto de los campos se escapa solo.
 
+## Guarda de paleta
+
+`index.html` es producción y se queda **autocontenido**: tiene su CSS inline y no
+consume `template/styles.css`. El precio de esa independencia es que hay dos copias
+de la paleta, así que el build las compara antes de generar nada.
+
+Compara los tokens de color (cualquier `--nombre: #hex`) del `:root` de cada archivo.
+Si un valor difiere, o si un token existe en uno y no en el otro, el build **corta con
+exit 1** y lista exactamente cuáles. No genera ninguna landing.
+
+```
+La paleta del sitio y la de la plantilla divergieron:
+
+  --electric  index.html #2BA8DC  !=  template/styles.css #00D4FF
+
+1 token(s) fuera de sincronia. Emparejalos y volve a correr el build.
+El sitio manda: index.html es produccion, template/styles.css se ajusta a el.
+```
+
+Cuando cambies colores, tocá `index.html` y después emparejá `template/styles.css`.
+Tokens que no son colores (`--radius`) se ignoran.
+
 ## Sectores sensibles
 
 Si el cliente es de **salud** (historia clínica, turnos médicos, datos de obra social)

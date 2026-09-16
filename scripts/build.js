@@ -157,6 +157,51 @@ Allow: /
 Sitemap: ${c.site.url.replace(/\/+$/, '')}/sitemap.xml
 `;
 
+/* ---------- guarda de paleta ---------- */
+/*
+ * index.html es produccion y se queda autocontenido: no consume template/styles.css.
+ * El precio de esa independencia es que las dos copias de la paleta pueden divergir,
+ * asi que antes de generar nada comparamos los tokens de color de ambos :root.
+ * Si difieren, el build corta y dice cuales.
+ */
+
+const HEX = /^#[0-9a-fA-F]{3,8}$/;
+
+function paletteOf(file) {
+  const src = fs.readFileSync(file, 'utf8');
+  const root = src.match(/:root\s*\{([^}]*)\}/);
+  if (!root) throw new Error(`no encontre el bloque :root en ${path.relative(ROOT, file)}`);
+  const tokens = {};
+  for (const m of root[1].matchAll(/(--[\w-]+)\s*:\s*([^;]+);/g)) {
+    const value = m[2].trim();
+    if (HEX.test(value)) tokens[m[1]] = value.toUpperCase();
+  }
+  return tokens;
+}
+
+function checkPalette() {
+  const SITE = path.join(ROOT, 'index.html');
+  const CSS = path.join(TPL, 'styles.css');
+  const site = paletteOf(SITE);
+  const tpl = paletteOf(CSS);
+
+  const diffs = [];
+  for (const token of [...new Set([...Object.keys(site), ...Object.keys(tpl)])].sort()) {
+    if (!(token in tpl)) diffs.push(`${token}  index.html ${site[token]}  ->  template/styles.css no lo define`);
+    else if (!(token in site)) diffs.push(`${token}  template/styles.css ${tpl[token]}  ->  index.html no lo define`);
+    else if (site[token] !== tpl[token]) diffs.push(`${token}  index.html ${site[token]}  !=  template/styles.css ${tpl[token]}`);
+  }
+
+  if (diffs.length) {
+    console.error('\nLa paleta del sitio y la de la plantilla divergieron:\n');
+    for (const d of diffs) console.error(`  ${d}`);
+    console.error(`\n${diffs.length} token(s) fuera de sincronia. Emparejalos y volve a correr el build.`);
+    console.error('El sitio manda: index.html es produccion, template/styles.css se ajusta a el.\n');
+    process.exit(1);
+  }
+  return Object.keys(site).length;
+}
+
 /* ---------- defaults ---------- */
 
 const THEME = {
@@ -242,6 +287,8 @@ const slugs = arg === '--all'
   ? fs.readdirSync(CLIENTS).filter(f => f.endsWith('.json') && !f.startsWith('_')).map(f => f.slice(0, -5))
   : [arg];
 
+const tokens = checkPalette();
+console.log(`Paleta sincronizada (${tokens} tokens).`);
 console.log('Generando landings:');
 let fail = 0;
 for (const s of slugs) {
