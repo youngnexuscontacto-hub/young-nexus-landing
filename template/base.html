@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{{seo.title}}</title>
+<meta name="description" content="{{seo.description}}">
+<link rel="canonical" href="{{site.url}}">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="author" content="{{business.name}}">
+<meta name="geo.region" content="{{business.geoRegion}}">
+<meta name="geo.placename" content="{{business.city}}">
+
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{business.name}}">
+<meta property="og:url" content="{{site.url}}">
+<meta property="og:title" content="{{seo.title}}">
+<meta property="og:description" content="{{seo.ogDescription}}">
+<meta property="og:image" content="{{site.url}}{{seo.ogImage}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="{{seo.ogLocale}}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{seo.title}}">
+<meta name="twitter:description" content="{{seo.ogDescription}}">
+<meta name="twitter:image" content="{{site.url}}{{seo.ogImage}}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+{{{styles}}}
+</style>
+<style>
+  :root{
+    --ink:{{theme.ink}};
+    --surface:{{theme.surface}};
+    --surface-2:{{theme.surface2}};
+    --line:{{theme.line}};
+    --text:{{theme.text}};
+    --text-dim:{{theme.textDim}};
+    --electric:{{theme.accent}};
+    --electric-soft:{{theme.accentSoft}};
+    --violet:{{theme.accent2}};
+    --violet-deep:{{theme.accentDeep}};
+  }
+</style>
+
+<script type="application/ld+json">
+{{{jsonld}}}
+</script>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo"><img src="{{business.logo}}" alt="{{business.name}}" class="logo-img" width="28" height="28">{{business.name}}</div>
+    <div class="nav-links">
+      {{#each nav}}<a href="{{href}}">{{label}}</a>{{/each}}
+    </div>
+    <a href="{{cta.primaryHref}}" class="nav-cta"{{#if cta.primaryExternal}} target="_blank" rel="noopener"{{/if}}>{{cta.navLabel}}</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    {{#if hero.eyebrow}}<div class="eyebrow mono">{{hero.eyebrow}}</div>{{/if}}
+    <h1>{{{hero.title}}}</h1>
+    <p>{{hero.subtitle}}</p>
+    <div class="hero-ctas">
+      <a href="{{cta.primaryHref}}" class="btn-primary"{{#if cta.primaryExternal}} target="_blank" rel="noopener"{{/if}}>{{cta.primaryLabel}}</a>
+      {{#if cta.secondaryHref}}<a href="{{cta.secondaryHref}}" class="btn-secondary"{{#if cta.secondaryExternal}} target="_blank" rel="noopener"{{/if}}>{{cta.secondaryLabel}}</a>{{/if}}
+    </div>
+    {{#if hero.promo}}<div class="promo-band">{{{hero.promo}}}</div>{{/if}}
+  </div>
+</header>
+
+{{#if problems}}
+<section class="section border-top" id="problema">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>{{copy.problemsTitle}}</h2>
+      {{#if copy.problemsIntro}}<p>{{copy.problemsIntro}}</p>{{/if}}
+    </div>
+    <div class="problem-grid">
+      {{#each problems}}
+      <div class="problem-card">
+        <div class="quote">{{quote}}</div>
+        <div class="fix">{{fix}}</div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>
+{{/if}}
+
+{{#if services}}
+<section class="section border-top" id="servicios">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>{{copy.servicesTitle}}</h2>
+      {{#if copy.servicesIntro}}<p>{{copy.servicesIntro}}</p>{{/if}}
+    </div>
+    <div class="grid-services">
+      {{#each services}}
+      <article class="service-card{{#if later}} later{{/if}}">
+        <div class="num mono">{{num}}</div>
+        <h3>{{name}}</h3>
+        <p>{{description}}</p>
+      </article>
+      {{/each}}
+    </div>
+  </div>
+</section>
+{{/if}}
+
+{{#if steps}}
+<section class="section border-top" id="proceso">
+  <div class="wrap">
+    <div class="section-head"><h2>{{copy.stepsTitle}}</h2></div>
+    <div class="steps">
+      {{#each steps}}
+      <div class="step">
+        <div class="idx mono">{{idx}}</div>
+        <h3>{{title}}</h3>
+        <p>{{description}}</p>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>
+{{/if}}
+
+{{#if plans}}
+<section class="section border-top" id="precios">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>{{copy.pricingTitle}}</h2>
+      {{#if copy.pricingIntro}}<p>{{copy.pricingIntro}}</p>{{/if}}
+    </div>
+    <div class="pricing-grid">
+      {{#each plans}}
+      <div class="price-card{{#if featured}} featured{{/if}}">
+        <div class="tier mono">{{tier}}</div>
+        <div class="amount">{{amount}}<span>{{unit}}</span></div>
+        {{#if abono}}<div class="abono">{{abono}}</div>{{/if}}
+        <ul class="price-list">
+          {{#each features}}<li>{{.}}</li>{{/each}}
+          {{#each excluded}}<li class="off">{{.}}</li>{{/each}}
+        </ul>
+        <a href="{{ctaHref}}" class="price-cta"{{#if ctaExternal}} target="_blank" rel="noopener"{{/if}}>{{ctaLabel}}</a>
+      </div>
+      {{/each}}
+    </div>
+    {{#if copy.pricingNote}}<p class="price-note">{{{copy.pricingNote}}}</p>{{/if}}
+  </div>
+</section>
+{{/if}}
+
+{{#if area}}
+<section class="section border-top" id="zona">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>{{area.title}}</h2>
+      <p>{{area.text}}</p>
+    </div>
+    <div class="why-grid">
+      {{#each area.points}}
+      <div class="why-card">
+        <div class="mark mono">{{mark}}</div>
+        <h3>{{title}}</h3>
+        <p>{{description}}</p>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>
+{{/if}}
+
+{{#if faq}}
+<section class="section border-top" id="faq">
+  <div class="wrap">
+    <div class="section-head"><h2>{{copy.faqTitle}}</h2></div>
+    {{#each faq}}
+    <details class="faq-item">
+      <summary>{{q}}</summary>
+      <p>{{a}}</p>
+    </details>
+    {{/each}}
+  </div>
+</section>
+{{/if}}
+
+<section class="section border-top" id="contacto">
+  <div class="wrap">
+    <div class="final-cta">
+      <h2>{{contact.title}}</h2>
+      <p>{{contact.text}}</p>
+      <div class="hero-ctas">
+        <a href="{{cta.primaryHref}}" class="btn-primary"{{#if cta.primaryExternal}} target="_blank" rel="noopener"{{/if}}>{{cta.primaryLabel}}</a>
+      </div>
+    </div>
+    <div class="contact-grid">
+      {{#each contact.channels}}
+      <a href="{{href}}" class="contact-channel"{{#if external}} target="_blank" rel="noopener"{{/if}}><span class="tag mono">{{tag}}</span> {{value}}</a>
+      {{/each}}
+    </div>
+    {{#if contact.calEmbed}}
+    <div class="commit-box" style="margin-top:28px;">
+      <div class="icon mono">CAL</div>
+      <h3>{{contact.calTitle}}</h3>
+      <p>{{contact.calText}}</p>
+      <iframe src="{{contact.calEmbed}}" title="{{contact.calTitle}}" loading="lazy" style="width:100%;min-height:620px;border:1px solid var(--line);border-radius:var(--radius);margin-top:16px;background:var(--surface);"></iframe>
+    </div>
+    {{/if}}
+  </div>
+</section>
+
+{{#if legal}}
+<section class="section border-top" id="privacidad">
+  <div class="wrap">
+    <div class="section-head"><h2>{{legal.title}}</h2></div>
+    <div class="commit-box">
+      <div class="icon mono">LEY</div>
+      <h3>{{legal.subtitle}}</h3>
+      <p>{{{legal.text}}}</p>
+    </div>
+  </div>
+</section>
+{{/if}}
+
+<footer>
+  <div class="wrap">
+    <div class="foot-brand">{{business.name}} — {{business.tagline}}</div>
+    <div class="foot-links">
+      {{#each footerLinks}}<a href="{{href}}"{{#if external}} target="_blank" rel="noopener"{{/if}}>{{label}}</a>{{/each}}
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

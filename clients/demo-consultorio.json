@@ -1,0 +1,151 @@
+{
+  "lang": "es-AR",
+  "site": {
+    "url": "https://www.consultoriodemo.com.ar",
+    "domain": "www.consultoriodemo.com.ar"
+  },
+  "business": {
+    "name": "Consultorio Demo",
+    "tagline": "Odontología integral en Parque Patricios",
+    "schemaType": "Dentist",
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "region": "CABA",
+    "country": "AR",
+    "geoRegion": "AR-C",
+    "street": "Av. Caseros 1234",
+    "postalCode": "C1264",
+    "phone": "+54 9 11 0000-0000",
+    "email": "turnos@consultoriodemo.com.ar",
+    "priceRange": "$$",
+    "openingHours": ["Mo-Fr 09:00-19:00", "Sa 09:00-13:00"],
+    "areaServed": ["Parque Patricios", "Nueva Pompeya", "Barracas", "Boedo"],
+    "sameAs": ["https://www.instagram.com/consultoriodemo"]
+  },
+  "theme": {
+    "accent": "#2BA8DC",
+    "accent2": "#7C3E9C",
+    "accentDeep": "#401A67"
+  },
+  "seo": {
+    "title": "Consultorio Demo — Odontología en Parque Patricios | Turnos online",
+    "description": "Consultorio odontológico en Parque Patricios. Turnos online sin llamar, urgencias en el día y planes de tratamiento claros. Reservá en 30 segundos.",
+    "ogDescription": "Turnos online sin llamar, urgencias en el día y presupuestos claros. Odontología en Parque Patricios, CABA.",
+    "ogImage": "/og.jpg"
+  },
+  "nav": [
+    { "href": "#servicios", "label": "Tratamientos" },
+    { "href": "#precios", "label": "Planes" },
+    { "href": "#faq", "label": "Preguntas" },
+    { "href": "#contacto", "label": "Contacto" }
+  ],
+  "cta": {
+    "navLabel": "Reservar turno",
+    "primaryLabel": "Reservá tu turno online",
+    "primaryHref": "https://cal.com/consultorio-demo/consulta",
+    "primaryExternal": true,
+    "secondaryLabel": "Escribinos por WhatsApp",
+    "secondaryHref": "https://wa.me/5491100000000?text=Hola%2C%20quiero%20un%20turno",
+    "secondaryExternal": true
+  },
+  "hero": {
+    "eyebrow": "PARQUE PATRICIOS · CABA",
+    "title": "Sacá tu turno <em>sin llamar por teléfono</em> y sin esperar respuesta.",
+    "subtitle": "Elegís día y hora desde el celular, recibís el recordatorio y listo. Urgencias atendidas en el día.",
+    "promo": "<strong>Primera consulta con diagnóstico y presupuesto por escrito.</strong> Sin cargo si no iniciás tratamiento."
+  },
+  "copy": {
+    "problemsTitle": "Lo que escuchamos todos los días",
+    "servicesTitle": "Tratamientos",
+    "servicesIntro": "Todo resuelto en el mismo consultorio, sin derivaciones innecesarias.",
+    "stepsTitle": "Cómo es tu primera visita",
+    "pricingTitle": "Planes y formas de pago",
+    "pricingIntro": "Precios de referencia. El presupuesto final siempre te lo damos por escrito antes de empezar.",
+    "pricingNote": "Trabajamos con las principales obras sociales y prepagas. Consultá tu cobertura antes de reservar.",
+    "faqTitle": "Preguntas frecuentes"
+  },
+  "problems": [
+    { "quote": "Llamo y nunca me atienden.", "fix": "Agenda online 24/7: reservás cuando puedas, incluso a las 2 de la mañana." },
+    { "quote": "Me duele hoy y no consigo turno.", "fix": "Reservamos franjas diarias exclusivas para urgencias." },
+    { "quote": "No sé cuánto me va a salir.", "fix": "Presupuesto por escrito antes de tocar un diente." }
+  ],
+  "services": [
+    { "name": "Limpieza y prevención", "description": "Control, detartraje y plan de higiene personalizado." },
+    { "name": "Arreglos y conductos", "description": "Restauraciones estéticas y endodoncia en una o dos sesiones." },
+    { "name": "Implantes y prótesis", "description": "Planificación digital y seguimiento hasta el alta." },
+    { "name": "Ortodoncia", "description": "Brackets y alineadores con control mensual.", "later": true }
+  ],
+  "steps": [
+    { "title": "Reservás online", "description": "Elegís horario en la agenda y te llega la confirmación al instante." },
+    { "title": "Diagnóstico", "description": "Revisión completa y radiografías si hacen falta." },
+    { "title": "Presupuesto escrito", "description": "Te lo mandamos por WhatsApp o mail. Decidís sin apuro." }
+  ],
+  "plans": [
+    {
+      "tier": "CONSULTA",
+      "amount": "$0",
+      "unit": "/primera visita",
+      "features": ["Diagnóstico completo", "Presupuesto por escrito", "Plan de tratamiento"],
+      "excluded": ["Radiografías especiales"],
+      "ctaLabel": "Reservar",
+      "ctaHref": "https://cal.com/consultorio-demo/consulta",
+      "ctaExternal": true
+    },
+    {
+      "tier": "PLAN PREVENTIVO",
+      "amount": "$—",
+      "unit": "/mes",
+      "abono": "Incluye 2 controles anuales",
+      "featured": true,
+      "features": ["Limpieza semestral", "Control de caries", "Urgencias con prioridad", "Descuento en tratamientos"],
+      "ctaLabel": "Quiero el plan",
+      "ctaHref": "https://wa.me/5491100000000?text=Quiero%20el%20plan%20preventivo",
+      "ctaExternal": true
+    },
+    {
+      "tier": "TRATAMIENTO",
+      "amount": "A medida",
+      "unit": "",
+      "features": ["Presupuesto cerrado", "Hasta 6 cuotas sin interés", "Obras sociales"],
+      "ctaLabel": "Pedir presupuesto",
+      "ctaHref": "https://wa.me/5491100000000?text=Quiero%20un%20presupuesto",
+      "ctaExternal": true
+    }
+  ],
+  "area": {
+    "title": "Zona de atención",
+    "text": "Atendemos pacientes de Parque Patricios, Nueva Pompeya, Barracas y Boedo.",
+    "points": [
+      { "title": "A 3 cuadras del subte H", "description": "Estación Parque Patricios, salida Caseros." },
+      { "title": "Accesible", "description": "Planta baja, sin escaleras." },
+      { "title": "Estacionamiento", "description": "Cochera con convenio a media cuadra." }
+    ]
+  },
+  "faq": [
+    { "q": "¿Atienden urgencias el mismo día?", "a": "Sí. Guardamos franjas diarias para urgencias. Escribinos por WhatsApp y te confirmamos el horario más cercano." },
+    { "q": "¿Trabajan con obras sociales?", "a": "Trabajamos con las principales obras sociales y prepagas. Consultanos tu cobertura antes de reservar el turno." },
+    { "q": "¿Cómo cancelo o reprogramo un turno?", "a": "Desde el mismo mail de confirmación podés reprogramar o cancelar con un click, hasta 2 horas antes." },
+    { "q": "¿Dan presupuesto antes de empezar?", "a": "Siempre. Ningún tratamiento arranca sin un presupuesto escrito y aceptado por el paciente." }
+  ],
+  "contact": {
+    "title": "Reservá tu turno ahora",
+    "text": "Agenda abierta las 24 horas. Confirmación inmediata y recordatorio el día anterior.",
+    "channels": [
+      { "tag": "WHATSAPP", "value": "+54 9 11 0000-0000", "href": "https://wa.me/5491100000000", "external": true },
+      { "tag": "CORREO", "value": "turnos@consultoriodemo.com.ar", "href": "mailto:turnos@consultoriodemo.com.ar" },
+      { "tag": "AGENDA", "value": "Reservá online en 30 segundos", "href": "https://cal.com/consultorio-demo/consulta", "external": true }
+    ],
+    "calEmbed": "https://cal.com/consultorio-demo/consulta?embed=true",
+    "calTitle": "Agenda en vivo",
+    "calText": "Elegí el horario que te quede cómodo. La confirmación te llega al instante."
+  },
+  "legal": {
+    "title": "Privacidad y datos personales",
+    "subtitle": "Tus datos de salud están protegidos",
+    "text": "Los datos que dejás en este sitio se usan únicamente para gestionar tu turno y tu historia clínica. No se ceden a terceros con fines comerciales. Tratamos los datos de salud como datos sensibles conforme a la <strong>Ley 25.326 de Protección de Datos Personales</strong>. Podés pedir el acceso, la rectificación o la supresión de tus datos escribiendo a turnos@consultoriodemo.com.ar."
+  },
+  "footerLinks": [
+    { "href": "#privacidad", "label": "Privacidad" },
+    { "href": "#contacto", "label": "Contacto" },
+    { "href": "https://www.youngnexus.com.ar", "label": "Sitio por Young Nexus", "external": true }
+  ]
+}
