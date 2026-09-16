@@ -1,13 +1,14 @@
   :root{
     --ink:#0A0A0F;
-    --surface:#12131C;
-    --surface-2:#1A1C29;
-    --line:#2A2C3D;
+    --surface:#111119;
+    --surface-2:#191A26;
+    --line:#2A2A3D;
     --text:#FFFFFF;
     --text-dim:#A0A0B0;
-    --electric:#00D4FF;
-    --electric-soft:#5CE1FF;
-    --violet:#7B2FBE;
+    --electric:#2BA8DC;
+    --electric-soft:#54BEE6;
+    --violet:#7C3E9C;
+    --violet-deep:#401A67;
     --radius:14px;
   }
   *{box-sizing:border-box; margin:0; padding:0;}

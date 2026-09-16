@@ -28,8 +28,9 @@
     ]
   },
   "theme": {
-    "accent": "#00D4FF",
-    "accent2": "#7B2FBE"
+    "accent": "#2BA8DC",
+    "accent2": "#7C3E9C",
+    "accentDeep": "#401A67"
   },
   "seo": {
     "title": "",

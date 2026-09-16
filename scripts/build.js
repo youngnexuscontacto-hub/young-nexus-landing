@@ -160,8 +160,8 @@ Sitemap: ${c.site.url.replace(/\/+$/, '')}/sitemap.xml
 /* ---------- defaults ---------- */
 
 const THEME = {
-  ink: '#0A0A0F', surface: '#12131C', surface2: '#1A1C29', line: '#2A2C3D',
-  text: '#FFFFFF', textDim: '#A0A0B0', accent: '#00D4FF', accentSoft: '#5CE1FF', accent2: '#7B2FBE'
+  ink: '#0A0A0F', surface: '#111119', surface2: '#191A26', line: '#2A2A3D',
+  text: '#FFFFFF', textDim: '#A0A0B0', accent: '#2BA8DC', accentSoft: '#54BEE6', accent2: '#7C3E9C', accentDeep: '#401A67'
 };
 
 function normalize(c) {
