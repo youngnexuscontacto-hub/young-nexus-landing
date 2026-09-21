@@ -828,14 +828,17 @@
     statusEl.textContent = '';
 
     try {
-      const r = await fetch(ENDPOINT, {
+      /* Apps Script responde al POST con un redirect 302 a script.googleusercontent.com.
+         Esa respuesta no trae cabeceras CORS, así que el navegador bloquea su lectura y
+         el fetch rechaza aunque la fila ya se haya guardado. Con mode:'no-cors' el POST
+         viaja igual (text/plain es un pedido simple, sin preflight) y la respuesta llega
+         opaca: no se puede leer el estado, y solo un fallo de red hace rechazar la promesa. */
+      await fetch(ENDPOINT, {
         method: 'POST',
+        mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(data)
       });
-      let ok = r.ok;
-      try { const j = await r.json(); if (j && j.ok === false) ok = false; } catch (_) {}
-      if (!ok) throw new Error('rechazado');
 
       statusEl.textContent = '¡Listo! Te escribimos dentro de las próximas 24 horas.';
       form.reset();
