@@ -36,12 +36,13 @@ const graph = [
     currenciesAccepted: 'ARS, USD',
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Parque Patricios',
       addressRegion: 'Ciudad Autónoma de Buenos Aires',
       addressCountry: 'AR'
     },
-    areaServed: ['Parque Patricios', 'Nueva Pompeya', 'Barracas', 'Boedo', 'Ciudad Autónoma de Buenos Aires', 'Argentina']
-      .map(name => ({ '@type': 'Place', name })),
+    areaServed: [
+      { '@type': 'Country', name: 'Argentina' },
+      { '@type': 'Place', name: 'Ciudad Autónoma de Buenos Aires' }
+    ],
     knowsLanguage: ['es-AR', 'en'],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
@@ -86,9 +87,9 @@ if (faq.length) {
 const block = `<link rel="canonical" href="${URL}">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="author" content="Young Nexus">
-<meta name="geo.region" content="AR-C">
-<meta name="geo.placename" content="Parque Patricios, Ciudad Autónoma de Buenos Aires">
-<meta name="twitter:title" content="Young Nexus — Transformación digital en Parque Patricios y zona sur">
+<meta name="geo.region" content="AR">
+<meta name="geo.placename" content="Argentina">
+<meta name="twitter:title" content="Young Nexus — Transformación digital para comercios, profesionales y PyMEs">
 <meta name="twitter:description" content="Resolvemos los problemas digitales que te frenan: presencia en Google, turnos que se reservan solos, web que convierte y automatización.">
 <meta name="twitter:image" content="${URL}young-nexus-og.jpg">
 <script type="application/ld+json">
