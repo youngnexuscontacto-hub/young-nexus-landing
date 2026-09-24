@@ -760,20 +760,20 @@
         <div><label for="zona-input">Barrio o zona <span style="opacity:.6">(opcional)</span></label><input type="text" id="zona-input" name="zona" placeholder="Ej.: Caballito, Rosario, Córdoba..."></div>
         <div><label for="mensaje">¿Qué te gustaría resolver?</label><textarea id="mensaje" name="mensaje" required=""></textarea></div>
         <div class="form-actions">
-          <button type="submit" class="submit-btn" value="diagnostico">Diagnóstico gratis</button>
-          <button type="submit" class="submit-btn alt" value="turno">Reserva de turno</button>
+          <button type="submit" class="submit-btn" value="whatsapp">Enviar por WhatsApp</button>
+          <button type="submit" class="submit-btn alt" value="agenda">Elegí un horario</button>
         </div>
-        <p class="form-hint"><strong>Diagnóstico gratis:</strong> te respondemos en menos de 24 horas hábiles. <strong>Reserva de turno:</strong> elegís día y horario para una videollamada de 20 minutos.</p>
+        <p class="form-hint"><strong>Enviar por WhatsApp:</strong> se abre WhatsApp con tu consulta lista para mandar. <strong>Elegí un horario:</strong> 20 minutos por WhatsApp, en el horario que elijas.</p>
         <p class="form-status" id="form-status"></p>
-        <p class="form-legal">Al enviar aceptás que usemos tus datos solo para responderte y preparar una propuesta. Si reservás turno, se precargan en Cal.com para agendar la llamada. No los vendemos ni los compartimos con nadie más. Podés pedir acceso, corrección o borrado cuando quieras. <a href="#privacidad">Cómo tratamos tus datos</a>.</p>
+        <p class="form-legal">Al enviar aceptás que guardemos tus datos en nuestra hoja de contactos, solo para responderte y preparar una propuesta. Si elegís horario, se precargan en Cal.com para agendarte. Por WhatsApp nos escribís vos, desde tu número. No los vendemos ni los compartimos con nadie más. Podés pedir acceso, corrección o borrado cuando quieras. <a href="#privacidad">Cómo tratamos tus datos</a>.</p>
       </form>
 
       <div class="done" id="form-done" hidden="">
         <h3 id="done-title">Listo.</h3>
         <p id="done-text">Te escribimos dentro de las próximas 24 horas hábiles.</p>
         <div class="done-actions">
-          <a href="#" id="done-whatsapp" target="_blank" rel="noopener" class="btn-primary">Enviar también por WhatsApp</a>
-          <a href="https://cal.com/young-nexus-7gtppu/diagnostico-digital" id="done-cal" target="_blank" rel="noopener" class="btn-secondary">Elegir horario (20 min)</a>
+          <a href="https://wa.me/5491123536686" id="done-whatsapp" target="_blank" rel="noopener" class="btn-primary">Enviar por WhatsApp</a>
+          <a href="https://cal.com/young-nexus-7gtppu/diagnostico-digital" id="done-cal" target="_blank" rel="noopener" class="btn-secondary">Elegí un horario (20 min)</a>
         </div>
       </div>
     </div>
@@ -782,7 +782,7 @@
       <a href="mailto:youngnexus.contacto@gmail.com?subject=Quiero%20mi%20Radiograf%C3%ADa%20Digital" class="contact-channel"><span class="tag mono">CORREO</span> youngnexus.contacto@gmail.com</a>
       <a href="https://instagram.com/youngnexus.ar" class="contact-channel"><span class="tag mono">INSTAGRAM</span> @youngnexus.ar</a>
       <a href="https://facebook.com/youngnexus.ar" class="contact-channel"><span class="tag mono">FACEBOOK</span> Young Nexus</a>
-      <a href="https://cal.com/young-nexus-7gtppu/diagnostico-digital" target="_blank" rel="noopener" class="contact-channel"><span class="tag mono">AGENDA</span> Reservá 20 minutos</a>
+      <a href="https://cal.com/young-nexus-7gtppu/diagnostico-digital" target="_blank" rel="noopener" class="contact-channel"><span class="tag mono">AGENDA</span> Elegí horario (20 min)</a>
     </div>
   </div>
 </section>
@@ -792,8 +792,8 @@
     <div class="eyebrow">Tus datos</div>
     <h2>Cómo tratamos tu información</h2>
     <p><strong>Quién es responsable.</strong> Young Nexus, Ciudad Autónoma de Buenos Aires, Argentina. Contacto: youngnexus.contacto@gmail.com</p>
-    <p><strong>Qué guardamos y para qué.</strong> Solo lo que nos dejás en el formulario: tu nombre, tu actividad y lo que nos contás. Lo usamos únicamente para responderte y preparar una propuesta.</p>
-    <p><strong>Con quién lo compartimos.</strong> Con nadie. Se almacena en servicios de Google, que actúan solo como proveedores de infraestructura. Si elegís reservar turno, tu nombre y lo que nos contaste se precargan en Cal.com, que usamos solo para agendar la llamada. Si tocás “Enviar también por WhatsApp”, el mensaje lo mandás vos desde tu WhatsApp.</p>
+    <p><strong>Qué guardamos y para qué.</strong> Solo lo que nos dejás en el formulario: tu nombre, tu actividad, tu zona y lo que nos contás. Lo guardamos en nuestra hoja de contactos y lo usamos únicamente para responderte y preparar una propuesta.</p>
+    <p><strong>Dónde quedan tus datos.</strong> En nuestra hoja de contactos, alojada en Google, que actúa solo como proveedor de infraestructura. Si elegís un horario, tu nombre y lo que nos contaste se precargan en Cal.com, que usamos solo para agendarte. Si elegís WhatsApp, sos vos quien nos escribe desde tu número, y la conversación queda en WhatsApp. No vendemos ni compartimos tus datos con nadie más.</p>
     <p><strong>Cuánto tiempo.</strong> Mientras dure la conversación comercial y hasta 24 meses después. Luego se eliminan.</p>
     <p><strong>Tus derechos.</strong> Podés pedirnos acceder a tus datos, corregirlos o borrarlos escribiendo a youngnexus.contacto@gmail.com. Respondemos dentro de los 10 días corridos que fija la Ley 25.326.</p>
     <p class="mono" style="font-size:12.5px;">La Agencia de Acceso a la Información Pública es el órgano de control de la Ley 25.326 y recibe denuncias por incumplimiento.</p>
@@ -819,8 +819,8 @@
      Reemplazar por la URL de la App web de Apps Script (termina en /exec). */
   const ENDPOINT = "https://script.google.com/macros/s/AKfycbyyjdSp8qF1wxkEZu7ORiBDjudnIgBDxTkdicjuXvLfKduWG2PNz56O5gZGVVuB7slzQQ/exec";
 
-  /* Evento de Cal.com (20 min; la duración se configura en el panel de Cal.com) y
-     WhatsApp Business al que el visitante puede mandarse el resumen con un link wa.me. */
+  /* Evento de Cal.com (20 min por WhatsApp; la duración se configura en el panel de Cal.com)
+     y WhatsApp Business al que el visitante nos escribe con un link wa.me. */
   const CAL_URL = "https://cal.com/young-nexus-7gtppu/diagnostico-digital";
   const WHATSAPP = "5491123536686";
 
@@ -830,7 +830,7 @@
   const doneEl = document.getElementById('form-done');
 
   /* Qué botón se usó. e.submitter no existe en Safari < 15.4, así que lo anotamos al hacer clic. */
-  let elegido = 'diagnostico';
+  let elegido = 'whatsapp';
   buttons.forEach((b) => b.addEventListener('click', () => { elegido = b.value; }));
 
   form.addEventListener('submit', async (e) => {
@@ -852,7 +852,8 @@
       return;
     }
 
-    const tipoTexto = tipo === 'turno' ? 'Reserva de turno' : 'Diagnóstico gratis';
+    const porWhatsApp = tipo === 'whatsapp';
+    const tipoTexto = porWhatsApp ? 'WhatsApp' : 'Agenda Cal.com';
     const data = {
       nombre:  nombre,
       negocio: negocio,
@@ -863,22 +864,46 @@
     const calLink = CAL_URL + '?name=' + encodeURIComponent(nombre) + '&notes=' + encodeURIComponent(notas);
     const resumen = [
       'Hola, soy ' + nombre + '. Completé el formulario de youngnexus.com.ar.',
-      'Opción: ' + tipoTexto,
       'Negocio: ' + negocio,
       'Zona: ' + (zona || '(sin indicar)'),
       'Quiero resolver: ' + problema
     ].join('\n');
     const waLink = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(resumen);
 
-    /* La pestaña de Cal.com se abre ya, dentro del clic: si se abre después del await,
-       Safari en iPhone la bloquea como popup. Se navega cuando la fila quedó guardada. */
-    const calWin = tipo === 'turno' ? window.open('', '_blank') : null;
+    /* Las ventanas se abren ya, dentro del clic: después del await Safari en iPhone las
+       bloquea como popup. WhatsApp se abre directo (el POST sigue en esta pestaña); Cal.com
+       se abre en blanco y se navega cuando la fila quedó guardada. */
+    let win = null;
+    if (porWhatsApp) {
+      win = window.open(waLink, '_blank');
+    } else {
+      win = window.open('', '_blank');
+    }
+    if (win) { try { win.opener = null; } catch (err) { /* ya es de otro origen */ } }
 
     buttons.forEach((b) => { b.disabled = true; });
     const pulsado = form.querySelector('.submit-btn[value="' + tipo + '"]');
     const original = pulsado.textContent;
     pulsado.textContent = 'Enviando...';
     statusEl.textContent = '';
+
+    const mostrarGracias = () => {
+      document.getElementById('done-title').textContent = '¡Listo, ' + nombre + '!';
+      document.getElementById('done-text').textContent = porWhatsApp
+        ? 'Abrimos WhatsApp con tu consulta: solo tenés que tocar Enviar. Si no se abrió, usá el botón de abajo.'
+        : (win
+            ? 'Abrimos Cal.com en otra pestaña para que elijas horario: son 20 minutos por WhatsApp. Si no se abrió, usá el botón de abajo.'
+            : 'Elegí tu horario con el botón de abajo: son 20 minutos por WhatsApp.');
+      document.getElementById('done-whatsapp').href = waLink;
+      const calBtn = document.getElementById('done-cal');
+      calBtn.href = calLink;
+      calBtn.className = !porWhatsApp && !win ? 'btn-primary' : 'btn-secondary';
+      document.getElementById('done-whatsapp').className = !porWhatsApp && !win ? 'btn-secondary' : 'btn-primary';
+      form.reset();
+      form.hidden = true;
+      doneEl.hidden = false;
+      doneEl.scrollIntoView({ block: 'center' });
+    };
 
     try {
       /* Apps Script responde al POST con un redirect 302 a script.googleusercontent.com.
@@ -907,28 +932,18 @@
         clearTimeout(timer);
       }
 
-      if (calWin) {
-        calWin.opener = null;
-        calWin.location.href = calLink;
-      }
-
-      document.getElementById('done-title').textContent = '¡Listo, ' + nombre + '!';
-      document.getElementById('done-text').textContent = tipo === 'turno'
-        ? (calWin
-            ? 'Guardamos tus datos y abrimos Cal.com en otra pestaña para que elijas horario. Si no se abrió, usá el botón de abajo.'
-            : 'Guardamos tus datos. Elegí tu horario con el botón de abajo.')
-        : 'Te escribimos dentro de las próximas 24 horas hábiles.';
-      document.getElementById('done-whatsapp').href = waLink;
-      const calBtn = document.getElementById('done-cal');
-      calBtn.href = calLink;
-      calBtn.className = tipo === 'turno' && !calWin ? 'btn-primary' : 'btn-secondary';
-
-      form.reset();
-      form.hidden = true;
-      doneEl.hidden = false;
-      doneEl.scrollIntoView({ block: 'center' });
+      if (!porWhatsApp && win) win.location.href = calLink;
+      /* WhatsApp bloqueado como popup: recién ahora, con la fila guardada, llevamos esta pestaña. */
+      if (porWhatsApp && !win) { window.location.href = waLink; return; }
+      mostrarGracias();
     } catch (err) {
-      if (calWin) calWin.close();
+      /* Sin red para la hoja. Por WhatsApp el contacto no se pierde: el mensaje lo manda la
+         persona con todos sus datos. Para la agenda, cerramos la pestaña en blanco y avisamos. */
+      if (porWhatsApp) {
+        if (win) mostrarGracias(); else window.location.href = waLink;
+        return;
+      }
+      if (win) win.close();
       statusEl.textContent = 'No se pudo enviar. Escribinos a youngnexus.contacto@gmail.com y lo resolvemos por ahí.';
     } finally {
       buttons.forEach((b) => { b.disabled = false; });
