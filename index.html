@@ -769,7 +769,7 @@
       </form>
 
       <div class="done" id="form-done" hidden="">
-        <h3 id="done-title">Listo.</h3>
+        <h3 id="done-title">¡Gracias!</h3>
         <p id="done-text">Te escribimos dentro de las próximas 24 horas hábiles.</p>
         <div class="done-actions">
           <a href="https://wa.me/5491123536686" id="done-whatsapp" target="_blank" rel="noopener" class="btn-primary">Enviar por WhatsApp</a>
@@ -888,7 +888,7 @@
     statusEl.textContent = '';
 
     const mostrarGracias = () => {
-      document.getElementById('done-title').textContent = '¡Listo, ' + nombre + '!';
+      document.getElementById('done-title').textContent = nombre ? '¡Gracias, ' + nombre + '!' : '¡Gracias!';
       document.getElementById('done-text').textContent = porWhatsApp
         ? 'Abrimos WhatsApp con tu consulta: solo tenés que tocar Enviar. Si no se abrió, usá el botón de abajo.'
         : (win

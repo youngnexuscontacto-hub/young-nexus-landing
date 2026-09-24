@@ -215,7 +215,7 @@
     </form>
 
     <div class="done" id="done">
-      <h2>Listo.</h2>
+      <h2 id="done-title">¡Gracias!</h2>
       <p>Te respondemos por WhatsApp en menos de 24 horas hábiles.</p>
       <a href="index.html" class="back">Volver al inicio</a>
     </div>
@@ -354,7 +354,9 @@
       form.style.display = 'none';
       doneEl.style.display = 'block';
       statusEl.className = 'form-status ok';
-      statusEl.textContent = 'Listo. Te respondemos por WhatsApp en menos de 24 horas hábiles.';
+      const gracias = nombre ? '¡Gracias, ' + nombre + '!' : '¡Gracias!';
+      document.getElementById('done-title').textContent = gracias;
+      statusEl.textContent = gracias + ' Te respondemos por WhatsApp en menos de 24 horas hábiles.';
       doneEl.scrollIntoView({ block: 'center' });
     } catch (err) {
       statusEl.className = 'form-status';
