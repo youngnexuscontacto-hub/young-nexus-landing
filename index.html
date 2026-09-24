@@ -763,7 +763,7 @@
           <button type="submit" class="submit-btn" value="whatsapp">Enviar por WhatsApp</button>
           <button type="submit" class="submit-btn alt" value="agenda">Elegí un horario</button>
         </div>
-        <p class="form-hint"><strong>Enviar por WhatsApp:</strong> se abre WhatsApp con tu consulta lista para mandar. <strong>Elegí un horario:</strong> 20 minutos por WhatsApp, en el horario que elijas.</p>
+        <p class="form-hint"><strong>Enviar por WhatsApp:</strong> se abre WhatsApp con tu consulta lista para mandar. <strong>Elegí un horario:</strong> una charla breve por WhatsApp, en el horario que elijas.</p>
         <p class="form-status" id="form-status"></p>
         <p class="form-legal">Al enviar aceptás que guardemos tus datos en nuestra hoja de contactos, solo para responderte y preparar una propuesta. Si elegís horario, se precargan en Cal.com para agendarte. Por WhatsApp nos escribís vos, desde tu número. No los vendemos ni los compartimos con nadie más. Podés pedir acceso, corrección o borrado cuando quieras. <a href="#privacidad">Cómo tratamos tus datos</a>.</p>
       </form>
@@ -773,7 +773,7 @@
         <p id="done-text">Te escribimos dentro de las próximas 24 horas hábiles.</p>
         <div class="done-actions">
           <a href="https://wa.me/5491123536686" id="done-whatsapp" target="_blank" rel="noopener" class="btn-primary">Enviar por WhatsApp</a>
-          <a href="https://cal.com/young-nexus-7gtppu/diagnostico-digital" id="done-cal" target="_blank" rel="noopener" class="btn-secondary">Elegí un horario (20 min)</a>
+          <a href="https://cal.com/young-nexus-7gtppu/diagnostico-digital" id="done-cal" target="_blank" rel="noopener" class="btn-secondary">Elegí un horario</a>
         </div>
       </div>
     </div>
@@ -782,7 +782,7 @@
       <a href="mailto:youngnexus.contacto@gmail.com?subject=Quiero%20mi%20Radiograf%C3%ADa%20Digital" class="contact-channel"><span class="tag mono">CORREO</span> youngnexus.contacto@gmail.com</a>
       <a href="https://instagram.com/youngnexus.ar" class="contact-channel"><span class="tag mono">INSTAGRAM</span> @youngnexus.ar</a>
       <a href="https://facebook.com/youngnexus.ar" class="contact-channel"><span class="tag mono">FACEBOOK</span> Young Nexus</a>
-      <a href="https://cal.com/young-nexus-7gtppu/diagnostico-digital" target="_blank" rel="noopener" class="contact-channel"><span class="tag mono">AGENDA</span> Elegí horario (20 min)</a>
+      <a href="https://cal.com/young-nexus-7gtppu/diagnostico-digital" target="_blank" rel="noopener" class="contact-channel"><span class="tag mono">AGENDA</span> Elegí horario</a>
     </div>
   </div>
 </section>
@@ -819,7 +819,7 @@
      Reemplazar por la URL de la App web de Apps Script (termina en /exec). */
   const ENDPOINT = "https://script.google.com/macros/s/AKfycbyyjdSp8qF1wxkEZu7ORiBDjudnIgBDxTkdicjuXvLfKduWG2PNz56O5gZGVVuB7slzQQ/exec";
 
-  /* Evento de Cal.com (20 min por WhatsApp; la duración se configura en el panel de Cal.com)
+  /* Evento de Cal.com (charla breve por WhatsApp; la duración se configura en el panel de Cal.com)
      y WhatsApp Business al que el visitante nos escribe con un link wa.me. */
   const CAL_URL = "https://cal.com/young-nexus-7gtppu/diagnostico-digital";
   const WHATSAPP = "5491123536686";
@@ -892,8 +892,8 @@
       document.getElementById('done-text').textContent = porWhatsApp
         ? 'Abrimos WhatsApp con tu consulta: solo tenés que tocar Enviar. Si no se abrió, usá el botón de abajo.'
         : (win
-            ? 'Abrimos Cal.com en otra pestaña para que elijas horario: son 20 minutos por WhatsApp. Si no se abrió, usá el botón de abajo.'
-            : 'Elegí tu horario con el botón de abajo: son 20 minutos por WhatsApp.');
+            ? 'Abrimos Cal.com en otra pestaña para que elijas horario: es una charla breve por WhatsApp. Si no se abrió, usá el botón de abajo.'
+            : 'Elegí tu horario con el botón de abajo: es una charla breve por WhatsApp.');
       document.getElementById('done-whatsapp').href = waLink;
       const calBtn = document.getElementById('done-cal');
       calBtn.href = calLink;
