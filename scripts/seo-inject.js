@@ -16,9 +16,11 @@ const strip = s => s.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
 const faq = [...html.matchAll(/<summary>([\s\S]*?)<\/summary>\s*<p>([\s\S]*?)<\/p>/g)]
   .map(m => ({ q: strip(m[1]), a: strip(m[2]) }));
 
-// Servicios: bloque #servicios -> <h3>nombre</h3><p>descripcion</p>
+// Servicios: solo las tarjetas .service-card del bloque #servicios -> <h3>nombre</h3><p>descripcion</p>.
+// Entre #servicios y #precios hay otras secciones con <h3>/<p> (proceso, lanzamiento, por qué
+// elegirnos) que no son servicios y no deben entrar al OfferCatalog.
 const secc = (html.split('id="servicios"')[1] || '').split('id="precios"')[0];
-const servicios = [...secc.matchAll(/<h3>([\s\S]*?)<\/h3>\s*<p>([\s\S]*?)<\/p>/g)]
+const servicios = [...secc.matchAll(/<div class="service-card[^"]*"[^>]*>[\s\S]*?<h3>([\s\S]*?)<\/h3>\s*<p>([\s\S]*?)<\/p>/g)]
   .map(m => ({ name: strip(m[1]), description: strip(m[2]) }));
 
 const graph = [
