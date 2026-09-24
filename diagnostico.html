@@ -95,7 +95,7 @@
   /* FOOTER */
   footer{padding:32px 0; border-top:1px solid var(--line); color:var(--text-dim); font-size:13px;}
   footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; align-items:center;}
-  footer .foot-links{display:flex; gap:18px;}
+  footer .foot-links{display:flex; flex-wrap:wrap; gap:12px 18px;}
   footer .foot-links a:hover{color:var(--text);}
 
   @media (prefers-reduced-motion: reduce){ .submit-btn:hover{transform:none;} }
@@ -209,12 +209,12 @@
 
       <label class="consent">
         <input type="checkbox" id="consentimiento" name="consentimiento" required="">
-        <span>Acepto que Young Nexus use estos datos solo para responder mi consulta, según la Ley 25.326. <a href="/#privacidad">Cómo tratamos tus datos</a>.</span>
+        <span>Acepto que Young Nexus use estos datos solo para responder mi consulta, según la Ley 25.326, incluida su transferencia a proveedores en EE.UU. <a href="/#privacidad">Cómo tratamos tus datos</a>.</span>
       </label>
 
       <button type="submit" class="submit-btn">Enviar mi diagnóstico</button>
       <p class="form-status" id="form-status"></p>
-      <p class="form-legal">No compartimos tus datos con nadie. Podés pedir acceso, corrección o borrado cuando quieras escribiendo a youngnexus.contacto@gmail.com.</p>
+      <p class="form-legal">No vendemos tus datos: los procesan Google y Meta (WhatsApp), en EE.UU., solo para responderte. Podés pedir acceso, rectificación o supresión cuando quieras escribiendo a youngnexus.contacto@gmail.com.</p>
     </form>
 
     <div class="done" id="done">
@@ -232,6 +232,8 @@
     <div class="foot-links">
       <a href="/">Inicio</a>
       <a href="/#privacidad">Privacidad</a>
+      <a href="mailto:youngnexus.contacto@gmail.com?subject=Bot%C3%B3n%20de%20arrepentimiento">Botón de arrepentimiento</a>
+      <a href="mailto:youngnexus.contacto@gmail.com?subject=Bot%C3%B3n%20de%20baja">Botón de baja</a>
     </div>
   </div>
 </footer>
