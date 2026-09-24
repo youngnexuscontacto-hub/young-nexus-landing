@@ -52,6 +52,11 @@
   .nav-links a:hover{color:var(--text);}
   .nav-cta{background:var(--electric); color:#001217; padding:10px 20px; border-radius:999px; font-size:14px; font-weight:600; transition:transform .15s ease;}
   .nav-cta:hover{transform:translateY(-1px);}
+  .nav-right{display:flex; align-items:center; gap:16px;}
+  .nav-legal{font-size:12px; color:var(--text-dim); text-decoration:underline; text-underline-offset:2px;}
+  .nav-legal:hover{color:var(--text);}
+  @media (max-width:480px){ .nav-right{flex-direction:column-reverse; align-items:flex-end; gap:5px;} .nav-cta{padding:7px 14px; font-size:13px; white-space:nowrap;} .nav-legal{font-size:11px;} }
+  @media (max-width:340px){ .logo{font-size:16px;} .nav-cta{padding:7px 12px; font-size:12.5px;} }
   @media (max-width:780px){ .nav-links{display:none;} }
 
   .pricing-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; margin-top:8px;}
@@ -369,7 +374,10 @@
       <a href="#faq">Preguntas</a>
       <a href="#contacto">Contacto</a>
     </div>
-    <a href="#contacto" class="nav-cta">Diagnóstico gratis</a>
+    <div class="nav-right">
+      <a href="mailto:youngnexus.contacto@gmail.com?subject=Bot%C3%B3n%20de%20arrepentimiento" class="nav-legal">Arrepentimiento</a>
+      <a href="#contacto" class="nav-cta">Diagnóstico gratis</a>
+    </div>
   </div>
 </nav>
 
@@ -377,7 +385,7 @@
 <header class="hero">
   <div class="wrap">
     <div class="eyebrow">100% remoto · Toda Argentina</div>
-    <h1>Tu negocio pierde clientes por cosas <em>que se resuelven en días</em>, no en meses.</h1>
+    <h1>Tu negocio pierde clientes por cosas <em>que se resuelven rápido</em>, con plazos por escrito.</h1>
     <p>Hoy tu cliente busca en Google antes de decidir, y reserva desde el celular a cualquier hora. Ordenamos tu presencia y tus procesos para que te encuentre, te elija, y no se pierda en el camino.</p>
     <div class="hero-ctas">
       <a href="#contacto" class="btn-primary">Pedir diagnóstico gratis</a>
@@ -662,7 +670,7 @@
   <div class="wrap">
     <div class="eyebrow">Tus datos</div>
     <h2>Cómo tratamos tu información</h2>
-    <p><strong>Quién es responsable.</strong> Luis Areco Galeano, CUIT [CUIT], nombre comercial Young Nexus, domicilio [DOMICILIO]. Contacto: youngnexus.contacto@gmail.com</p>
+    <p><strong>Quién es responsable.</strong> Luis Areco Galeano, CUIT 20-18866406-8, nombre comercial Young Nexus, domicilio fiscal Santo Domingo 3900, Ciudad Autónoma de Buenos Aires (CP 1437). Contacto: youngnexus.contacto@gmail.com</p>
     <p><strong>Registro ante la AAIP.</strong> Responsable inscripto: RL-2026-85177920-APN-DNPDP#AAIP. Base de datos "Contactos comerciales Young Nexus": en trámite, EX-2026-92049541-APN-DNPDP#AAIP.</p>
     <p><strong>Qué guardamos y para qué.</strong> Solo lo que nos dejás en los formularios: tu nombre, tu actividad, tu zona, tu WhatsApp si nos lo das y lo que nos contás. Lo guardamos en nuestra hoja de contactos, nos llega una copia por correo y lo usamos únicamente para responderte y preparar una propuesta.</p>
     <p><strong>Quién procesa tus datos y dónde.</strong> Usamos proveedores que guardan la información en servidores de Estados Unidos: Google (hoja de contactos y correo), Cal.com (agenda, solo si elegís un horario) y Meta (WhatsApp, solo si nos escribís por ahí). Estados Unidos no está considerado por la AAIP como un país con protección adecuada: al marcar la casilla de consentimiento aceptás esa transferencia internacional (art. 12, Ley 25.326). No vendemos tus datos ni los usamos para otra cosa.</p>
