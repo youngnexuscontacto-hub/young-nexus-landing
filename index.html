@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.youngnexus.com.ar/">
 <meta property="og:title" content="Young Nexus — Transformación digital para comercios, profesionales y PyMEs">
-<meta property="og:description" content="Resolvemos los problemas digitales que te frenan: presencia en Google, turnos que se reservan solos, web que convierte y procesos que se registran solos. 100% remoto, resultados en días.">
+<meta property="og:description" content="Resolvemos los problemas digitales que te frenan: presencia en Google, turnos que se reservan solos, web que convierte y procesos que se registran solos. 100% remoto, con plazos concretos por escrito.">
 <meta property="og:image" content="https://www.youngnexus.com.ar/young-nexus-og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -52,6 +52,11 @@
   .nav-links a:hover{color:var(--text);}
   .nav-cta{background:var(--electric); color:#001217; padding:10px 20px; border-radius:999px; font-size:14px; font-weight:600; transition:transform .15s ease;}
   .nav-cta:hover{transform:translateY(-1px);}
+  .nav-right{display:flex; align-items:center; gap:16px;}
+  .nav-legal{font-size:12px; color:var(--text-dim); text-decoration:underline; text-underline-offset:2px;}
+  .nav-legal:hover{color:var(--text);}
+  @media (max-width:480px){ .nav-right{flex-direction:column-reverse; align-items:flex-end; gap:5px;} .nav-cta{padding:7px 14px; font-size:13px; white-space:nowrap;} .nav-legal{font-size:11px;} }
+  @media (max-width:340px){ .logo{font-size:16px;} .nav-cta{padding:7px 12px; font-size:12.5px;} }
   @media (max-width:780px){ .nav-links{display:none;} }
 
   .pricing-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; margin-top:8px;}
@@ -63,8 +68,10 @@
   .price-card .abono{font-size:14px; color:var(--text-dim); margin:10px 0 20px;}
   .price-list{list-style:none; padding:0; margin:0 0 24px; display:grid; gap:9px; font-size:14px; color:var(--text-dim); flex:1;}
   .price-list li::before{content:'— '; color:var(--electric);}
-  .price-list li.off{opacity:.4;}
-  .price-list li.off::before{content:'— '; color:var(--text-dim);}
+  .price-list li.off-label{margin-top:6px; font-size:12.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--text-dim);}
+  .price-list li.off-label::before{content:none;}
+  .price-list li.off{opacity:.6;}
+  .price-list li.off::before{content:'✕ '; color:var(--text-dim);}
   .price-cta{display:block; text-align:center; padding:12px 18px; border-radius:10px; font-size:14.5px; font-weight:600; border:1px solid var(--line);}
   .price-card.featured .price-cta{background:var(--electric); color:#001217; border-color:var(--electric);}
   .promo-band{margin-top:22px; background:var(--surface-2); border:1px solid var(--line); border-left:3px solid var(--electric); border-radius:10px; padding:18px 22px; font-size:14.5px; color:var(--text-dim);}
@@ -192,7 +199,7 @@
   footer{padding:40px 0; border-top:1px solid var(--line); color:var(--text-dim); font-size:13px;}
   footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; align-items:center;}
   footer .foot-brand{display:flex; flex-direction:column; gap:4px;}
-  footer .foot-links{display:flex; gap:20px;}
+  footer .foot-links{display:flex; flex-wrap:wrap; gap:12px 20px;}
   footer .foot-links a:hover{color:var(--text);}
 </style>
 <!-- seo:start -->
@@ -248,7 +255,7 @@
             "itemOffered": {
               "@type": "Service",
               "name": "Google Maps",
-              "description": "Tu negocio, visible y arriba cuando alguien busca cerca tuyo.",
+              "description": "Ficha completa y optimizada para aparecer en búsquedas cercanas.",
               "provider": {
                 "@id": "https://www.youngnexus.com.ar/#business"
               }
@@ -259,7 +266,7 @@
             "itemOffered": {
               "@type": "Service",
               "name": "WhatsApp bien puesto",
-              "description": "Botón directo desde tu web, respuestas automáticas fuera de horario y perfil configurado para que ninguna consulta quede sin contestar.",
+              "description": "Botón directo desde tu web, respuesta automática fuera de horario y perfil configurado, para que nadie quede sin respuesta inicial.",
               "provider": {
                 "@id": "https://www.youngnexus.com.ar/#business"
               }
@@ -337,7 +344,7 @@
           "name": "¿Cuánto tarda en estar funcionando?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "La mayoría de las soluciones quedan listas en días. Te damos un plazo concreto en la propuesta, antes de arrancar."
+            "text": "Te damos un plazo concreto por escrito en la propuesta, antes de arrancar."
           }
         },
         {
@@ -345,7 +352,7 @@
           "name": "¿Qué pasa con mis datos y los de mis clientes?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Trabajamos con herramientas reconocidas (Google, WhatsApp Business, Cal.com) y te explicamos exactamente dónde queda guardada tu información. Tus datos se usan solo para responderte y no se comparten con terceros. Podés pedirnos que los borremos cuando quieras (Ley 25.326)."
+            "text": "Trabajamos con herramientas reconocidas (Google, WhatsApp Business, Cal.com) y te explicamos exactamente dónde queda guardada tu información. Tus datos se usan solo para responderte y no los vendemos: los procesan Google, Cal.com y Meta (WhatsApp), en servidores de EE.UU., solo para operar este servicio. Podés pedirnos que los borremos cuando quieras (Ley 25.326)."
           }
         }
       ]
@@ -367,7 +374,10 @@
       <a href="#faq">Preguntas</a>
       <a href="#contacto">Contacto</a>
     </div>
-    <a href="#contacto" class="nav-cta">Diagnóstico gratis</a>
+    <div class="nav-right">
+      <a href="mailto:youngnexus.contacto@gmail.com?subject=Bot%C3%B3n%20de%20arrepentimiento" class="nav-legal">Arrepentimiento</a>
+      <a href="#contacto" class="nav-cta">Diagnóstico gratis</a>
+    </div>
   </div>
 </nav>
 
@@ -375,7 +385,7 @@
 <header class="hero">
   <div class="wrap">
     <div class="eyebrow">100% remoto · Toda Argentina</div>
-    <h1>Tu negocio pierde clientes por cosas <em>que se resuelven en días</em>, no en meses.</h1>
+    <h1>Tu negocio pierde clientes por cosas <em>que se resuelven rápido</em>, con plazos por escrito.</h1>
     <p>Hoy tu cliente busca en Google antes de decidir, y reserva desde el celular a cualquier hora. Ordenamos tu presencia y tus procesos para que te encuentre, te elija, y no se pierda en el camino.</p>
     <div class="hero-ctas">
       <a href="#contacto" class="btn-primary">Pedir diagnóstico gratis</a>
@@ -420,7 +430,7 @@
     <div class="pipeline">
       <div class="pipe-track"></div>
       <div class="pipe-node"><div class="dot mono">01</div><span class="label">Un cliente te busca, escribe o compra</span></div>
-      <div class="pipe-node"><div class="dot mono">→</div><span class="label">Young Nexus lo registra y responde solo</span></div>
+      <div class="pipe-node"><div class="dot mono">→</div><span class="label">Te responde fuera de horario y las consultas de tu web quedan registradas</span></div>
       <div class="pipe-node"><div class="dot mono">03</div><span class="label">Vos cerrás la venta, sin perseguir nada</span></div>
     </div>
   </div>
@@ -435,8 +445,8 @@
       <p>Empezamos por lo que resuelve tu problema más urgente — el resto queda disponible para cuando lo necesites.</p>
     </div>
     <div class="grid-services">
-      <div class="service-card" id="s-maps"><span class="num mono">01</span><h3>Google Maps</h3><p>Tu negocio, visible y arriba cuando alguien busca cerca tuyo.</p></div>
-      <div class="service-card" id="s-whatsapp"><span class="num mono">02</span><h3>WhatsApp bien puesto</h3><p>Botón directo desde tu web, respuestas automáticas fuera de horario y perfil configurado para que ninguna consulta quede sin contestar.</p></div>
+      <div class="service-card" id="s-maps"><span class="num mono">01</span><h3>Google Maps</h3><p>Ficha completa y optimizada para aparecer en búsquedas cercanas.</p></div>
+      <div class="service-card" id="s-whatsapp"><span class="num mono">02</span><h3>WhatsApp bien puesto</h3><p>Botón directo desde tu web, respuesta automática fuera de horario y perfil configurado, para que nadie quede sin respuesta inicial.</p></div>
       <div class="service-card" id="s-web"><span class="num mono">03</span><h3>Landing pages y sitios</h3><p>Una página clara, rápida, pensada para convertir visitas en clientes.</p></div>
       <div class="service-card" id="s-automatizacion"><span class="num mono">04</span><h3>Automatización a medida</h3><p>Que los pedidos y consultas se registren solos, sin que nadie los anote a mano.</p></div>
       <div class="service-card later" id="s-datos"><span class="num mono">05</span><h3>Dashboards y analítica</h3><p>Tus datos ordenados, para entender tu negocio de un vistazo.</p></div>
@@ -456,7 +466,7 @@
     <div class="steps">
       <div class="step"><span class="idx mono">01</span><div><h3>Diagnóstico gratuito</h3><p>Una charla corta para entender qué te está haciendo perder tiempo o clientes hoy.</p></div></div>
       <div class="step"><span class="idx mono">02</span><div><h3>Propuesta clara</h3><p>Te decimos exactamente qué vamos a hacer, en cuánto tiempo y qué esperar — sin letra chica.</p></div></div>
-      <div class="step"><span class="idx mono">03</span><div><h3>Implementación en días</h3><p>Armamos la solución puntual para tu caso, lista para usar en días, no en meses.</p></div></div>
+      <div class="step"><span class="idx mono">03</span><div><h3>Implementación con plazo concreto</h3><p>Armamos la solución puntual para tu caso, en el plazo que te damos por escrito en la propuesta.</p></div></div>
       <div class="step"><span class="idx mono">04</span><div><h3>Acompañamiento</h3><p>Te mostramos cómo funciona, para que entiendas lo que te entregamos y no dependas de nadie.</p></div></div>
     </div>
   </div>
@@ -513,15 +523,16 @@
         <ul class="price-list">
           <li>Sitio web con tu dominio propio</li>
           <li>Tu negocio en Google Maps</li>
+          <li>1 hora de soporte al mes</li>
+          <li class="off-label">No incluye:</li>
           <li class="off">Turnos online</li>
           <li class="off">Automatización</li>
-          <li>1 hora de soporte al mes</li>
         </ul>
         <a href="#contacto" class="price-cta">Lo quiero</a>
       </div>
 
       <div class="price-card featured">
-        <div class="tier">Completo · el más elegido</div>
+        <div class="tier">Completo · Recomendado</div>
         <div class="amount">$260.000 <span>una vez</span></div>
         <div class="abono">+ $58.000 por mes de acompañamiento</div>
         <ul class="price-list">
@@ -543,7 +554,7 @@
           <li>Todo lo del plan Completo</li>
           <li>3 automatizaciones a medida</li>
           <li>Datos con acceso restringido</li>
-          <li>Resguardos legales para salud y construcción</li>
+          <li>Configuración con buenas prácticas de privacidad (no incluye asesoramiento legal)</li>
           <li>4 horas de soporte al mes</li>
         </ul>
         <a href="#contacto" class="price-cta">Lo quiero</a>
@@ -599,11 +610,11 @@
       </details>
       <details class="faq-item">
         <summary>¿Cuánto tarda en estar funcionando?</summary>
-        <p>La mayoría de las soluciones quedan listas en días. Te damos un plazo concreto en la propuesta, antes de arrancar.</p>
+        <p>Te damos un plazo concreto por escrito en la propuesta, antes de arrancar.</p>
       </details>
       <details class="faq-item">
         <summary>¿Qué pasa con mis datos y los de mis clientes?</summary>
-        <p>Trabajamos con herramientas reconocidas (Google, WhatsApp Business, Cal.com) y te explicamos exactamente dónde queda guardada tu información. Tus datos se usan solo para responderte y no se comparten con terceros. Podés pedirnos que los borremos cuando quieras (Ley 25.326).</p>
+        <p>Trabajamos con herramientas reconocidas (Google, WhatsApp Business, Cal.com) y te explicamos exactamente dónde queda guardada tu información. Tus datos se usan solo para responderte y no los vendemos: los procesan Google, Cal.com y Meta (WhatsApp), en servidores de EE.UU., solo para operar este servicio. Podés pedirnos que los borremos cuando quieras (Ley 25.326).</p>
       </details>
     </div>
   </div>
@@ -625,7 +636,7 @@
         <div class="hp" aria-hidden="true"><label for="hp-extra">Dejá este campo vacío</label><input type="text" id="hp-extra" name="hp_extra" tabindex="-1" autocomplete="off"></div>
         <label class="consent">
           <input type="checkbox" id="consentimiento" name="consentimiento" required="">
-          <span>Acepto que Young Nexus use estos datos solo para responder mi consulta, según la Ley 25.326. <a href="#privacidad">Cómo tratamos tus datos</a>.</span>
+          <span>Acepto que Young Nexus use estos datos solo para responder mi consulta, según la Ley 25.326, incluida su transferencia a proveedores en EE.UU. <a href="#privacidad">Cómo tratamos tus datos</a>.</span>
         </label>
         <div class="form-actions">
           <button type="submit" class="submit-btn" value="whatsapp">Enviar por WhatsApp</button>
@@ -633,7 +644,7 @@
         </div>
         <p class="form-hint"><strong>Enviar por WhatsApp:</strong> se abre WhatsApp con tu consulta lista para mandar. <strong>Elegí un horario:</strong> una charla breve por WhatsApp, en el horario que elijas.</p>
         <p class="form-status" id="form-status"></p>
-        <p class="form-legal">Al enviar aceptás que guardemos tus datos en nuestra hoja de contactos, solo para responderte y preparar una propuesta. Si elegís horario, se precargan en Cal.com para agendarte. Por WhatsApp nos escribís vos, desde tu número. No los vendemos ni los compartimos con nadie más. Podés pedir acceso, corrección o borrado cuando quieras. <a href="#privacidad">Cómo tratamos tus datos</a>.</p>
+        <p class="form-legal">Guardamos tus datos en nuestra hoja de contactos, solo para responderte y preparar una propuesta. Si elegís horario, se precargan en Cal.com para agendarte. Por WhatsApp nos escribís vos, desde tu número. No los vendemos: los procesan Google, Cal.com y Meta, en EE.UU., solo para operar este servicio. Podés pedir acceso, rectificación o supresión cuando quieras. <a href="#privacidad">Cómo tratamos tus datos</a>.</p>
       </form>
 
       <div class="done" id="form-done" hidden="">
@@ -659,12 +670,13 @@
   <div class="wrap">
     <div class="eyebrow">Tus datos</div>
     <h2>Cómo tratamos tu información</h2>
-    <p><strong>Quién es responsable.</strong> Young Nexus, Ciudad Autónoma de Buenos Aires, Argentina. Contacto: youngnexus.contacto@gmail.com</p>
-    <p><strong>Qué guardamos y para qué.</strong> Solo lo que nos dejás en el formulario: tu nombre, tu actividad, tu zona y lo que nos contás. Lo guardamos en nuestra hoja de contactos y lo usamos únicamente para responderte y preparar una propuesta.</p>
-    <p><strong>Dónde quedan tus datos.</strong> En nuestra hoja de contactos, alojada en Google, que actúa solo como proveedor de infraestructura. Si elegís un horario, tu nombre y lo que nos contaste se precargan en Cal.com, que usamos solo para agendarte. Si elegís WhatsApp, sos vos quien nos escribe desde tu número, y la conversación queda en WhatsApp. No vendemos ni compartimos tus datos con nadie más.</p>
+    <p><strong>Quién es responsable.</strong> Luis Areco Galeano, CUIT 20-18866406-8, nombre comercial Young Nexus, domicilio fiscal Santo Domingo 3900, Ciudad Autónoma de Buenos Aires (CP 1437). Contacto: youngnexus.contacto@gmail.com</p>
+    <p><strong>Registro ante la AAIP.</strong> Responsable inscripto: RL-2026-85177920-APN-DNPDP#AAIP. Base de datos "Contactos comerciales Young Nexus": en trámite, EX-2026-92049541-APN-DNPDP#AAIP.</p>
+    <p><strong>Qué guardamos y para qué.</strong> Solo lo que nos dejás en los formularios: tu nombre, tu actividad, tu zona, tu WhatsApp si nos lo das y lo que nos contás. Lo guardamos en nuestra hoja de contactos, nos llega una copia por correo y lo usamos únicamente para responderte y preparar una propuesta.</p>
+    <p><strong>Quién procesa tus datos y dónde.</strong> Usamos proveedores que guardan la información en servidores de Estados Unidos: Google (hoja de contactos y correo), Cal.com (agenda, solo si elegís un horario) y Meta (WhatsApp, solo si nos escribís por ahí). Estados Unidos no está considerado por la AAIP como un país con protección adecuada: al marcar la casilla de consentimiento aceptás esa transferencia internacional (art. 12, Ley 25.326). No vendemos tus datos ni los usamos para otra cosa.</p>
     <p><strong>Cuánto tiempo.</strong> Mientras dure la conversación comercial y hasta 24 meses después. Luego se eliminan.</p>
-    <p><strong>Tus derechos.</strong> Podés pedirnos acceder a tus datos, corregirlos o borrarlos escribiendo a youngnexus.contacto@gmail.com. Respondemos dentro de los 10 días corridos que fija la Ley 25.326.</p>
-    <p class="mono" style="font-size:12.5px;">La Agencia de Acceso a la Información Pública es el órgano de control de la Ley 25.326 y recibe denuncias por incumplimiento.</p>
+    <p><strong>Tus derechos.</strong> Podés pedir acceso, rectificación, actualización o supresión de tus datos escribiendo a youngnexus.contacto@gmail.com. Plazos de la Ley 25.326: acceso, 10 días corridos (art. 14); rectificación, actualización o supresión, 5 días hábiles (art. 16).</p>
+    <p class="mono" style="font-size:12.5px;">El titular de los datos personales tiene la facultad de ejercer el derecho de acceso a los mismos en forma gratuita a intervalos no inferiores a seis meses, salvo que se acredite un interés legítimo al efecto conforme lo establecido en el artículo 14, inciso 3 de la Ley Nº 25.326. La AGENCIA DE ACCESO A LA INFORMACIÓN PÚBLICA, en su carácter de Órgano de Control de la Ley Nº 25.326, tiene la atribución de atender las denuncias y reclamos que interpongan quienes resulten afectados en sus derechos por incumplimiento de las normas vigentes en materia de protección de datos personales.</p>
   </div>
 </section>
   <!-- [10] FOOTER -->
@@ -677,7 +689,10 @@
     <div class="foot-links">
       <a href="#servicios">Servicios</a>
       <a href="#faq">FAQ</a>
-      <a href="#contacto">Contacto</a>      <a href="#privacidad">Privacidad</a>
+      <a href="#contacto">Contacto</a>
+      <a href="#privacidad">Privacidad</a>
+      <a href="mailto:youngnexus.contacto@gmail.com?subject=Bot%C3%B3n%20de%20arrepentimiento">Botón de arrepentimiento</a>
+      <a href="mailto:youngnexus.contacto@gmail.com?subject=Bot%C3%B3n%20de%20baja">Botón de baja</a>
     </div>
   </div>
 </footer>
