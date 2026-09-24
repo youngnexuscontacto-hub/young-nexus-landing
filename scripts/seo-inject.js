@@ -18,10 +18,12 @@ const faq = [...html.matchAll(/<summary>([\s\S]*?)<\/summary>\s*<p>([\s\S]*?)<\/
 
 // Servicios: solo las tarjetas .service-card del bloque #servicios -> <h3>nombre</h3><p>descripcion</p>.
 // Entre #servicios y #precios hay otras secciones con <h3>/<p> (proceso, lanzamiento, por qué
-// elegirnos) que no son servicios y no deben entrar al OfferCatalog.
+// elegirnos) que no son servicios y no deben entrar al OfferCatalog. Las tarjetas .later son
+// servicios "próximamente": se muestran en la web pero todavía no se ofrecen, así que tampoco entran.
 const secc = (html.split('id="servicios"')[1] || '').split('id="precios"')[0];
-const servicios = [...secc.matchAll(/<div class="service-card[^"]*"[^>]*>[\s\S]*?<h3>([\s\S]*?)<\/h3>\s*<p>([\s\S]*?)<\/p>/g)]
-  .map(m => ({ name: strip(m[1]), description: strip(m[2]) }));
+const servicios = [...secc.matchAll(/<div class="(service-card[^"]*)"[^>]*>[\s\S]*?<h3>([\s\S]*?)<\/h3>\s*<p>([\s\S]*?)<\/p>/g)]
+  .filter(m => !/\blater\b/.test(m[1]))
+  .map(m => ({ name: strip(m[2]), description: strip(m[3]) }));
 
 const graph = [
   {
