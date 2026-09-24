@@ -3,7 +3,7 @@
 <html lang="es-AR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Young Nexus — Transformación digital para comercios, profesionales y PyMEs</title>
+<title>Young Nexus — Web, turnos y Google para tu negocio</title>
 <meta name="description" content="Web, turnos online, ficha de Google y automatización para comercios, profesionales independientes y PyMEs de toda Argentina. 100% remoto. Diagnóstico sin costo.">
 <meta name="google-site-verification" content="o26dQAyGnfMak3rw1X6FJ-XGzQxkkAgMbo_7VNKyMPY" />
 <link rel="icon" type="image/png" href="/favicon.png">
@@ -181,6 +181,12 @@
   .submit-btn:focus-visible, .btn-primary:focus-visible, .btn-secondary:focus-visible, .nav-cta:focus-visible{outline:2px solid var(--electric); outline-offset:3px;}
   .form-status{font-size:13.5px; color:var(--text-dim); min-height:18px;}  .form-legal{font-size:12px; color:var(--text-dim); line-height:1.5; margin-top:14px;}
   .form-legal a{color:var(--electric); text-decoration:underline;}
+  .consent{display:flex; align-items:flex-start; gap:11px; background:var(--surface-2); border:1px solid var(--line); border-left:3px solid var(--electric); border-radius:10px; padding:15px 16px; font-size:13.5px; color:var(--text-dim); line-height:1.5; cursor:pointer; margin:0;}
+  .consent input{width:19px; height:19px; flex:0 0 19px; margin-top:1px; accent-color:var(--electric); padding:0;}
+  .consent a{color:var(--electric); text-decoration:underline;}
+  .hp{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;}
+  #zona h2, #privacidad h2{margin-bottom:18px;}
+  #zona p + p, #privacidad p + p{margin-top:14px;}
 
   /* [10] FOOTER */
   footer{padding:40px 0; border-top:1px solid var(--line); color:var(--text-dim); font-size:13px;}
@@ -567,7 +573,7 @@
 
 <section class="section border-top" id="zona">
   <div class="wrap">
-    <div class="eyebrow">Cómo trabajamos</div>
+    <div class="eyebrow">Dónde trabajamos</div>
     <h2>100% remoto, en todo el país</h2>
     <p>No hace falta que estemos en tu barrio para resolverte el problema. Todo lo que hacemos —la web, los turnos online, tu ficha de Google, el orden de tus datos— se arma y se entrega a distancia, sin que tengas que cerrar ni un día.</p>
     <p>Trabajamos por WhatsApp, con avances que mirás vos mismo antes de que salga a la calle. Nada se publica sin que lo apruebes.</p>
@@ -612,10 +618,15 @@
       <p>Te preparamos una <strong>Radiografía Digital</strong> de tu negocio: una hoja con lo que Google muestra de vos hoy, qué te está costando y qué haríamos primero. Sin costo y sin compromiso.</p>
 
       <form id="contact-form">
-        <div><label for="nombre">Nombre</label><input type="text" id="nombre" name="nombre" autocomplete="name" required=""></div>
-        <div><label for="negocio">Tu negocio o actividad</label><input type="text" id="negocio" name="negocio" required=""></div>
-        <div><label for="zona-input">Barrio o zona <span style="opacity:.6">(opcional)</span></label><input type="text" id="zona-input" name="zona" placeholder="Ej.: Caballito, Rosario, Córdoba..."></div>
-        <div><label for="mensaje">¿Qué te gustaría resolver?</label><textarea id="mensaje" name="mensaje" required=""></textarea></div>
+        <div><label for="nombre">Nombre</label><input type="text" id="nombre" name="nombre" autocomplete="name" maxlength="100" required=""></div>
+        <div><label for="negocio">Tu negocio o actividad</label><input type="text" id="negocio" name="negocio" maxlength="100" required=""></div>
+        <div><label for="zona-input">Barrio o zona <span style="opacity:.6">(opcional)</span></label><input type="text" id="zona-input" name="zona" maxlength="100" placeholder="Ej.: Caballito, Rosario, Córdoba..."></div>
+        <div><label for="mensaje">¿Qué te gustaría resolver?</label><textarea id="mensaje" name="mensaje" maxlength="1000" required=""></textarea></div>
+        <div class="hp" aria-hidden="true"><label for="hp-extra">Dejá este campo vacío</label><input type="text" id="hp-extra" name="hp_extra" tabindex="-1" autocomplete="off"></div>
+        <label class="consent">
+          <input type="checkbox" id="consentimiento" name="consentimiento" required="">
+          <span>Acepto que Young Nexus use estos datos solo para responder mi consulta, según la Ley 25.326. <a href="#privacidad">Cómo tratamos tus datos</a>.</span>
+        </label>
         <div class="form-actions">
           <button type="submit" class="submit-btn" value="whatsapp">Enviar por WhatsApp</button>
           <button type="submit" class="submit-btn alt" value="agenda">Elegí un horario</button>
@@ -708,13 +719,20 @@
       statusEl.textContent = 'Completá nombre, negocio y qué querés resolver.';
       return;
     }
+    if (!document.getElementById('consentimiento').checked) {
+      statusEl.textContent = 'Necesitamos tu consentimiento para poder responderte.';
+      return;
+    }
 
     const porWhatsApp = tipo === 'whatsapp';
     const tipoTexto = porWhatsApp ? 'WhatsApp' : 'Agenda Cal.com';
     const data = {
       nombre:  nombre,
       negocio: negocio,
-      mensaje: 'tipo: ' + tipoTexto + '\n\n' + problema + (zona ? '\n\nZona: ' + zona : '')
+      /* La zona va al final: el aviso por mail de Apps Script la lee de ahí. */
+      mensaje: 'tipo: ' + tipoTexto + '\nConsentimiento Ley 25.326: sí\n\n' + problema + (zona ? '\n\nZona: ' + zona : ''),
+      /* Trampa para bots: campo oculto que una persona nunca completa. doPost descarta si viene con algo. */
+      hp: form.hp_extra.value
     };
 
     const notas = 'Negocio: ' + negocio + '\nZona: ' + (zona || '(sin indicar)') + '\nQuiero resolver: ' + problema;

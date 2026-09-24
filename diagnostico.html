@@ -85,6 +85,7 @@
   .consent{display:flex; align-items:flex-start; gap:11px; background:var(--surface-2); border:1px solid var(--line); border-left:3px solid var(--electric); border-radius:10px; padding:15px 16px; font-size:13.5px; color:var(--text-dim); line-height:1.5; cursor:pointer;}
   .consent input{width:19px; height:19px; flex:0 0 19px; margin-top:1px; accent-color:var(--electric); padding:0;}
   .consent a{color:var(--electric); text-decoration:underline;}
+  .hp{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;}
 
   .done{display:none; background:var(--surface); border:1px solid var(--electric); border-radius:var(--radius); padding:30px 22px; text-align:center;}
   .done h2{font-size:21px; margin-bottom:10px;}
@@ -105,7 +106,7 @@
 <nav>
   <div class="wrap">
     <div class="logo"><img src="/apple-touch-icon.png" alt="Young Nexus" class="logo-img" width="28" height="28" decoding="async">Young Nexus</div>
-    <a href="index.html" class="nav-back">← Volver</a>
+    <a href="/" class="nav-back">← Volver</a>
   </div>
 </nav>
 
@@ -127,8 +128,8 @@
         <h2>¿Cómo te llamás y cómo se llama tu negocio?</h2>
         <p class="hint">Si trabajás por tu cuenta, poné tu actividad.</p>
         <div class="fields">
-          <div><label for="nombre">Tu nombre</label><input type="text" id="nombre" name="nombre" autocomplete="name" required=""></div>
-          <div><label for="negocio">Nombre del negocio o actividad</label><input type="text" id="negocio" name="negocio" required=""></div>
+          <div><label for="nombre">Tu nombre</label><input type="text" id="nombre" name="nombre" autocomplete="name" maxlength="100" required=""></div>
+          <div><label for="negocio">Nombre del negocio o actividad</label><input type="text" id="negocio" name="negocio" maxlength="100" required=""></div>
         </div>
       </div>
 
@@ -136,7 +137,7 @@
         <span class="num">02</span>
         <h2>¿A qué te dedicás?</h2>
         <p class="hint">Contalo con tus palabras.</p>
-        <textarea id="rubro" name="rubro" placeholder="Ej.: arreglo aires acondicionados a domicilio" required=""></textarea>
+        <textarea id="rubro" name="rubro" maxlength="1000" placeholder="Ej.: arreglo aires acondicionados a domicilio" required=""></textarea>
       </div>
 
       <div class="q">
@@ -150,7 +151,7 @@
           <label class="opt"><input type="checkbox" name="canal" value="Local a la calle"><span>Local a la calle</span></label>
           <label class="opt"><input type="checkbox" name="canal" value="Otro" data-extra="canal-otro"><span>Otro</span></label>
         </div>
-        <div class="opt-extra" id="canal-otro" hidden=""><label for="canal-otro-txt">¿Cuál?</label><input type="text" id="canal-otro-txt" name="canal_otro"></div>
+        <div class="opt-extra" id="canal-otro" hidden=""><label for="canal-otro-txt">¿Cuál?</label><input type="text" id="canal-otro-txt" name="canal_otro" maxlength="100"></div>
       </div>
 
       <div class="q">
@@ -177,7 +178,7 @@
           <label class="opt"><input type="checkbox" name="dolor" value="No sé qué me funciona"><span>No sé qué me funciona</span></label>
           <label class="opt"><input type="checkbox" name="dolor" value="Otro" data-extra="dolor-otro"><span>Otro</span></label>
         </div>
-        <div class="opt-extra" id="dolor-otro" hidden=""><label for="dolor-otro-txt">¿Qué te pasa?</label><input type="text" id="dolor-otro-txt" name="dolor_otro"></div>
+        <div class="opt-extra" id="dolor-otro" hidden=""><label for="dolor-otro-txt">¿Qué te pasa?</label><input type="text" id="dolor-otro-txt" name="dolor_otro" maxlength="100"></div>
       </div>
 
       <div class="q">
@@ -187,26 +188,28 @@
           <label class="opt"><input type="radio" name="web" value="No"><span>No</span></label>
           <label class="opt"><input type="radio" name="web" value="Sí" data-extra="web-url"><span>Sí</span></label>
         </div>
-        <div class="opt-extra" id="web-url" hidden=""><label for="web-url-txt">¿Cuál es la dirección?</label><input type="text" id="web-url-txt" name="web_url" inputmode="url" placeholder="www.tunegocio.com.ar"></div>
+        <div class="opt-extra" id="web-url" hidden=""><label for="web-url-txt">¿Cuál es la dirección?</label><input type="text" id="web-url-txt" name="web_url" maxlength="100" inputmode="url" placeholder="www.tunegocio.com.ar"></div>
       </div>
 
       <div class="q">
         <span class="num">07</span>
         <h2>¿Qué te gustaría resolver primero?</h2>
         <p class="hint">Una sola cosa, la que más te molesta.</p>
-        <input type="text" id="prioridad" name="prioridad" placeholder="Ej.: que me lleguen más consultas" required="">
+        <input type="text" id="prioridad" name="prioridad" maxlength="1000" placeholder="Ej.: que me lleguen más consultas" required="">
       </div>
 
       <div class="q">
         <span class="num">08</span>
         <h2>¿A qué WhatsApp te respondemos?</h2>
         <p class="hint">Con característica, sin el 0 ni el 15.</p>
-        <input type="tel" id="whatsapp" name="whatsapp" inputmode="tel" autocomplete="tel" placeholder="11 2345 6789" required="">
+        <input type="tel" id="whatsapp" name="whatsapp" maxlength="20" inputmode="tel" autocomplete="tel" placeholder="11 2345 6789" required="">
       </div>
+
+      <div class="hp" aria-hidden="true"><label for="hp-extra">Dejá este campo vacío</label><input type="text" id="hp-extra" name="hp_extra" tabindex="-1" autocomplete="off"></div>
 
       <label class="consent">
         <input type="checkbox" id="consentimiento" name="consentimiento" required="">
-        <span>Acepto que Young Nexus use estos datos solo para responder mi consulta, según la Ley 25.326. <a href="index.html#privacidad">Cómo tratamos tus datos</a>.</span>
+        <span>Acepto que Young Nexus use estos datos solo para responder mi consulta, según la Ley 25.326. <a href="/#privacidad">Cómo tratamos tus datos</a>.</span>
       </label>
 
       <button type="submit" class="submit-btn">Enviar mi diagnóstico</button>
@@ -217,7 +220,7 @@
     <div class="done" id="done">
       <h2 id="done-title">¡Gracias!</h2>
       <p>Te respondemos por WhatsApp en menos de 24 horas hábiles.</p>
-      <a href="index.html" class="back">Volver al inicio</a>
+      <a href="/" class="back">Volver al inicio</a>
     </div>
 
   </div>
@@ -227,8 +230,8 @@
   <div class="wrap">
     <span><strong>Young Nexus</strong> — 100% remoto · Argentina</span>
     <div class="foot-links">
-      <a href="index.html">Inicio</a>
-      <a href="index.html#privacidad">Privacidad</a>
+      <a href="/">Inicio</a>
+      <a href="/#privacidad">Privacidad</a>
     </div>
   </div>
 </footer>
@@ -291,6 +294,11 @@
       statusEl.textContent = 'Faltan datos: nombre, negocio, a qué te dedicás, qué querés resolver y tu WhatsApp.';
       return;
     }
+    if (whatsapp.replace(/\D/g, '').length < 10) {
+      statusEl.className = 'form-status';
+      statusEl.textContent = 'Revisá tu WhatsApp: tiene que tener al menos 10 números, con característica (ej.: 11 2345 6789).';
+      return;
+    }
     if (!consiente) {
       statusEl.className = 'form-status';
       statusEl.textContent = 'Necesitamos tu consentimiento para poder responderte.';
@@ -315,7 +323,8 @@
       'Consentimiento Ley 25.326: sí'
     ].join('\n');
 
-    const data = { nombre: nombre, negocio: negocio, mensaje: mensaje };
+    /* hp: trampa para bots (campo oculto que una persona nunca completa). doPost descarta si viene con algo. */
+    const data = { nombre: nombre, negocio: negocio, mensaje: mensaje, hp: texto('hp_extra') };
 
     const original = btn.textContent;
     btn.disabled = true;
