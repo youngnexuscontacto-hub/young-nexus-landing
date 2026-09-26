@@ -87,7 +87,7 @@
   "services": [
     {
       "name": "Inyectables y medicación",
-      "description": "Aplicación indicada por tu médico, en horario y con registro."
+      "description": "Aplicación indicada por tu médico, en horario y con constancia de cada dosis."
     },
     {
       "name": "Curaciones",
@@ -95,7 +95,7 @@
     },
     {
       "name": "Controles",
-      "description": "Signos vitales, con registro para tu médico y seguimiento."
+      "description": "Signos vitales, con constancia para tu médico y seguimiento."
     },
     {
       "name": "Post operatorio",
