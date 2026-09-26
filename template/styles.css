@@ -88,8 +88,8 @@
   @media (prefers-reduced-motion: reduce){ .pipe-track::after{animation:none; width:100%; left:0;} }
 
   /* [4] SERVICIOS */
-  .grid-services{display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
-  .service-card{background:var(--ink); padding:30px 24px;}
+  .grid-services{display:flex; flex-wrap:wrap; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
+  .service-card{flex:1 1 230px; background:var(--ink); padding:30px 24px;}
   .service-card .num{font-family:'IBM Plex Mono'; font-size:13px; color:var(--violet); margin-bottom:16px; display:block;}
   .service-card h3{font-size:17.5px; margin-bottom:8px;}
   .service-card p{font-size:14px; color:var(--text-dim);}
