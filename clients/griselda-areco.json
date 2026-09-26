@@ -1,0 +1,202 @@
+{
+  "lang": "es-AR",
+  "site": {
+    "url": "https://www.A-CONFIRMAR.com.ar",
+    "domain": "www.A-CONFIRMAR.com.ar"
+  },
+  "business": {
+    "name": "Enf. Griselda Areco",
+    "tagline": "Enfermería a domicilio · MN 121610",
+    "schemaType": "MedicalBusiness",
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "region": "CABA",
+    "country": "AR",
+    "geoRegion": "AR-C",
+    "street": "",
+    "postalCode": "",
+    "phone": "A-CONFIRMAR",
+    "email": "",
+    "priceRange": "$$",
+    "openingHours": [
+      "A-CONFIRMAR"
+    ],
+    "areaServed": [
+      "Ciudad Autónoma de Buenos Aires"
+    ],
+    "sameAs": [
+      ""
+    ]
+  },
+  "theme": {
+    "accent": "#1B6B61",
+    "accentSoft": "#5CC2B3",
+    "accent2": "#5CC2B3",
+    "accentDeep": "#0E4A43"
+  },
+  "seo": {
+    "title": "Enf. Griselda Areco — Enfermería a domicilio en CABA | MN 121610",
+    "description": "Enfermera matriculada (MN 121610) a domicilio en CABA: inyectables, curaciones, controles de presión y glucemia, post operatorio y adultos mayores. Coordinás por WhatsApp.",
+    "ogDescription": "Cuidados de enfermería en tu casa, con una profesional matriculada. MN 121610 · CABA.",
+    "ogImage": "/og.jpg"
+  },
+  "nav": [
+    {
+      "href": "#servicios",
+      "label": "Servicios"
+    },
+    {
+      "href": "#faq",
+      "label": "Preguntas"
+    },
+    {
+      "href": "#contacto",
+      "label": "Pedir turno"
+    }
+  ],
+  "cta": {
+    "navLabel": "Coordinar una visita",
+    "primaryLabel": "Coordinar una visita",
+    "primaryHref": "https://wa.me/549A-CONFIRMAR",
+    "primaryExternal": true,
+    "secondaryLabel": "",
+    "secondaryHref": "",
+    "secondaryExternal": true
+  },
+  "hero": {
+    "eyebrow": "MATRÍCULA NACIONAL · MN 121610",
+    "title": "Cuidados de enfermería en tu casa, con <em>la tranquilidad de una profesional matriculada</em>.",
+    "subtitle": "Para que la persona que querés esté bien atendida y vos puedas descansar tranquila. Coordinamos todo por WhatsApp, sin vueltas.",
+    "promo": ""
+  },
+  "copy": {
+    "problemsTitle": "",
+    "servicesTitle": "Servicios",
+    "servicesIntro": "Atención profesional a domicilio, con indicación médica cuando corresponde.",
+    "stepsTitle": "Cómo coordinamos",
+    "pricingTitle": "Precios",
+    "pricingIntro": "",
+    "pricingNote": "",
+    "faqTitle": "Preguntas frecuentes"
+  },
+  "problems": [
+    {
+      "quote": "",
+      "fix": ""
+    }
+  ],
+  "services": [
+    {
+      "name": "Inyectables y medicación",
+      "description": "Aplicación de inyectables y administración de medicación según indicación médica."
+    },
+    {
+      "name": "Curaciones",
+      "description": "Curación de heridas, escaras y úlceras, con seguimiento de la evolución."
+    },
+    {
+      "name": "Controles",
+      "description": "Presión arterial, glucemia y signos vitales, con registro para tu médico."
+    },
+    {
+      "name": "Post operatorio",
+      "description": "Cuidados después de una cirugía: curaciones, control y acompañamiento en casa."
+    },
+    {
+      "name": "Adultos mayores",
+      "description": "Atención y controles periódicos para que estén bien cuidados en su casa."
+    }
+  ],
+  "steps": [
+    {
+      "title": "Me escribís",
+      "description": "Por WhatsApp me contás qué necesitás, sin detalles de salud: eso lo hablamos en privado."
+    },
+    {
+      "title": "Coordinamos",
+      "description": "Acordamos día, horario y lo que hay que tener preparado para la visita."
+    },
+    {
+      "title": "Voy a tu casa",
+      "description": "Llego en el horario pactado y hago la atención con todos los cuidados profesionales."
+    }
+  ],
+  "plans": [
+    {
+      "tier": "",
+      "amount": "",
+      "unit": "",
+      "abono": "",
+      "featured": false,
+      "features": [
+        ""
+      ],
+      "excluded": [],
+      "ctaLabel": "",
+      "ctaHref": "",
+      "ctaExternal": true
+    }
+  ],
+  "area": {
+    "title": "Zona de atención",
+    "text": "Atención a domicilio en la Ciudad Autónoma de Buenos Aires. Barrios y franjas horarias: A-CONFIRMAR.",
+    "points": [
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "¿Cómo verifico que está matriculada?",
+      "a": "La matrícula nacional MN 121610 se puede verificar en el registro público REFEPS · SISA del Ministerio de Salud de la Nación, buscando por nombre o número de matrícula."
+    },
+    {
+      "q": "¿Atienden urgencias?",
+      "a": "No es un servicio de emergencias. Ante una urgencia llamá al 107 (SAME)."
+    },
+    {
+      "q": "¿Cómo le cuento el caso de mi familiar?",
+      "a": "Los datos de salud se hablan en privado, nunca por formulario. Por WhatsApp coordinamos la visita y el detalle clínico lo vemos en persona o en una conversación privada."
+    },
+    {
+      "q": "¿Necesito indicación médica?",
+      "a": "Para aplicar medicación o inyectables, sí: tené a mano la receta o indicación de tu médico el día de la visita."
+    }
+  ],
+  "contact": {
+    "title": "Coordiná una visita",
+    "text": "Escribime por WhatsApp y coordinamos día y horario. No escribas diagnósticos ni datos de salud en el mensaje: eso lo hablamos en privado.",
+    "channels": [
+      {
+        "tag": "WHATSAPP",
+        "value": "A-CONFIRMAR",
+        "href": "https://wa.me/549A-CONFIRMAR",
+        "external": true
+      }
+    ],
+    "calEmbed": "",
+    "calTitle": "Agenda en vivo",
+    "calText": ""
+  },
+  "legal": {
+    "title": "Privacidad y datos personales",
+    "subtitle": "Tus datos de salud no se piden por la web",
+    "text": "Este sitio no tiene formularios y no recolecta datos de salud. Los datos de salud son <strong>datos sensibles</strong> según la <strong>Ley 25.326 de Protección de Datos Personales</strong>: por eso no se piden por la web ni por mensaje, y se tratan sólo en privado y con la reserva profesional que corresponde. Los datos de contacto que compartas por WhatsApp se usan únicamente para coordinar la visita y no se ceden a terceros. Podés pedir el acceso, la rectificación o la supresión de tus datos por el mismo canal."
+  },
+  "footerLinks": [
+    {
+      "href": "#privacidad",
+      "label": "Privacidad"
+    },
+    {
+      "href": "#contacto",
+      "label": "Contacto"
+    },
+    {
+      "href": "https://www.youngnexus.com.ar",
+      "label": "Sitio por Young Nexus",
+      "external": true
+    }
+  ]
+}
