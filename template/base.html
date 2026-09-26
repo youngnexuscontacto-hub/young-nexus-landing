@@ -128,8 +128,10 @@
       {{#each steps}}
       <div class="step">
         <div class="idx mono">{{idx}}</div>
-        <h3>{{title}}</h3>
-        <p>{{description}}</p>
+        <div>
+          <h3>{{title}}</h3>
+          <p>{{description}}</p>
+        </div>
       </div>
       {{/each}}
     </div>
@@ -170,6 +172,7 @@
       <h2>{{area.title}}</h2>
       <p>{{area.text}}</p>
     </div>
+    {{#if area.points}}
     <div class="why-grid">
       {{#each area.points}}
       <div class="why-card">
@@ -179,6 +182,7 @@
       </div>
       {{/each}}
     </div>
+    {{/if}}
   </div>
 </section>
 {{/if}}

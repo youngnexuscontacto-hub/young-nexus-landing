@@ -88,8 +88,8 @@
   @media (prefers-reduced-motion: reduce){ .pipe-track::after{animation:none; width:100%; left:0;} }
 
   /* [4] SERVICIOS */
-  .grid-services{display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
-  .service-card{background:var(--ink); padding:30px 24px;}
+  .grid-services{display:flex; flex-wrap:wrap; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
+  .service-card{flex:1 1 230px; background:var(--ink); padding:30px 24px;}
   .service-card .num{font-family:'IBM Plex Mono'; font-size:13px; color:var(--violet); margin-bottom:16px; display:block;}
   .service-card h3{font-size:17.5px; margin-bottom:8px;}
   .service-card p{font-size:14px; color:var(--text-dim);}
@@ -109,6 +109,7 @@
   .commit-box .icon{font-family:'IBM Plex Mono'; font-size:24px; color:var(--electric);}
   .commit-box h3{font-size:19px; margin-bottom:10px;}
   .commit-box p{color:var(--text-dim); font-size:14.5px; max-width:600px;}
+  @media (max-width:640px){ .commit-box{flex-direction:column; gap:12px; padding:26px 22px;} }
 
   /* [7] POR QUÉ */
   .why-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px;}

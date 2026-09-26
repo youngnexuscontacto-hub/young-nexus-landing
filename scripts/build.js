@@ -26,7 +26,7 @@ function get(ctx, p, parent) {
   return v;
 }
 
-const truthy = v => !(v == null || v === false || v === '' || (Array.isArray(v) && !v.length));
+const truthy = v => !(v == null || v === false || (typeof v === 'string' && !v.trim()) || (Array.isArray(v) && !v.length));
 
 function findBlock(tpl, from) {
   const open = /\{\{#(if|each)\s+([\w.]+)\}\}/g;
@@ -209,7 +209,29 @@ const THEME = {
   text: '#FFFFFF', textDim: '#A0A0B0', accent: '#2BA8DC', accentSoft: '#54BEE6', accent2: '#7C3E9C', accentDeep: '#401A67'
 };
 
+/*
+ * Un item "vacio" es el que quedo tal cual vino de _plantilla.json: todos sus textos en "".
+ * Los booleanos (featured, external...) no cuentan como contenido. Se podan antes de
+ * renderizar para que {{#if}} oculte la seccion entera en vez de dibujar tarjetas vacias.
+ */
+function blank(v) {
+  if (v == null || typeof v === 'boolean') return true;
+  if (typeof v === 'string') return !v.trim();
+  if (Array.isArray(v)) return v.every(blank);
+  if (typeof v === 'object') return Object.values(v).every(blank);
+  return false;
+}
+const prune = a => (Array.isArray(a) ? a.filter(x => !blank(x)) : a);
+
 function normalize(c) {
+  for (const k of ['problems', 'services', 'steps', 'plans', 'faq', 'nav', 'footerLinks']) c[k] = prune(c[k]);
+  (c.plans || []).forEach(p => { p.features = prune(p.features); p.excluded = prune(p.excluded); });
+  if (c.area) c.area.points = prune(c.area.points);
+  if (c.contact) c.contact.channels = prune(c.contact.channels);
+  if (c.business) for (const k of ['openingHours', 'areaServed', 'sameAs']) {
+    c.business[k] = prune(c.business[k]);
+    if (Array.isArray(c.business[k]) && !c.business[k].length) delete c.business[k];
+  }
   c.lang = c.lang || 'es-AR';
   c.theme = Object.assign({}, THEME, c.theme || {});
   c.copy = c.copy || {};
@@ -260,7 +282,22 @@ function build(slug) {
   c.styles = fs.readFileSync(path.join(TPL, 'styles.css'), 'utf8');
   c.jsonld = buildJsonLd(c);
 
-  const html = render(fs.readFileSync(path.join(TPL, 'base.html'), 'utf8'), c, null);
+  const tpl = fs.readFileSync(path.join(TPL, 'base.html'), 'utf8');
+  let html = render(tpl, c, null);
+
+  // links #ancla a secciones que no se renderizaron (ej. #precios sin plans): fuera de nav y footer
+  const ids = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map(m => m[1]));
+  const dead = l => /^#./.test((l && l.href) || '') && !ids.has(l.href.slice(1));
+  const dropped = [...(c.nav || []), ...(c.footerLinks || [])].filter(dead).map(l => l.href);
+  if (dropped.length) {
+    c.nav = (c.nav || []).filter(l => !dead(l));
+    c.footerLinks = (c.footerLinks || []).filter(l => !dead(l));
+    html = render(tpl, c, null);
+    console.warn(`  aviso: ${slug} -> links a secciones ocultas quitados del menu/footer: ${[...new Set(dropped)].join(' ')}`);
+  }
+  const deadCta = ['primaryHref', 'secondaryHref'].map(k => c.cta[k]).filter(h => dead({ href: h }));
+  if (deadCta.length) console.warn(`  aviso: ${slug} -> un CTA apunta a una seccion que no existe: ${deadCta.join(' ')}`);
+
   const out = path.join(DIST, slug);
   fs.mkdirSync(out, { recursive: true });
 
