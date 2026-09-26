@@ -282,7 +282,22 @@ function build(slug) {
   c.styles = fs.readFileSync(path.join(TPL, 'styles.css'), 'utf8');
   c.jsonld = buildJsonLd(c);
 
-  const html = render(fs.readFileSync(path.join(TPL, 'base.html'), 'utf8'), c, null);
+  const tpl = fs.readFileSync(path.join(TPL, 'base.html'), 'utf8');
+  let html = render(tpl, c, null);
+
+  // links #ancla a secciones que no se renderizaron (ej. #precios sin plans): fuera de nav y footer
+  const ids = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map(m => m[1]));
+  const dead = l => /^#./.test((l && l.href) || '') && !ids.has(l.href.slice(1));
+  const dropped = [...(c.nav || []), ...(c.footerLinks || [])].filter(dead).map(l => l.href);
+  if (dropped.length) {
+    c.nav = (c.nav || []).filter(l => !dead(l));
+    c.footerLinks = (c.footerLinks || []).filter(l => !dead(l));
+    html = render(tpl, c, null);
+    console.warn(`  aviso: ${slug} -> links a secciones ocultas quitados del menu/footer: ${[...new Set(dropped)].join(' ')}`);
+  }
+  const deadCta = ['primaryHref', 'secondaryHref'].map(k => c.cta[k]).filter(h => dead({ href: h }));
+  if (deadCta.length) console.warn(`  aviso: ${slug} -> un CTA apunta a una seccion que no existe: ${deadCta.join(' ')}`);
+
   const out = path.join(DIST, slug);
   fs.mkdirSync(out, { recursive: true });
 
