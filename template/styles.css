@@ -109,6 +109,7 @@
   .commit-box .icon{font-family:'IBM Plex Mono'; font-size:24px; color:var(--electric);}
   .commit-box h3{font-size:19px; margin-bottom:10px;}
   .commit-box p{color:var(--text-dim); font-size:14.5px; max-width:600px;}
+  @media (max-width:640px){ .commit-box{flex-direction:column; gap:12px; padding:26px 22px;} }
 
   /* [7] POR QUÉ */
   .why-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px;}
