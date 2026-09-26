@@ -87,7 +87,7 @@
   "services": [
     {
       "name": "Inyectables y medicación",
-      "description": "Aplicación indicada por tu médico, en horario y con constancia de cada dosis."
+      "description": "Aplicación indicada por tu médico, en horario y con constancia firmada."
     },
     {
       "name": "Curaciones",
