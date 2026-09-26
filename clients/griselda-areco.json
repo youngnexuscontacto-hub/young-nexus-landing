@@ -61,13 +61,13 @@
   "hero": {
     "eyebrow": "MATRÍCULA NACIONAL · MN 121610",
     "title": "Cuidados de enfermería en tu casa, con <em>la tranquilidad de una profesional matriculada</em>.",
-    "subtitle": "Para que la persona que querés esté bien atendida y vos puedas descansar. Siempre la misma profesional, con registro de cada visita.",
+    "subtitle": "Para que la persona que querés esté bien atendida y vos puedas descansar. Siempre la misma profesional, con constancia firmada y sellada de cada visita.",
     "promo": ""
   },
   "copy": {
     "problemsTitle": "Sabemos lo que es",
     "servicesTitle": "Servicios",
-    "servicesIntro": "Servicios a confirmar con Griselda antes de publicar.",
+    "servicesIntro": "Cuidados profesionales en tu casa, con la indicación de tu médico.",
     "stepsTitle": "Así trabajamos",
     "pricingTitle": "",
     "pricingIntro": "",
@@ -81,7 +81,7 @@
     },
     {
       "quote": "Mi mamá necesita controles y no puedo acompañarla siempre.",
-      "fix": "Controles periódicos con registro para su médico, y aviso a la familia."
+      "fix": "Controles periódicos con constancia en papel para la familia y el médico."
     }
   ],
   "services": [
@@ -165,6 +165,10 @@
     "text": "Los datos que compartís se usan solo para coordinar la atención y se tratan conforme a la Ley 25.326 de Protección de Datos Personales. Los datos de salud se consideran sensibles: no se piden por la web."
   },
   "footerLinks": [
+    {
+      "href": "#privacidad",
+      "label": "Privacidad"
+    },
     {
       "href": "#contacto",
       "label": "Contacto"
