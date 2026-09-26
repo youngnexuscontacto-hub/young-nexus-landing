@@ -26,7 +26,7 @@ function get(ctx, p, parent) {
   return v;
 }
 
-const truthy = v => !(v == null || v === false || v === '' || (Array.isArray(v) && !v.length));
+const truthy = v => !(v == null || v === false || (typeof v === 'string' && !v.trim()) || (Array.isArray(v) && !v.length));
 
 function findBlock(tpl, from) {
   const open = /\{\{#(if|each)\s+([\w.]+)\}\}/g;
@@ -209,7 +209,29 @@ const THEME = {
   text: '#FFFFFF', textDim: '#A0A0B0', accent: '#2BA8DC', accentSoft: '#54BEE6', accent2: '#7C3E9C', accentDeep: '#401A67'
 };
 
+/*
+ * Un item "vacio" es el que quedo tal cual vino de _plantilla.json: todos sus textos en "".
+ * Los booleanos (featured, external...) no cuentan como contenido. Se podan antes de
+ * renderizar para que {{#if}} oculte la seccion entera en vez de dibujar tarjetas vacias.
+ */
+function blank(v) {
+  if (v == null || typeof v === 'boolean') return true;
+  if (typeof v === 'string') return !v.trim();
+  if (Array.isArray(v)) return v.every(blank);
+  if (typeof v === 'object') return Object.values(v).every(blank);
+  return false;
+}
+const prune = a => (Array.isArray(a) ? a.filter(x => !blank(x)) : a);
+
 function normalize(c) {
+  for (const k of ['problems', 'services', 'steps', 'plans', 'faq', 'nav', 'footerLinks']) c[k] = prune(c[k]);
+  (c.plans || []).forEach(p => { p.features = prune(p.features); p.excluded = prune(p.excluded); });
+  if (c.area) c.area.points = prune(c.area.points);
+  if (c.contact) c.contact.channels = prune(c.contact.channels);
+  if (c.business) for (const k of ['openingHours', 'areaServed', 'sameAs']) {
+    c.business[k] = prune(c.business[k]);
+    if (Array.isArray(c.business[k]) && !c.business[k].length) delete c.business[k];
+  }
   c.lang = c.lang || 'es-AR';
   c.theme = Object.assign({}, THEME, c.theme || {});
   c.copy = c.copy || {};
