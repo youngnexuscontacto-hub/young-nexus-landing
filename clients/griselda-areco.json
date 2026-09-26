@@ -1,8 +1,8 @@
 {
   "lang": "es-AR",
   "site": {
-    "url": "https://www.A-CONFIRMAR.com.ar",
-    "domain": "www.A-CONFIRMAR.com.ar"
+    "url": "https://www.DOMINIO-A-CONFIRMAR.com.ar",
+    "domain": "www.DOMINIO-A-CONFIRMAR.com.ar"
   },
   "business": {
     "name": "Enf. Griselda Areco",
@@ -14,18 +14,14 @@
     "geoRegion": "AR-C",
     "street": "",
     "postalCode": "",
-    "phone": "A-CONFIRMAR",
+    "phone": "+54 9 11 A-CONFIRMAR",
     "email": "",
     "priceRange": "$$",
-    "openingHours": [
-      "A-CONFIRMAR"
-    ],
+    "openingHours": [],
     "areaServed": [
       "Ciudad Autónoma de Buenos Aires"
     ],
-    "sameAs": [
-      ""
-    ]
+    "sameAs": []
   },
   "theme": {
     "accent": "#1B6B61",
@@ -34,9 +30,9 @@
     "accentDeep": "#0E4A43"
   },
   "seo": {
-    "title": "Enf. Griselda Areco — Enfermería a domicilio en CABA | MN 121610",
-    "description": "Enfermera matriculada (MN 121610) a domicilio en CABA: inyectables, curaciones, controles de presión y glucemia, post operatorio y adultos mayores. Coordinás por WhatsApp.",
-    "ogDescription": "Cuidados de enfermería en tu casa, con una profesional matriculada. MN 121610 · CABA.",
+    "title": "Enfermería a domicilio · Enf. Griselda Areco MN 121610",
+    "description": "Cuidados de enfermería en tu casa con una profesional matriculada: inyectables, curaciones, controles y post operatorio. Coordinás por WhatsApp.",
+    "ogDescription": "Cuidados de enfermería en tu casa, con la tranquilidad de una profesional matriculada.",
     "ogImage": "/og.jpg"
   },
   "nav": [
@@ -54,141 +50,121 @@
     }
   ],
   "cta": {
-    "navLabel": "Coordinar una visita",
+    "navLabel": "Pedir turno",
     "primaryLabel": "Coordinar una visita",
     "primaryHref": "https://wa.me/549A-CONFIRMAR",
     "primaryExternal": true,
-    "secondaryLabel": "",
-    "secondaryHref": "",
-    "secondaryExternal": true
+    "secondaryLabel": "Ver servicios",
+    "secondaryHref": "#servicios",
+    "secondaryExternal": false
   },
   "hero": {
     "eyebrow": "MATRÍCULA NACIONAL · MN 121610",
     "title": "Cuidados de enfermería en tu casa, con <em>la tranquilidad de una profesional matriculada</em>.",
-    "subtitle": "Para que la persona que querés esté bien atendida y vos puedas descansar tranquila. Coordinamos todo por WhatsApp, sin vueltas.",
+    "subtitle": "Para que la persona que querés esté bien atendida y vos puedas descansar. Siempre la misma profesional, con registro de cada visita.",
     "promo": ""
   },
   "copy": {
-    "problemsTitle": "",
+    "problemsTitle": "Sabemos lo que es",
     "servicesTitle": "Servicios",
-    "servicesIntro": "Atención profesional a domicilio, con indicación médica cuando corresponde.",
-    "stepsTitle": "Cómo coordinamos",
-    "pricingTitle": "Precios",
+    "servicesIntro": "Servicios a confirmar con Griselda antes de publicar.",
+    "stepsTitle": "Así trabajamos",
+    "pricingTitle": "",
     "pricingIntro": "",
     "pricingNote": "",
     "faqTitle": "Preguntas frecuentes"
   },
   "problems": [
     {
-      "quote": "",
-      "fix": ""
+      "quote": "Me indicaron inyectables y no tengo quién me los aplique en casa.",
+      "fix": "Voy a tu domicilio en el horario que acordemos."
+    },
+    {
+      "quote": "Mi mamá necesita controles y no puedo acompañarla siempre.",
+      "fix": "Controles periódicos con registro para su médico, y aviso a la familia."
     }
   ],
   "services": [
     {
       "name": "Inyectables y medicación",
-      "description": "Aplicación de inyectables y administración de medicación según indicación médica."
+      "description": "Aplicación indicada por tu médico, en horario y con registro."
     },
     {
       "name": "Curaciones",
-      "description": "Curación de heridas, escaras y úlceras, con seguimiento de la evolución."
+      "description": "Heridas y cuidados de piel con técnica segura."
     },
     {
       "name": "Controles",
-      "description": "Presión arterial, glucemia y signos vitales, con registro para tu médico."
+      "description": "Signos vitales, con registro para tu médico y seguimiento."
     },
     {
       "name": "Post operatorio",
-      "description": "Cuidados después de una cirugía: curaciones, control y acompañamiento en casa."
+      "description": "Acompañamiento en la recuperación, en la comodidad de tu casa."
     },
     {
       "name": "Adultos mayores",
-      "description": "Atención y controles periódicos para que estén bien cuidados en su casa."
+      "description": "Cuidados y controles periódicos para que la familia esté tranquila."
     }
   ],
   "steps": [
     {
       "title": "Me escribís",
-      "description": "Por WhatsApp me contás qué necesitás, sin detalles de salud: eso lo hablamos en privado."
+      "description": "Contame qué necesitás por WhatsApp."
     },
     {
       "title": "Coordinamos",
-      "description": "Acordamos día, horario y lo que hay que tener preparado para la visita."
+      "description": "Acordamos día, horario y lo que hace falta para la visita."
     },
     {
       "title": "Voy a tu casa",
-      "description": "Llego en el horario pactado y hago la atención con todos los cuidados profesionales."
+      "description": "Atención profesional, puntual y con el trato que tu familia merece."
     }
   ],
-  "plans": [
-    {
-      "tier": "",
-      "amount": "",
-      "unit": "",
-      "abono": "",
-      "featured": false,
-      "features": [
-        ""
-      ],
-      "excluded": [],
-      "ctaLabel": "",
-      "ctaHref": "",
-      "ctaExternal": true
-    }
-  ],
+  "plans": [],
   "area": {
     "title": "Zona de atención",
-    "text": "Atención a domicilio en la Ciudad Autónoma de Buenos Aires. Barrios y franjas horarias: A-CONFIRMAR.",
-    "points": [
-      {
-        "title": "",
-        "description": ""
-      }
-    ]
+    "text": "Ciudad Autónoma de Buenos Aires (CABA). Día y horario a coordinar.",
+    "points": []
   },
   "faq": [
     {
-      "q": "¿Cómo verifico que está matriculada?",
-      "a": "La matrícula nacional MN 121610 se puede verificar en el registro público REFEPS · SISA del Ministerio de Salud de la Nación, buscando por nombre o número de matrícula."
+      "q": "¿Cómo verifico la matrícula?",
+      "a": "Es la Matrícula Nacional MN 121610 y se puede consultar en el registro nacional de profesionales de la salud (REFEPS · SISA)."
     },
     {
       "q": "¿Atienden urgencias?",
       "a": "No es un servicio de emergencias. Ante una urgencia llamá al 107 (SAME)."
     },
     {
-      "q": "¿Cómo le cuento el caso de mi familiar?",
-      "a": "Los datos de salud se hablan en privado, nunca por formulario. Por WhatsApp coordinamos la visita y el detalle clínico lo vemos en persona o en una conversación privada."
+      "q": "¿Qué datos tengo que mandar?",
+      "a": "Solo tu nombre, barrio, el servicio y el día que te queda mejor. Los detalles de salud los hablamos en privado, nunca por formulario."
     },
     {
       "q": "¿Necesito indicación médica?",
-      "a": "Para aplicar medicación o inyectables, sí: tené a mano la receta o indicación de tu médico el día de la visita."
+      "a": "Para aplicar medicación o inyectables, sí: se trabaja siempre con la indicación de tu médico."
     }
   ],
   "contact": {
-    "title": "Coordiná una visita",
-    "text": "Escribime por WhatsApp y coordinamos día y horario. No escribas diagnósticos ni datos de salud en el mensaje: eso lo hablamos en privado.",
+    "title": "Pedí tu turno",
+    "text": "No escribas diagnósticos ni datos de salud en el mensaje. Esos detalles los hablamos en privado.",
     "channels": [
       {
         "tag": "WHATSAPP",
-        "value": "A-CONFIRMAR",
+        "value": "A CONFIRMAR",
         "href": "https://wa.me/549A-CONFIRMAR",
         "external": true
       }
     ],
     "calEmbed": "",
-    "calTitle": "Agenda en vivo",
+    "calTitle": "",
     "calText": ""
   },
   "legal": {
     "title": "Privacidad y datos personales",
-    "subtitle": "Tus datos de salud no se piden por la web",
-    "text": "Este sitio no tiene formularios y no recolecta datos de salud. Los datos de salud son <strong>datos sensibles</strong> según la <strong>Ley 25.326 de Protección de Datos Personales</strong>: por eso no se piden por la web ni por mensaje, y se tratan sólo en privado y con la reserva profesional que corresponde. Los datos de contacto que compartas por WhatsApp se usan únicamente para coordinar la visita y no se ceden a terceros. Podés pedir el acceso, la rectificación o la supresión de tus datos por el mismo canal."
+    "subtitle": "Ley 25.326",
+    "text": "Los datos que compartís se usan solo para coordinar la atención y se tratan conforme a la Ley 25.326 de Protección de Datos Personales. Los datos de salud se consideran sensibles: no se piden por la web."
   },
   "footerLinks": [
-    {
-      "href": "#privacidad",
-      "label": "Privacidad"
-    },
     {
       "href": "#contacto",
       "label": "Contacto"
