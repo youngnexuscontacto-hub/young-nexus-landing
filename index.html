@@ -17,10 +17,14 @@
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="es_AR">
 <meta name="twitter:card" content="summary_large_image">
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+  /* Tipografias alojadas en el propio sitio (licencia SIL OFL, ver /fonts). */
+  @font-face{font-family:'Space Grotesk'; font-style:normal; font-weight:300 700; font-display:swap; src:url(/fonts/space-grotesk-var.woff2) format('woff2');}
+  @font-face{font-family:'Inter'; font-style:normal; font-weight:100 900; font-display:swap; src:url(/fonts/inter-var.woff2) format('woff2');}
+  @font-face{font-family:'IBM Plex Mono'; font-style:normal; font-weight:400; font-display:swap; src:url(/fonts/ibm-plex-mono-400.woff2) format('woff2');}
+  @font-face{font-family:'IBM Plex Mono'; font-style:normal; font-weight:500; font-display:swap; src:url(/fonts/ibm-plex-mono-500.woff2) format('woff2');}
   :root{
     --ink:#0A0A0F;
     --surface:#111119;
@@ -32,6 +36,7 @@
     --electric-soft:#54BEE6;
     --violet:#7C3E9C;
     --violet-deep:#401A67;
+    --violet-text:#B07FD0;
     --radius:14px;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -70,7 +75,7 @@
   .price-list li::before{content:'— '; color:var(--electric);}
   .price-list li.off-label{margin-top:6px; font-size:12.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--text-dim);}
   .price-list li.off-label::before{content:none;}
-  .price-list li.off{opacity:.6;}
+  .price-list li.off{opacity:.8;}
   .price-list li.off::before{content:'✕ '; color:var(--text-dim);}
   .price-cta{display:block; text-align:center; padding:12px 18px; border-radius:10px; font-size:14.5px; font-weight:600; border:1px solid var(--line);}
   .price-card.featured .price-cta{background:var(--electric); color:#001217; border-color:var(--electric);}
@@ -104,7 +109,7 @@
   .problem-card .quote::before{content:'"'; color:var(--electric);}
   .problem-card .quote::after{content:'"'; color:var(--electric);}
   .problem-card .fix{font-size:14px; color:var(--text-dim); display:flex; align-items:center; gap:8px;}
-  .problem-card .fix::before{content:'→'; color:var(--violet); font-weight:700;}
+  .problem-card .fix::before{content:'→'; color:var(--violet-text); font-weight:700;}
 
   /* [3] SOLUCIÓN pipeline */
   .pipeline{position:relative; padding:36px 20px; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); display:flex; align-items:center; justify-content:space-between; gap:12px; overflow:hidden;}
@@ -120,10 +125,11 @@
   /* [4] SERVICIOS */
   .grid-services{display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
   .service-card{background:var(--ink); padding:30px 24px;}
-  .service-card .num{font-family:'IBM Plex Mono'; font-size:13px; color:var(--violet); margin-bottom:16px; display:block;}
+  .service-card .num{font-family:'IBM Plex Mono'; font-size:13px; color:var(--violet-text); margin-bottom:16px; display:block;}
   .service-card h3{font-size:17.5px; margin-bottom:8px;}
   .service-card p{font-size:14px; color:var(--text-dim);}
-  .service-card.later{opacity:0.55;}
+  /* "Proxima etapa": se atenua con color, no con opacidad, para no romper el contraste. */
+  .service-card.later h3, .service-card.later .num{color:var(--text-dim);}
   .service-card.later .num::after{content:' · próxima etapa'; font-size:10px; color:var(--text-dim);}
 
   /* [5] CÓMO TRABAJAMOS */
@@ -143,7 +149,7 @@
   /* [7] POR QUÉ */
   .why-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px;}
   .why-card{padding:4px 0;}
-  .why-card .mark{width:34px; height:34px; border-radius:8px; background:var(--surface-2); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--violet); font-family:'IBM Plex Mono'; margin-bottom:14px;}
+  .why-card .mark{width:34px; height:34px; border-radius:8px; background:var(--surface-2); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--violet-text); font-family:'IBM Plex Mono'; margin-bottom:14px;}
   .why-card h3{font-size:16.5px; margin-bottom:6px;}
   .why-card p{font-size:14px; color:var(--text-dim);}
 
@@ -175,7 +181,7 @@
   .done p{margin:0 auto 22px;}
   .done-actions{display:flex; flex-direction:column; gap:12px; align-items:stretch; max-width:340px; margin:0 auto;}
   .done-actions a{text-align:center;}
-  .contact-channel{display:flex; align-items:center; gap:12px; padding:14px 0; border-top:1px solid var(--line); font-size:14.5px;}
+  .contact-channel{display:flex; align-items:center; gap:12px; padding:14px 0; border-top:1px solid var(--line); font-size:14.5px; min-width:0; overflow-wrap:anywhere;}
   .contact-channel:last-child{border-bottom:1px solid var(--line);}
   .contact-channel .tag{font-family:'IBM Plex Mono'; color:var(--electric); font-size:12px; min-width:90px;}
   form{display:flex; flex-direction:column; gap:16px;}
@@ -366,7 +372,7 @@
 
 <nav>
   <div class="wrap">
-    <div class="logo"><img src="/apple-touch-icon.png" alt="Young Nexus" class="logo-img" width="28" height="28" decoding="async">Young Nexus</div>
+    <div class="logo"><img src="/logo-56.webp" alt="Young Nexus" class="logo-img" width="28" height="28" decoding="async">Young Nexus</div>
     <div class="nav-links">
       <a href="#problema">Problemas</a>
       <a href="#servicios">Servicios</a>
@@ -565,7 +571,7 @@
       <strong>Precio de lanzamiento.</strong> Estos valores se mantienen hasta nuestros primeros 10 negocios o hasta el 31 de diciembre de 2026, lo que ocurra primero. Si entrás ahora, tu abono mensual queda congelado 6 meses y después se ajusta por IPC.
     </div>
 
-    <p class="price-note">Valores en pesos. El dominio (.com o .com.ar) lo contratás vos y queda siempre a tu nombre.</p>
+    <p class="price-note">Valores finales en pesos. Todos los trabajos se entregan con factura. El dominio (.com o .com.ar) lo contratás vos y queda siempre a tu nombre.</p>
   </div>
 </section>
 
@@ -626,7 +632,7 @@
     <div class="final-cta">
       <div class="eyebrow" style="justify-content:center;">Empecemos</div>
       <h2>Contanos qué te está frenando hoy</h2>
-      <p>Te preparamos una <strong>Radiografía Digital</strong> de tu negocio: una hoja con lo que Google muestra de vos hoy, qué te está costando y qué haríamos primero. Sin costo y sin compromiso.</p>
+      <p>Te preparamos una <strong>Diagnóstico Digital</strong> de tu negocio: una hoja con lo que Google muestra de vos hoy, qué te está costando y qué haríamos primero. Sin costo y sin compromiso.</p>
 
       <form id="contact-form">
         <div><label for="nombre">Nombre</label><input type="text" id="nombre" name="nombre" autocomplete="name" maxlength="100" required=""></div>
@@ -658,8 +664,8 @@
     </div>
 
     <div class="contact-channels">
-      <a href="mailto:youngnexus.contacto@gmail.com?subject=Quiero%20mi%20Radiograf%C3%ADa%20Digital" class="contact-channel"><span class="tag mono">CORREO</span> youngnexus.contacto@gmail.com</a>
-      <a href="https://instagram.com/youngnexus.ar" class="contact-channel"><span class="tag mono">INSTAGRAM</span> @youngnexus.ar</a>
+      <a href="mailto:youngnexus.contacto@gmail.com?subject=Quiero%20mi%20Diagn%C3%B3stico%20Digital" class="contact-channel"><span class="tag mono">CORREO</span> youngnexus.contacto@gmail.com</a>
+      <a href="https://www.instagram.com/youngnexus.ar/" target="_blank" rel="noopener" class="contact-channel"><span class="tag mono">INSTAGRAM</span> @youngnexus.ar</a>
       <a href="https://www.facebook.com/YoungNexus33" target="_blank" rel="noopener" class="contact-channel"><span class="tag mono">FACEBOOK</span> @YoungNexus.ar</a>
       <a href="https://www.linkedin.com/company/young-nexus-ar" target="_blank" rel="noopener" class="contact-channel"><span class="tag mono">LINKEDIN</span> Young Nexus</a>
       <a href="https://cal.com/young-nexus-7gtppu/diagnostico-digital" target="_blank" rel="noopener" class="contact-channel"><span class="tag mono">AGENDA</span> Elegí horario</a>
@@ -699,6 +705,7 @@
 </footer>
 
 <script>
+  const T0 = Date.now();
   /* Endpoint de captura de leads.
      Reemplazar por la URL de la App web de Apps Script (termina en /exec). */
   const ENDPOINT = "https://script.google.com/macros/s/AKfycbyyjdSp8qF1wxkEZu7ORiBDjudnIgBDxTkdicjuXvLfKduWG2PNz56O5gZGVVuB7slzQQ/exec";
@@ -719,6 +726,11 @@
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    /* Anti-spam: una persona tarda mas de 3 segundos en completar el formulario; un bot no. */
+    if (Date.now() - T0 < 3000) {
+      statusEl.textContent = 'Revisá tus datos y volvé a tocar el botón.';
+      return;
+    }
     const tipo = (e.submitter && e.submitter.value) || elegido;
 
     if (ENDPOINT.indexOf('https://') !== 0) {
