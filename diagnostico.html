@@ -6,12 +6,25 @@
 <title>Diagnóstico digital gratis — Young Nexus</title>
 <meta name="description" content="8 preguntas cortas para entender cómo te encuentran tus clientes hoy. Te respondemos por WhatsApp en menos de 24 horas hábiles.">
 <meta name="robots" content="noindex, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.youngnexus.com.ar/diagnostico.html">
+<meta property="og:title" content="Diagnóstico digital gratis — Young Nexus">
+<meta property="og:description" content="8 preguntas cortas para entender cómo te encuentran tus clientes hoy. Te respondemos por WhatsApp en menos de 24 horas hábiles.">
+<meta property="og:image" content="https://www.youngnexus.com.ar/young-nexus-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_AR">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com/">
-<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+  /* Tipografias alojadas en el propio sitio (licencia SIL OFL, ver /fonts). */
+  @font-face{font-family:'Space Grotesk'; font-style:normal; font-weight:300 700; font-display:swap; src:url(/fonts/space-grotesk-var.woff2) format('woff2');}
+  @font-face{font-family:'Inter'; font-style:normal; font-weight:100 900; font-display:swap; src:url(/fonts/inter-var.woff2) format('woff2');}
+  @font-face{font-family:'IBM Plex Mono'; font-style:normal; font-weight:400; font-display:swap; src:url(/fonts/ibm-plex-mono-400.woff2) format('woff2');}
+  @font-face{font-family:'IBM Plex Mono'; font-style:normal; font-weight:500; font-display:swap; src:url(/fonts/ibm-plex-mono-500.woff2) format('woff2');}
   :root{
     --ink:#0A0A0F;
     --surface:#111119;
@@ -23,6 +36,7 @@
     --electric-soft:#54BEE6;
     --violet:#7C3E9C;
     --violet-deep:#401A67;
+    --violet-text:#B07FD0;
     --radius:14px;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -59,7 +73,7 @@
   textarea{resize:vertical; min-height:90px;}
 
   .q{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:22px 18px;}
-  .q .num{font-family:'IBM Plex Mono'; font-size:12px; color:var(--violet); display:block; margin-bottom:8px; letter-spacing:.06em;}
+  .q .num{font-family:'IBM Plex Mono'; font-size:12px; color:var(--violet-text); display:block; margin-bottom:8px; letter-spacing:.06em;}
   .q h2{font-size:17px; margin-bottom:4px; line-height:1.3;}
   .q .hint{font-size:13px; color:var(--text-dim); margin-bottom:16px;}
   .q .fields{display:flex; flex-direction:column; gap:14px;}
@@ -105,7 +119,7 @@
 
 <nav>
   <div class="wrap">
-    <div class="logo"><img src="/apple-touch-icon.png" alt="Young Nexus" class="logo-img" width="28" height="28" decoding="async">Young Nexus</div>
+    <div class="logo"><img src="/logo-56.webp" alt="Young Nexus" class="logo-img" width="28" height="28" decoding="async">Young Nexus</div>
     <a href="/" class="nav-back">← Volver</a>
   </div>
 </nav>
@@ -239,6 +253,7 @@
 </footer>
 
 <script>
+  const T0 = Date.now();
   /* Mismo endpoint de captura de leads que index.html. */
   const ENDPOINT = "https://script.google.com/macros/s/AKfycbyyjdSp8qF1wxkEZu7ORiBDjudnIgBDxTkdicjuXvLfKduWG2PNz56O5gZGVVuB7slzQQ/exec";
 
@@ -278,6 +293,11 @@
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    /* Anti-spam: una persona tarda mas de 3 segundos en completar el formulario; un bot no. */
+    if (Date.now() - T0 < 3000) {
+      statusEl.textContent = 'Revisá tus datos y volvé a tocar el botón.';
+      return;
+    }
 
     if (ENDPOINT.indexOf('https://') !== 0) {
       statusEl.textContent = 'El formulario está en mantenimiento. Escribinos a youngnexus.contacto@gmail.com y te respondemos igual.';
