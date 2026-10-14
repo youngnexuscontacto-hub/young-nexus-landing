@@ -40,6 +40,14 @@
   .legal-note{font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--text-dim); margin-top:28px; border-top:1px solid var(--line); padding-top:18px;}
   footer{border-top:1px solid var(--line); padding:26px 16px; font-size:14px;}
   footer .bar a{color:var(--text-dim); margin-right:16px; display:inline-block; padding:8px 0;}
+  details.sec{border-top:1px solid var(--line);}
+  details.sec:last-of-type{border-bottom:1px solid var(--line);}
+  details.sec summary{list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:12px; padding:18px 0; font-family:'Space Grotesk', sans-serif; font-size:18px; font-weight:600; color:var(--text);}
+  details.sec summary::-webkit-details-marker{display:none;}
+  details.sec summary::after{content:'+'; font-family:'IBM Plex Mono', monospace; color:var(--electric); font-size:22px; line-height:1; flex:0 0 auto;}
+  details.sec[open] summary::after{content:'−';}
+  details.sec summary:focus-visible{outline:2px solid var(--electric); outline-offset:4px;}
+  details.sec .body{padding:0 0 20px;}
 </style>
 </head>
 <body>
@@ -49,13 +57,13 @@
 <h1>Términos y condiciones</h1>
 <p class="updated">Última actualización: 13 de octubre de 2026</p>
 
-<h2>1. Partes y aceptación</h2>
+<details class="sec"><summary>1. Partes y aceptación</summary><div class="body">
 <p>Los servicios son prestados por Luis Virgilio Areco Galeano, CUIT 20-18866406-8, con domicilio fiscal en Santo Domingo 3900, Ciudad Autónoma de Buenos Aires (CP 1437), que opera bajo el nombre comercial Young Nexus. Correo de contacto: <a href="mailto:youngnexus.contacto@gmail.com">youngnexus.contacto@gmail.com</a>. La contratación implica la aceptación de estos términos, regidos por el Código Civil y Comercial de la Nación y, cuando corresponda, por la Ley 24.240 de Defensa del Consumidor.</p>
-
-<h2>2. Servicios y propuesta</h2>
+</div></details>
+<details class="sec"><summary>2. Servicios y propuesta</summary><div class="body">
 <p>Young Nexus presta servicios digitales en forma remota: sitios web, ficha de Google, turnos online, configuración de WhatsApp Business y automatizaciones. El alcance, el plazo de entrega y el precio de cada trabajo se fijan en una propuesta escrita aceptada por el cliente antes de comenzar. Ante cualquier diferencia, prevalece la propuesta.</p>
-
-<h2>3. Precios y pagos</h2>
+</div></details>
+<details class="sec"><summary>3. Precios y pagos</summary><div class="body">
 <ul>
   <li>Los precios publicados son finales, en pesos argentinos. Todos los trabajos se facturan.</li>
   <li>La forma de pago se indica en la propuesta. El trabajo comienza con la acreditación del pago inicial acordado.</li>
@@ -63,46 +71,47 @@
   <li>El dominio y los servicios pagos de terceros se contratan a nombre y a cargo del cliente.</li>
   <li>La falta de pago del abono por más de 30 días habilita la suspensión del servicio, previo aviso.</li>
 </ul>
-
-<h2>4. Entrega y conformidad</h2>
+</div></details>
+<details class="sec"><summary>4. Entrega y conformidad</summary><div class="body">
 <p>Al finalizar cada trabajo se notifica la entrega. El cliente cuenta con 5 días hábiles para formular observaciones sobre lo acordado en la propuesta; vencido ese plazo sin observaciones, el trabajo se considera aceptado. Los cambios fuera del alcance acordado se presupuestan por separado.</p>
-
-<h2>5. Arrepentimiento y baja</h2>
+</div></details>
+<details class="sec"><summary>5. Arrepentimiento y baja</summary><div class="body">
 <ul>
   <li><strong>Revocación:</strong> el cliente consumidor puede revocar la contratación dentro de los 10 días corridos, sin costo ni expresión de causa (art. 34, Ley 24.240), mediante el <a href="mailto:youngnexus.contacto@gmail.com?subject=Bot%C3%B3n%20de%20arrepentimiento">botón de arrepentimiento</a>. Lo abonado se reintegra por el mismo medio de pago.</li>
   <li><strong>Baja del abono:</strong> puede solicitarse en cualquier momento mediante el <a href="mailto:youngnexus.contacto@gmail.com?subject=Bot%C3%B3n%20de%20baja">botón de baja</a>, sin penalidad. El cobro cesa a partir del mes siguiente.</li>
 </ul>
-
-<h2>6. Obligaciones del cliente</h2>
+</div></details>
+<details class="sec"><summary>6. Obligaciones del cliente</summary><div class="body">
 <ul>
   <li>Proveer información veraz y los accesos necesarios en tiempo oportuno.</li>
   <li>Contar con los derechos de uso de los textos, imágenes y marcas que entregue.</li>
   <li>Si su actividad involucra datos sensibles, como los de pacientes, el cliente es responsable de su base de datos y de su inscripción ante la AAIP. Young Nexus no brinda asesoramiento legal.</li>
 </ul>
-
-<h2>7. Datos de los clientes del cliente</h2>
+</div></details>
+<details class="sec"><summary>7. Datos de los clientes del cliente</summary><div class="body">
 <p>Cuando Young Nexus trate datos personales por cuenta del cliente, lo hará como prestador de servicios de tratamiento (art. 25, Ley 25.326): solo para prestar el servicio contratado, con deber de confidencialidad, y los eliminará o devolverá al finalizar la relación.</p>
-
-<h2>8. Herramientas de terceros</h2>
+</div></details>
+<details class="sec"><summary>8. Herramientas de terceros</summary><div class="body">
 <p>Los servicios utilizan plataformas de terceros, como Google, Meta (WhatsApp), GitHub, Cal.com y n8n, sujetas a sus propios términos. Young Nexus no responde por modificaciones de condiciones, precios o funciones, suspensiones de cuentas ni interrupciones de esos servicios.</p>
-
-<h2>9. Alcance de la obligación</h2>
+</div></details>
+<details class="sec"><summary>9. Alcance de la obligación</summary><div class="body">
 <p>Young Nexus asume una obligación de medios: ejecutar el trabajo acordado con diligencia profesional. No garantiza posiciones en buscadores, cantidad de consultas ni resultados comerciales.</p>
-
-<h2>10. Datos y respaldos</h2>
+</div></details>
+<details class="sec"><summary>10. Datos y respaldos</summary><div class="body">
 <p>Los datos y contenidos del cliente le pertenecen. El cliente es responsable de conservar copias de su información. Young Nexus no responde por pérdidas de datos originadas en fallas de proveedores de terceros, en accesos compartidos por el cliente o en caso fortuito o fuerza mayor.</p>
-
-<h2>11. Límite de responsabilidad</h2>
+</div></details>
+<details class="sec"><summary>11. Límite de responsabilidad</summary><div class="body">
 <p>En la medida permitida por la ley, la responsabilidad de Young Nexus por cualquier reclamo se limita al monto abonado por el trabajo que lo originó o, si se trata del abono, a lo abonado en los últimos 3 meses, y excluye los daños indirectos, como el lucro cesante o la pérdida de clientela. Estos límites no rigen en casos de dolo o culpa grave ni restringen los derechos reconocidos al consumidor por la Ley 24.240.</p>
-
-<h2>12. Propiedad del trabajo</h2>
+</div></details>
+<details class="sec"><summary>12. Propiedad del trabajo</summary><div class="body">
 <p>Abonado el precio, el sitio y los contenidos desarrollados para el cliente le pertenecen y se le entregan los accesos. Young Nexus solo exhibirá el trabajo como antecedente con autorización escrita del cliente.</p>
-
-<h2>13. Modificaciones</h2>
+</div></details>
+<details class="sec"><summary>13. Modificaciones</summary><div class="body">
 <p>Las modificaciones se publican en esta página con su fecha. Los trabajos contratados se rigen por los términos vigentes al momento de su contratación.</p>
-
-<h2>14. Ley aplicable y jurisdicción</h2>
+</div></details>
+<details class="sec"><summary>14. Ley aplicable y jurisdicción</summary><div class="body">
 <p>Rige la ley argentina. Los reclamos deben dirigirse primero a <a href="mailto:youngnexus.contacto@gmail.com">youngnexus.contacto@gmail.com</a>, con respuesta dentro de los 5 días hábiles. De no resolverse, son competentes los tribunales ordinarios de la Ciudad Autónoma de Buenos Aires; el cliente consumidor puede optar por los tribunales de su domicilio o por la autoridad de defensa del consumidor de su jurisdicción.</p>
+</div></details>
 </main>
 <footer><div class="bar"><div>
   <a href="/">Inicio</a><a href="/privacidad.html">Privacidad</a><a href="/terminos.html">Términos</a>
