@@ -20,8 +20,9 @@ Frases de referencia:
 ## Fundamentos visuales
 
 - **Oscuro primero.** Fondo `ink` (#0A0A0F), tarjetas en `surface`. El tema claro existe para documentos y propuestas.
-- **El degradé del isotipo** va de `electric` a `violet`. Se usa en una sola cosa por pieza: una palabra del título, una barra superior de 12px o el número de un paso. Nunca de fondo completo.
-- **Tipografía:** títulos en Space Grotesk bold, texto en Inter, etiquetas en IBM Plex Mono mayúscula con 2px de espaciado.
+- **El degradé del isotipo** va de `#0F91CF` a `#3A5DB5` y `#7B409C` (los del isotipo). Se usa en una sola cosa por pieza: una palabra del título, una barra superior de 12px o el número de un paso. Nunca de fondo completo.
+- **Tipografía (desde 15/10/2026):** títulos en Instrument Serif; la palabra clave del título en Instrument Serif itálica con el degradé del isotipo; subtítulos de tarjetas y texto en Instrument Sans; etiquetas y wordmark "YOUNG NEXUS" en JetBrains Mono mayúscula con espaciado amplio. Todas con licencia SIL OFL 1.1, alojadas en el sitio.
+- **Motivo de bandas:** las bandas diagonales de la N se repiten como marcador de las etiquetas (rayado a 45°) y como marca de agua del isotipo en el cierre. No se agregan otras formas decorativas.
 - **Radios:** `radius-md` (10px) en botones y tarjetas; `radius-lg` en cajas de piezas.
 - **Aire:** márgenes de `space-6` (64px) en piezas de 1080px.
 
