@@ -101,7 +101,13 @@
   .hero h1 em{font-style:normal; color:var(--electric-soft);}
   .hero p{font-size:18px; color:var(--text-dim); max-width:540px; margin-bottom:34px;}
   .hero-ctas{display:flex; gap:16px; flex-wrap:wrap;}
-  .hero-price{margin-top:22px; margin-bottom:0 !important; font-size:13px !important; color:var(--electric-soft) !important; letter-spacing:.02em;}
+  .trust{margin-top:22px;}
+  .trust-chips{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{background:transparent; border:1px solid var(--line); color:var(--electric-soft); font-size:12px; padding:7px 12px; border-radius:999px; cursor:pointer; line-height:1.2;}
+  .chip:hover, .chip[aria-expanded="true"]{border-color:var(--electric); color:var(--text);}
+  .chip:focus-visible{outline:2px solid var(--electric); outline-offset:2px;}
+  .trust-panel{margin-top:12px; max-width:540px; background:var(--surface-2); border:1px solid var(--line); border-left:3px solid var(--electric); border-radius:10px; padding:12px 16px; font-size:14px; color:var(--text-dim);}
+  .trust-panel a{color:var(--electric);}
   .example{display:grid; grid-template-columns:minmax(0,300px) 1fr; gap:40px; align-items:center;}
   .example img{width:100%; height:auto; border:1px solid var(--line); border-radius:var(--radius); display:block;}
   .example .tag{display:inline-block; font-size:11px; letter-spacing:.08em; color:var(--electric-soft); border:1px solid var(--line); border-radius:999px; padding:4px 10px; margin-bottom:14px;}
@@ -431,7 +437,19 @@
       <a href="#contacto" class="btn-primary">Pedir diagnóstico gratis</a>
       <a href="#precios" class="btn-secondary">Ver precios</a>
     </div>
-    <p class="hero-price mono">Desde $140.000 · Factura por ARCA · Inscriptos ante la AAIP · Garantía de plazo</p>
+    <div class="trust" id="trust">
+      <div class="trust-chips" role="group" aria-label="Datos de confianza">
+        <button type="button" class="chip mono" aria-expanded="false" aria-controls="trust-panel" data-k="precio">Desde $140.000</button>
+        <button type="button" class="chip mono" aria-expanded="false" aria-controls="trust-panel" data-k="factura">Factura por ARCA</button>
+        <button type="button" class="chip mono" aria-expanded="false" aria-controls="trust-panel" data-k="aaip">Inscriptos ante la AAIP</button>
+        <button type="button" class="chip mono" aria-expanded="false" aria-controls="trust-panel" data-k="garantia">Garantía de plazo</button>
+      </div>
+      <div class="trust-panel" id="trust-panel" role="region" aria-live="polite" hidden></div>
+      <template data-k="precio">Precio final publicado, en pesos y con factura. <a href="#precios">Ver precios</a></template>
+      <template data-k="factura">Todos los trabajos se entregan con factura, emitida por ARCA a nombre de Luis Areco Galeano (CUIT 20-18866406-8).</template>
+      <template data-k="aaip">Estamos inscriptos ante la Agencia de Acceso a la Información Pública (registro RL-2026-85177920-APN-DNPDP#AAIP) y tratamos tus datos según la Ley 25.326. <a href="#privacidad">Cómo tratamos tus datos</a></template>
+      <template data-k="garantia">Si no entregamos en la fecha de tu propuesta, el primer mes de acompañamiento no se cobra (con condiciones). <a href="/terminos.html">Ver condiciones</a></template>
+    </div>
   </div>
 </header>
 
@@ -738,6 +756,23 @@
   /* Qué botón se usó. e.submitter no existe en Safari < 15.4, así que lo anotamos al hacer clic. */
   let elegido = 'whatsapp';
   buttons.forEach((b) => b.addEventListener('click', () => { elegido = b.value; }));
+
+  /* Datos de confianza del hero: cada botón abre su explicación; tocar de nuevo la cierra. */
+  (function () {
+    const box = document.getElementById('trust');
+    if (!box) return;
+    const panel = document.getElementById('trust-panel');
+    const chips = box.querySelectorAll('.chip');
+    chips.forEach((chip) => chip.addEventListener('click', () => {
+      const abierto = chip.getAttribute('aria-expanded') === 'true';
+      chips.forEach((c) => c.setAttribute('aria-expanded', 'false'));
+      if (abierto) { panel.hidden = true; return; }
+      const tpl = box.querySelector('template[data-k="' + chip.dataset.k + '"]');
+      panel.replaceChildren(tpl.content.cloneNode(true));
+      chip.setAttribute('aria-expanded', 'true');
+      panel.hidden = false;
+    }));
+  })();
 
   /* Botón flotante: se oculta cuando el formulario de contacto está a la vista, para no taparlo. */
   (function () {
