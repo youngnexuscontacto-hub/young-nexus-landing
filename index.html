@@ -17,14 +17,15 @@
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="es_AR">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/instrument-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/unbounded-600.woff2" as="font" type="font/woff2" crossorigin>
 <style>
   /* Tipografias alojadas en el propio sitio (licencia SIL OFL, ver /fonts). */
-  @font-face{font-family:'Space Grotesk'; font-style:normal; font-weight:300 700; font-display:swap; src:url(/fonts/space-grotesk-var.woff2) format('woff2');}
-  @font-face{font-family:'Inter'; font-style:normal; font-weight:100 900; font-display:swap; src:url(/fonts/inter-var.woff2) format('woff2');}
-  @font-face{font-family:'IBM Plex Mono'; font-style:normal; font-weight:400; font-display:swap; src:url(/fonts/ibm-plex-mono-400.woff2) format('woff2');}
-  @font-face{font-family:'IBM Plex Mono'; font-style:normal; font-weight:500; font-display:swap; src:url(/fonts/ibm-plex-mono-500.woff2) format('woff2');}
+  @font-face{font-family:'Unbounded'; font-style:normal; font-weight:600; font-display:swap; src:url(/fonts/unbounded-600.woff2) format('woff2');}
+  @font-face{font-family:'Unbounded'; font-style:normal; font-weight:700; font-display:swap; src:url(/fonts/unbounded-700.woff2) format('woff2');}
+  @font-face{font-family:'Instrument Serif'; font-style:italic; font-weight:400; font-display:swap; src:url(/fonts/instrument-serif-italic.woff2) format('woff2');}
+  @font-face{font-family:'Instrument Sans'; font-style:normal; font-weight:400 700; font-display:swap; src:url(/fonts/instrument-sans-var.woff2) format('woff2');}
+  @font-face{font-family:'JetBrains Mono'; font-style:normal; font-weight:100 800; font-display:swap; src:url(/fonts/jetbrains-mono-var.woff2) format('woff2');}
   :root{
     --ink:#0A0A0F;
     --surface:#111119;
@@ -41,9 +42,9 @@
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
-  body{background:var(--ink); color:var(--text); font-family:'Inter', sans-serif; line-height:1.55; overflow-x:hidden;}
-  h1,h2,h3{font-family:'Space Grotesk', sans-serif; font-weight:600; letter-spacing:-0.02em;}
-  .mono{font-family:'IBM Plex Mono', monospace;}
+  body{background:var(--ink); color:var(--text); font-family:'Instrument Sans', sans-serif; line-height:1.55; overflow-x:hidden;}
+  h1,h2,h3{font-family:'Unbounded', sans-serif; font-weight:600; letter-spacing:-0.025em;}
+  .mono{font-family:'JetBrains Mono', monospace;}
   a{color:inherit; text-decoration:none;}
   .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
   ul{list-style:none;}
@@ -51,7 +52,7 @@
   /* NAV */
   nav{position:sticky; top:0; z-index:50; background:rgba(10,10,15,0.88); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
   nav .wrap{display:flex; align-items:center; justify-content:space-between; height:72px;}
-  .logo{font-family:'Space Grotesk'; font-weight:700; font-size:19px; display:flex; align-items:center; gap:8px;}
+  .logo{font-family:'Unbounded', sans-serif; font-weight:700; font-size:19px; display:flex; align-items:center; gap:8px;}
     .logo-img{height:26px; width:auto; display:block;}
   .nav-links{display:flex; gap:30px; font-size:14px; color:var(--text-dim);}
   .nav-links a:hover{color:var(--text);}
@@ -67,7 +68,7 @@
   .pricing-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; margin-top:8px;}
   .price-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:28px 24px; display:flex; flex-direction:column;}
   .price-card.featured{border-color:var(--electric); box-shadow:0 0 0 1px var(--electric) inset;}
-  .price-card .tier{font-family:'IBM Plex Mono'; font-size:12.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--electric); margin-bottom:14px;}
+  .price-card .tier{font-family:'JetBrains Mono', monospace; font-size:12.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--electric); margin-bottom:14px;}
   .price-card .amount{font-size:34px; font-weight:700; letter-spacing:-.02em; line-height:1;}
   .price-card .amount span{font-size:14px; font-weight:400; color:var(--text-dim);}
   .price-card .abono{font-size:14px; color:var(--text-dim); margin:10px 0 20px;}
@@ -86,13 +87,13 @@
   .term summary::-webkit-details-marker{display:none;}
   .term summary strong{color:var(--text);}
   .term summary span{color:var(--text-dim); font-size:13.5px;}
-  .term summary::after{content:'Ver más'; position:absolute; right:14px; top:14px; font-size:11px; color:var(--electric); font-family:'IBM Plex Mono',monospace;}
+  .term summary::after{content:'Ver más'; position:absolute; right:14px; top:14px; font-size:11px; color:var(--electric); font-family:'JetBrains Mono',monospace;}
   .term[open] summary::after{content:'Ver menos';}
   .term summary:focus-visible{outline:2px solid var(--electric); outline-offset:2px;}
   .term p{padding:0 18px 16px; font-size:14px; color:var(--text-dim);}
   .term a{color:var(--electric);}
   .price-note{font-size:13px; color:var(--text-dim); margin-top:14px;}
-  .eyebrow{font-family:'IBM Plex Mono'; font-size:12.5px; color:var(--electric); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:16px; display:flex; align-items:center; gap:10px;}
+  .eyebrow{font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--electric); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:16px; display:flex; align-items:center; gap:10px;}
   .eyebrow::before{content:''; width:20px; height:1px; background:var(--electric);}
 
   /* [1] HERO */
@@ -115,18 +116,18 @@
   @media (max-width:640px){ .q{flex-direction:column; align-items:flex-start;} }
   .quiz-result{background:var(--surface-2); border:1px solid var(--line); border-left:3px solid var(--electric); border-radius:10px; padding:20px 22px;}
   .quiz-score{display:flex; align-items:baseline; gap:10px;}
-  .quiz-score b{font-family:'Space Grotesk',sans-serif; font-size:44px; line-height:1; color:var(--electric-soft);}
+  .quiz-score b{font-family:'Unbounded',sans-serif; font-size:44px; line-height:1; color:var(--electric-soft);}
   .quiz-score span{color:var(--text-dim); font-size:14px;}
   .quiz-bar{height:6px; background:var(--line); border-radius:999px; margin:14px 0; overflow:hidden;}
   .quiz-bar i{display:block; height:100%; width:0; background:linear-gradient(90deg, var(--violet), var(--electric)); transition:width .6s ease;}
-  .quiz-result h3{font-size:17px; margin-bottom:8px;}
+  .quiz-result h3{font-size:15.5px; margin-bottom:8px;}
   .quiz-result ul{list-style:none; padding:0; margin:0 0 16px; color:var(--text-dim); font-size:14.5px;}
   .quiz-result li::before{content:"→ "; color:var(--electric-soft);}
   .quiz-result li + li{margin-top:6px;}
   .quiz-result .btn-primary{display:inline-block; text-align:center;}
   .quiz-note{font-size:12.5px; color:var(--text-dim); margin-top:12px;}
-  .hero h1{font-size:clamp(32px,5vw,58px); line-height:1.08; max-width:800px; margin-bottom:22px;}
-  .hero h1 em{font-style:normal; color:var(--electric-soft);}
+  .hero h1{font-size:clamp(28px,4.5vw,52px); line-height:1.08; max-width:800px; margin-bottom:22px;}
+  .hero h1 em{font-family:'Instrument Serif', Georgia, serif; font-style:italic; font-weight:400; font-size:1.14em; letter-spacing:0; color:var(--electric-soft);}
   .hero p{font-size:18px; color:var(--text-dim); max-width:540px; margin-bottom:34px;}
   .hero-ctas{display:flex; gap:16px; flex-wrap:wrap;}
   .trust{margin-top:22px;}
@@ -157,14 +158,14 @@
 
   .section{padding:84px 0;}
   .section-head{max-width:600px; margin-bottom:48px;}
-  .section-head h2{font-size:clamp(26px,3.4vw,36px);}
+  .section-head h2{font-size:clamp(22px,3vw,32px); line-height:1.2;}
   .section-head p{color:var(--text-dim); margin-top:14px; font-size:16px;}
   .border-top{border-top:1px solid var(--line);}
 
   /* [2] PROBLEMA */
   .problem-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
   .problem-card{background:var(--surface); padding:30px 26px;}
-  .problem-card .quote{font-family:'Space Grotesk'; font-size:18px; color:var(--text); margin-bottom:12px;}
+  .problem-card .quote{font-family:'Unbounded', sans-serif; font-size:18px; color:var(--text); margin-bottom:12px;}
   .problem-card .quote::before{content:'"'; color:var(--electric);}
   .problem-card .quote::after{content:'"'; color:var(--electric);}
   .problem-card .fix{font-size:14px; color:var(--text-dim); display:flex; align-items:center; gap:8px;}
@@ -174,8 +175,8 @@
   /* [4] SERVICIOS */
   .grid-services{display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
   .service-card{background:var(--ink); padding:30px 24px;}
-  .service-card .num{font-family:'IBM Plex Mono'; font-size:13px; color:var(--violet-text); margin-bottom:16px; display:block;}
-  .service-card h3{font-size:17.5px; margin-bottom:8px;}
+  .service-card .num{font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--violet-text); margin-bottom:16px; display:block;}
+  .service-card h3{font-size:16px; margin-bottom:8px;}
   .service-card p{font-size:14px; color:var(--text-dim);}
   /* "Proxima etapa": se atenua con color, no con opacidad, para no romper el contraste. */
   .service-card.later h3, .service-card.later .num{color:var(--text-dim);}
@@ -185,8 +186,8 @@
   .steps{display:flex; flex-direction:column;}
   .step{display:grid; grid-template-columns:70px 1fr; gap:24px; padding:26px 0; border-bottom:1px solid var(--line);}
   .step:last-child{border-bottom:none;}
-  .step .idx{font-family:'IBM Plex Mono'; color:var(--electric-soft); font-size:15px;}
-  .step h3{font-size:17px; margin-bottom:6px;}
+  .step .idx{font-family:'JetBrains Mono', monospace; color:var(--electric-soft); font-size:15px;}
+  .step h3{font-size:15.5px; margin-bottom:6px;}
   .step p{color:var(--text-dim); font-size:14.5px; max-width:520px;}
 
   /* [6] CASOS / compromiso */
@@ -194,13 +195,13 @@
   /* [7] POR QUÉ */
   .why-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px;}
   .why-card{padding:4px 0;}
-  .why-card .mark{width:34px; height:34px; border-radius:8px; background:var(--surface-2); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--violet-text); font-family:'IBM Plex Mono'; margin-bottom:14px;}
-  .why-card h3{font-size:16.5px; margin-bottom:6px;}
+  .why-card .mark{width:34px; height:34px; border-radius:8px; background:var(--surface-2); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--violet-text); font-family:'JetBrains Mono', monospace; margin-bottom:14px;}
+  .why-card h3{font-size:15.5px; margin-bottom:6px;}
   .why-card p{font-size:14px; color:var(--text-dim);}
 
   /* [8] FAQ */
   .faq-item{border-bottom:1px solid var(--line);}
-  .faq-item summary{padding:20px 4px; cursor:pointer; font-family:'Space Grotesk'; font-size:15.5px; display:flex; justify-content:space-between; align-items:center; list-style:none;}
+  .faq-item summary{padding:20px 4px; cursor:pointer; font-family:'Unbounded', sans-serif; font-size:15.5px; display:flex; justify-content:space-between; align-items:center; list-style:none;}
   .faq-item summary::-webkit-details-marker{display:none;}
   .faq-item summary::after{content:'+'; color:var(--electric); font-size:20px; margin-left:16px;}
   .faq-item[open] summary::after{content:'–';}
@@ -208,7 +209,7 @@
 
   /* [9] CTA final */
   .final-cta{background:linear-gradient(160deg, var(--surface), var(--ink)); border:1px solid var(--line); border-radius:20px; padding:56px 40px; text-align:center;}
-  .final-cta h2{font-size:clamp(26px,3.6vw,38px); margin-bottom:14px;}
+  .final-cta h2{font-size:clamp(22px,3.2vw,34px); margin-bottom:14px;}
   .final-cta p{color:var(--text-dim); max-width:480px; margin:0 auto 30px;}
   .final-cta .hero-ctas{justify-content:center;}
 
@@ -222,16 +223,16 @@
   form[hidden], .done[hidden]{display:none;}
   .form-hint{font-size:13px; color:var(--text-dim); line-height:1.5; margin:0;}
   .final-cta .done{text-align:center; border:1px solid var(--electric); border-radius:14px; padding:30px 22px;}
-  .done h3{font-family:'Space Grotesk'; font-size:21px; margin-bottom:10px;}
+  .done h3{font-family:'Unbounded', sans-serif; font-size:21px; margin-bottom:10px;}
   .done p{margin:0 auto 22px;}
   .done-actions{display:flex; flex-direction:column; gap:12px; align-items:stretch; max-width:340px; margin:0 auto;}
   .done-actions a{text-align:center;}
   .contact-channel{display:flex; align-items:center; gap:12px; padding:14px 0; border-top:1px solid var(--line); font-size:14.5px; min-width:0; overflow-wrap:anywhere;}
   .contact-channel:last-child{border-bottom:1px solid var(--line);}
-  .contact-channel .tag{font-family:'IBM Plex Mono'; color:var(--electric); font-size:12px; min-width:90px;}
+  .contact-channel .tag{font-family:'JetBrains Mono', monospace; color:var(--electric); font-size:12px; min-width:90px;}
   form{display:flex; flex-direction:column; gap:16px;}
   label{font-size:13px; color:var(--text-dim); margin-bottom:6px; display:block;}
-  input, textarea{width:100%; background:var(--ink); border:1px solid var(--line); border-radius:10px; padding:13px 14px; color:var(--text); font-family:'Inter'; font-size:14.5px; transition:border-color .15s ease;}
+  input, textarea{width:100%; background:var(--ink); border:1px solid var(--line); border-radius:10px; padding:13px 14px; color:var(--text); font-family:'Instrument Sans', sans-serif; font-size:14.5px; transition:border-color .15s ease;}
   input:focus, textarea:focus{outline:none; border-color:var(--electric-soft);}
   textarea{resize:vertical; min-height:100px;}
   .submit-btn{background:var(--electric); color:#001217; padding:14px; border:none; border-radius:10px; font-weight:600; font-size:15px; cursor:pointer; transition:transform .15s ease;}
@@ -254,9 +255,9 @@
   footer .foot-links a:hover{color:var(--text);}
   details.sec{border-top:1px solid var(--line);}
   details.sec:last-of-type{border-bottom:1px solid var(--line);}
-  details.sec summary{list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:12px; padding:18px 0; font-family:'Space Grotesk', sans-serif; font-size:18px; font-weight:600; color:var(--text);}
+  details.sec summary{list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:12px; padding:18px 0; font-family:'Unbounded', sans-serif; font-size:18px; font-weight:600; color:var(--text);}
   details.sec summary::-webkit-details-marker{display:none;}
-  details.sec summary::after{content:'+'; font-family:'IBM Plex Mono', monospace; color:var(--electric); font-size:22px; line-height:1; flex:0 0 auto;}
+  details.sec summary::after{content:'+'; font-family:'JetBrains Mono', monospace; color:var(--electric); font-size:22px; line-height:1; flex:0 0 auto;}
   details.sec[open] summary::after{content:'−';}
   details.sec summary:focus-visible{outline:2px solid var(--electric); outline-offset:4px;}
   details.sec .body{padding:0 0 20px;}
