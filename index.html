@@ -96,7 +96,35 @@
   .eyebrow::before{content:''; width:20px; height:1px; background:var(--electric);}
 
   /* [1] HERO */
-  .hero{padding:110px 0 80px; position:relative;}
+  .hero{padding:110px 0 80px; position:relative; overflow:hidden;}
+  .hero > .wrap{position:relative; z-index:1;}
+  .hero-net{position:absolute; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; opacity:.75;
+    -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 45%, #000 100%); mask-image:linear-gradient(90deg, transparent 0%, #000 45%, #000 100%);}
+  @media (max-width:720px){ .hero-net{opacity:.45; -webkit-mask-image:linear-gradient(180deg, transparent 0%, #000 40%); mask-image:linear-gradient(180deg, transparent 0%, #000 40%);} }
+
+  /* AUTODIAGNÓSTICO */
+  .quiz{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:26px; display:grid; gap:14px;}
+  .q{border:0; border-bottom:1px solid var(--line); margin:0; min-width:0; display:flex; justify-content:space-between; align-items:center; gap:16px; padding:12px 0;}
+  .q:last-of-type{border-bottom:0;}
+  .q legend{float:left; font-size:15px; color:var(--text); max-width:560px;}
+  .q .opts{display:flex; gap:8px; flex:none;}
+  .q input{position:absolute; opacity:0; width:1px; height:1px;}
+  .q label{border:1px solid var(--line); border-radius:999px; padding:7px 16px; font-size:13.5px; color:var(--text-dim); cursor:pointer; user-select:none;}
+  .q input:checked + label{border-color:var(--electric); color:var(--text); background:rgba(43,168,220,.12);}
+  .q input:focus-visible + label{outline:2px solid var(--electric); outline-offset:2px;}
+  @media (max-width:640px){ .q{flex-direction:column; align-items:flex-start;} }
+  .quiz-result{background:var(--surface-2); border:1px solid var(--line); border-left:3px solid var(--electric); border-radius:10px; padding:20px 22px;}
+  .quiz-score{display:flex; align-items:baseline; gap:10px;}
+  .quiz-score b{font-family:'Space Grotesk',sans-serif; font-size:44px; line-height:1; color:var(--electric-soft);}
+  .quiz-score span{color:var(--text-dim); font-size:14px;}
+  .quiz-bar{height:6px; background:var(--line); border-radius:999px; margin:14px 0; overflow:hidden;}
+  .quiz-bar i{display:block; height:100%; width:0; background:linear-gradient(90deg, var(--violet), var(--electric)); transition:width .6s ease;}
+  .quiz-result h3{font-size:17px; margin-bottom:8px;}
+  .quiz-result ul{list-style:none; padding:0; margin:0 0 16px; color:var(--text-dim); font-size:14.5px;}
+  .quiz-result li::before{content:"→ "; color:var(--electric-soft);}
+  .quiz-result li + li{margin-top:6px;}
+  .quiz-result .btn-primary{display:inline-block; text-align:center;}
+  .quiz-note{font-size:12.5px; color:var(--text-dim); margin-top:12px;}
   .hero h1{font-size:clamp(32px,5vw,58px); line-height:1.08; max-width:800px; margin-bottom:22px;}
   .hero h1 em{font-style:normal; color:var(--electric-soft);}
   .hero p{font-size:18px; color:var(--text-dim); max-width:540px; margin-bottom:34px;}
@@ -430,6 +458,7 @@
 
 <!-- [1] HERO -->
 <header class="hero">
+  <canvas class="hero-net" id="hero-net" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="eyebrow">100% remoto · Toda Argentina</div>
     <h1>Tu negocio pierde clientes por cosas <em>que se resuelven rápido</em>, con plazos por escrito.</h1>
@@ -476,6 +505,32 @@
         <div class="fix">Landing pages que sí convierten</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- [2b] AUTODIAGNÓSTICO -->
+<section class="section border-top" id="autodiagnostico">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Autodiagnóstico · 30 segundos</div>
+      <h2>¿Cuántos clientes se te están escapando?</h2>
+      <p>Cinco preguntas con un toque. Te mostramos tu puntaje y qué arreglaríamos primero.</p>
+    </div>
+    <form class="quiz" id="quiz" novalidate>
+      <fieldset class="q"><legend>¿Aparecés en Google Maps cuando buscan tu rubro cerca?</legend><div class="opts"><input type="radio" name="maps" id="q1s" value="1"><label for="q1s">Sí</label><input type="radio" name="maps" id="q1n" value="0"><label for="q1n">No</label></div></fieldset>
+      <fieldset class="q"><legend>¿Tu ficha de Google tiene fotos, horarios y reseñas al día?</legend><div class="opts"><input type="radio" name="ficha" id="q2s" value="1"><label for="q2s">Sí</label><input type="radio" name="ficha" id="q2n" value="0"><label for="q2n">No</label></div></fieldset>
+      <fieldset class="q"><legend>¿Te pueden reservar o pedir sin tener que escribirte?</legend><div class="opts"><input type="radio" name="turnos" id="q3s" value="1"><label for="q3s">Sí</label><input type="radio" name="turnos" id="q3n" value="0"><label for="q3n">No</label></div></fieldset>
+      <fieldset class="q"><legend>¿Respondés WhatsApp fuera de horario, aunque sea con un mensaje automático?</legend><div class="opts"><input type="radio" name="whatsapp" id="q4s" value="1"><label for="q4s">Sí</label><input type="radio" name="whatsapp" id="q4n" value="0"><label for="q4n">No</label></div></fieldset>
+      <fieldset class="q"><legend>¿Tenés una web propia que diga qué hacés y cuánto sale?</legend><div class="opts"><input type="radio" name="web" id="q5s" value="1"><label for="q5s">Sí</label><input type="radio" name="web" id="q5n" value="0"><label for="q5n">No</label></div></fieldset>
+      <div class="quiz-result" id="quiz-result" hidden aria-live="polite">
+        <div class="quiz-score"><b id="quiz-num">0</b><span>/ 100 de presencia digital</span></div>
+        <div class="quiz-bar"><i id="quiz-bar"></i></div>
+        <h3 id="quiz-title"></h3>
+        <ul id="quiz-list"></ul>
+        <a href="#contacto" class="btn-primary" id="quiz-cta">Pedir mi Diagnóstico Digital</a>
+        <p class="quiz-note">Es orientativo. El Diagnóstico Digital lo revisamos sobre tu negocio real, sin costo.</p>
+      </div>
+    </form>
   </div>
 </section>
 
@@ -758,6 +813,45 @@
   let elegido = 'whatsapp';
   buttons.forEach((b) => b.addEventListener('click', () => { elegido = b.value; }));
 
+  /* Autodiagnóstico: calcula el puntaje en el navegador, no guarda ni envía nada.
+     El botón final lleva las respuestas al campo "¿Qué te gustaría resolver?". */
+  (function () {
+    const quiz = document.getElementById('quiz');
+    if (!quiz) return;
+    const PESOS = { maps: 25, ficha: 15, turnos: 20, whatsapp: 20, web: 20 };
+    const FALTA = {
+      maps: 'No aparecés en Google Maps cuando te buscan cerca.',
+      ficha: 'Tu ficha de Google está incompleta o desactualizada.',
+      turnos: 'Para reservar o pedir, te tienen que escribir.',
+      whatsapp: 'Fuera de horario, las consultas quedan sin respuesta.',
+      web: 'No tenés una web propia que explique qué hacés y cuánto sale.'
+    };
+    const res = document.getElementById('quiz-result');
+    let resumen = '';
+    quiz.addEventListener('change', () => {
+      const datos = new FormData(quiz);
+      const claves = Object.keys(PESOS);
+      if (!claves.every((k) => datos.has(k))) return;
+      let puntos = 0; const faltas = [];
+      claves.forEach((k) => { if (datos.get(k) === '1') puntos += PESOS[k]; else faltas.push(FALTA[k]); });
+      document.getElementById('quiz-num').textContent = puntos;
+      document.getElementById('quiz-bar').style.width = puntos + '%';
+      document.getElementById('quiz-title').textContent = puntos <= 40
+        ? 'Estás perdiendo clientes todos los días.'
+        : puntos <= 75 ? 'Tenés una base, pero con fugas.' : 'Vas bien encaminado.';
+      const lista = document.getElementById('quiz-list');
+      lista.replaceChildren(...(faltas.length ? faltas : ['Lo básico está cubierto: el siguiente paso es automatizar.']).map((t) => {
+        const li = document.createElement('li'); li.textContent = t; return li;
+      }));
+      resumen = 'Autodiagnóstico: ' + puntos + '/100.' + (faltas.length ? ' A mejorar: ' + faltas.join(' ') : '');
+      res.hidden = false;
+    });
+    document.getElementById('quiz-cta').addEventListener('click', () => {
+      const msg = document.getElementById('mensaje');
+      if (msg && resumen && !msg.value.trim()) msg.value = resumen.slice(0, 1000);
+    });
+  })();
+
   /* Datos de confianza del hero: cada botón abre su explicación; tocar de nuevo la cierra. */
   (function () {
     const box = document.getElementById('trust');
@@ -918,5 +1012,44 @@
 
 
 
+<script>
+  /* Red de nodos de la portada (identidad visual "sistema nervioso").
+     Se pausa fuera de pantalla y con la pestaña oculta; con "reducir movimiento" queda quieta. */
+  (function () {
+    const cv = document.getElementById('hero-net');
+    if (!cv || !cv.getContext) return;
+    const ctx = cv.getContext('2d');
+    const quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let W = 0, H = 0, nodos = [], visible = true, raf = 0;
+    const DIST = 130;
+    function medir() {
+      const r = cv.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const n = Math.round(Math.min(60, Math.max(22, W * H / 16000)));
+      nodos = Array.from({ length: n }, () => ({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .25, vy: (Math.random() - .5) * .25, r: Math.random() * 1.6 + .8 }));
+    }
+    function dibujar() {
+      ctx.clearRect(0, 0, W, H);
+      for (let i = 0; i < nodos.length; i++) {
+        const a = nodos[i];
+        for (let j = i + 1; j < nodos.length; j++) {
+          const b = nodos[j], dx = a.x - b.x, dy = a.y - b.y, d = Math.hypot(dx, dy);
+          if (d < DIST) { ctx.strokeStyle = 'rgba(84,190,230,' + (1 - d / DIST) * .5 + ')'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); }
+        }
+      }
+      nodos.forEach((p, i) => { ctx.fillStyle = i % 4 === 0 ? 'rgba(176,127,208,.9)' : 'rgba(84,190,230,.9)'; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill(); });
+    }
+    function paso() {
+      nodos.forEach((p) => { p.x += p.vx; p.y += p.vy; if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1; });
+      dibujar();
+      if (visible && !document.hidden) raf = requestAnimationFrame(paso); else raf = 0;
+    }
+    function arrancar() { if (!quieto && !raf && visible && !document.hidden) raf = requestAnimationFrame(paso); }
+    medir(); dibujar(); arrancar();
+    let t; window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { medir(); dibujar(); }, 200); });
+    document.addEventListener('visibilitychange', arrancar);
+    if ('IntersectionObserver' in window) new IntersectionObserver((e) => { visible = e[0].isIntersecting; arrancar(); }).observe(cv);
+  })();
+</script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "90c286bae06d48c3ba4586170937ef60"}'></script><!-- End Cloudflare Web Analytics -->
 </body></html>
