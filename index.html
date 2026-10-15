@@ -92,6 +92,18 @@
   .hero p{font-size:18px; color:var(--text-dim); max-width:540px; margin-bottom:34px;}
   .hero-ctas{display:flex; gap:16px; flex-wrap:wrap;}
   .hero-price{margin-top:22px; margin-bottom:0 !important; font-size:13px !important; color:var(--electric-soft) !important; letter-spacing:.02em;}
+  .example{display:grid; grid-template-columns:minmax(0,300px) 1fr; gap:40px; align-items:center;}
+  .example img{width:100%; height:auto; border:1px solid var(--line); border-radius:var(--radius); display:block;}
+  .example .tag{display:inline-block; font-size:11px; letter-spacing:.08em; color:var(--electric-soft); border:1px solid var(--line); border-radius:999px; padding:4px 10px; margin-bottom:14px;}
+  .example h2{margin-bottom:12px;}
+  .example ul{margin-top:18px; padding:0; list-style:none; color:var(--text-dim);}
+  .example li::before{content:"→ "; color:var(--electric-soft);}
+  .example li + li{margin-top:6px;}
+  @media (max-width:720px){ .example{grid-template-columns:1fr; gap:24px;} .example img{max-width:280px; margin:0 auto;} }
+  .wa-float{position:fixed; right:18px; bottom:18px; z-index:50; display:flex; align-items:center; gap:8px; background:#25D366; color:#0b1410; font-weight:600; font-size:14px; padding:12px 16px; border-radius:999px; box-shadow:0 6px 20px rgba(0,0,0,.35); text-decoration:none; transition:opacity .2s, transform .2s;}
+  .wa-float svg{width:20px; height:20px; flex:none;}
+  .wa-float.is-hidden{opacity:0; transform:translateY(12px); pointer-events:none;}
+  @media (max-width:480px){ .wa-float span{display:none;} .wa-float{padding:14px;} }
   .services-next{margin-top:22px; font-size:12.5px; color:var(--text-dim);}
   .btn-primary{background:var(--electric); color:#001217; padding:14px 26px; border-radius:10px; font-weight:600; font-size:15px; transition:transform .15s ease;}
   .btn-primary:hover{transform:translateY(-2px);}
@@ -454,6 +466,25 @@
   </div>
 </section>
 
+<!-- [4b] EJEMPLO -->
+<section class="section border-top" id="ejemplo">
+  <div class="wrap">
+    <div class="example">
+      <img src="/ejemplo-consultorio.webp" width="390" height="780" loading="lazy" decoding="async" alt="Captura de una landing de ejemplo para un consultorio odontológico ficticio, vista en celular">
+      <div>
+        <span class="tag mono">EJEMPLO · NOMBRE FICTICIO</span>
+        <h2>Así se ve un trabajo terminado</h2>
+        <p class="sub">Una landing para un consultorio odontológico, armada con el mismo método que usamos con vos.</p>
+        <ul>
+          <li>El paciente reserva turno sin llamar.</li>
+          <li>WhatsApp directo, con el mensaje ya escrito.</li>
+          <li>Precio y propuesta claros desde la primera pantalla.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- [7b] PRECIOS -->
 <section class="section border-top" id="precios">
   <div class="wrap">
@@ -513,7 +544,7 @@
       <strong>Precio de lanzamiento.</strong> Estos valores se mantienen hasta nuestros primeros 10 negocios o hasta el 31 de diciembre de 2026, lo que ocurra primero. Si entrás ahora, tu abono mensual queda congelado 6 meses y después se ajusta por IPC.
     </div>
 
-    <p class="price-note">Valores finales en pesos. Todos los trabajos se entregan con factura. El dominio (.com o .com.ar) lo contratás vos y queda siempre a tu nombre.</p>
+    <p class="price-note">Valores finales en pesos. Todos los trabajos se entregan con factura, emitida por ARCA (CUIT 20-18866406-8). El dominio (.com o .com.ar) lo contratás vos y queda siempre a tu nombre.</p>
   </div>
 </section>
 
@@ -634,6 +665,10 @@
     <p class="mono" style="font-size:12px; color:var(--text-dim); margin-top:18px;">El titular de los datos personales tiene la facultad de ejercer el derecho de acceso a los mismos en forma gratuita a intervalos no inferiores a seis meses, salvo que se acredite un interés legítimo al efecto conforme lo establecido en el artículo 14, inciso 3 de la Ley Nº 25.326. La AGENCIA DE ACCESO A LA INFORMACIÓN PÚBLICA, en su carácter de Órgano de Control de la Ley Nº 25.326, tiene la atribución de atender las denuncias y reclamos que interpongan quienes resulten afectados en sus derechos por incumplimiento de las normas vigentes en materia de protección de datos personales.</p>
   </div>
 </section>
+  <a href="https://wa.me/5491123536686?text=Hola%2C%20vengo%20de%20la%20web%20y%20quiero%20el%20diagn%C3%B3stico%20gratis" class="wa-float" id="wa-float" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3Z"/></svg>
+    <span>Escribinos</span>
+  </a>
   <!-- [10] FOOTER -->
 <footer>
   <div class="wrap">
@@ -672,6 +707,16 @@
   /* Qué botón se usó. e.submitter no existe en Safari < 15.4, así que lo anotamos al hacer clic. */
   let elegido = 'whatsapp';
   buttons.forEach((b) => b.addEventListener('click', () => { elegido = b.value; }));
+
+  /* Botón flotante: se oculta cuando el formulario de contacto está a la vista, para no taparlo. */
+  (function () {
+    const fab = document.getElementById('wa-float');
+    const contacto = document.getElementById('contacto');
+    if (!fab || !contacto || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver((entries) => {
+      entries.forEach((en) => fab.classList.toggle('is-hidden', en.isIntersecting));
+    }, { threshold: 0 }).observe(contacto);
+  })();
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
