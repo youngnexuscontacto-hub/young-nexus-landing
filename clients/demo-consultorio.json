@@ -27,6 +27,7 @@
     "accentDeep": "#401A67"
   },
   "seo": {
+    "robots": "noindex, nofollow",
     "title": "Consultorio Demo — Odontología en Parque Patricios | Turnos online",
     "description": "Consultorio odontológico en Parque Patricios. Turnos online sin llamar, urgencias en el día y planes de tratamiento claros. Reservá en 30 segundos.",
     "ogDescription": "Turnos online sin llamar, urgencias en el día y presupuestos claros. Odontología en Parque Patricios, CABA.",

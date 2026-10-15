@@ -216,6 +216,7 @@ function normalize(c) {
   c.seo = c.seo || {};
   c.seo.ogImage = c.seo.ogImage || '/og.jpg';
   c.seo.ogLocale = c.seo.ogLocale || 'es_AR';
+  c.seo.robots = c.seo.robots || 'index, follow, max-image-preview:large, max-snippet:-1';
   c.seo.ogDescription = c.seo.ogDescription || c.seo.description;
   c.business.logo = c.business.logo || '/apple-touch-icon.png';
   c.business.geoRegion = c.business.geoRegion || 'AR';
