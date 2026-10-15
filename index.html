@@ -113,6 +113,8 @@
   .q input{position:absolute; opacity:0; width:1px; height:1px;}
   .q label{border:1px solid var(--line); border-radius:999px; padding:7px 16px; font-size:13.5px; color:var(--text-dim); cursor:pointer; user-select:none;}
   .q input:checked + label{border-color:var(--electric); color:var(--text); background:rgba(43,168,220,.12);}
+  .q-off{opacity:.5;}
+  .q-off label{pointer-events:none;}
   .q input:focus-visible + label{outline:2px solid var(--electric); outline-offset:2px;}
   @media (max-width:640px){ .q{flex-direction:column; align-items:flex-start;} }
   .quiz-result{background:var(--surface-2); border:1px solid var(--line); border-left:3px solid var(--electric); border-radius:10px; padding:20px 22px;}
@@ -524,7 +526,7 @@
     <form class="quiz" id="quiz" novalidate>
       <fieldset class="q"><legend>¿Aparecés en Google Maps cuando buscan tu rubro cerca?</legend><div class="opts"><input type="radio" name="maps" id="q1s" value="1"><label for="q1s">Sí</label><input type="radio" name="maps" id="q1n" value="0"><label for="q1n">No</label></div></fieldset>
       <fieldset class="q"><legend>¿Tu ficha de Google tiene fotos, horarios y reseñas al día?</legend><div class="opts"><input type="radio" name="ficha" id="q2s" value="1"><label for="q2s">Sí</label><input type="radio" name="ficha" id="q2n" value="0"><label for="q2n">No</label></div></fieldset>
-      <fieldset class="q"><legend>¿Te pueden reservar o pedir sin tener que escribirte?</legend><div class="opts"><input type="radio" name="turnos" id="q3s" value="1"><label for="q3s">Sí</label><input type="radio" name="turnos" id="q3n" value="0"><label for="q3n">No</label></div></fieldset>
+      <fieldset class="q"><legend>¿Tus clientes pueden agendar, reservar o hacer un pedido solos desde el celular, sin esperar tu respuesta?</legend><div class="opts"><input type="radio" name="turnos" id="q3s" value="1"><label for="q3s">Sí</label><input type="radio" name="turnos" id="q3n" value="0"><label for="q3n">No</label></div></fieldset>
       <fieldset class="q"><legend>¿Respondés WhatsApp fuera de horario, aunque sea con un mensaje automático?</legend><div class="opts"><input type="radio" name="whatsapp" id="q4s" value="1"><label for="q4s">Sí</label><input type="radio" name="whatsapp" id="q4n" value="0"><label for="q4n">No</label></div></fieldset>
       <fieldset class="q"><legend>¿Tenés una web propia que diga qué hacés y cuánto sale?</legend><div class="opts"><input type="radio" name="web" id="q5s" value="1"><label for="q5s">Sí</label><input type="radio" name="web" id="q5n" value="0"><label for="q5n">No</label></div></fieldset>
       <div class="quiz-result" id="quiz-result" hidden aria-live="polite">
@@ -827,18 +829,28 @@
     const FALTA = {
       maps: 'No aparecés en Google Maps cuando te buscan cerca.',
       ficha: 'Tu ficha de Google está incompleta o desactualizada.',
-      turnos: 'Para reservar o pedir, te tienen que escribir.',
+      turnos: 'Para agendar, reservar o pedir, te tienen que escribir y esperar tu respuesta.',
       whatsapp: 'Fuera de horario, las consultas quedan sin respuesta.',
       web: 'No tenés una web propia que explique qué hacés y cuánto sale.'
     };
     const res = document.getElementById('quiz-result');
     let resumen = '';
-    quiz.addEventListener('change', () => {
+    /* Si no aparece en Google Maps, no puede tener ficha completa: la pregunta 2 se marca "No" y se bloquea (sin disabled, para que FormData la siga leyendo). */
+    const q2s = document.getElementById('q2s'), q2n = document.getElementById('q2n');
+    quiz.addEventListener('change', (ev) => {
+      if (ev.target.name === 'maps') {
+        const sinMaps = ev.target.value === '0';
+        if (sinMaps) q2n.checked = true;
+        q2s.closest('.q').classList.toggle('q-off', sinMaps);
+      }
       const datos = new FormData(quiz);
       const claves = Object.keys(PESOS);
       if (!claves.every((k) => datos.has(k))) return;
       let puntos = 0; const faltas = [];
-      claves.forEach((k) => { if (datos.get(k) === '1') puntos += PESOS[k]; else faltas.push(FALTA[k]); });
+      claves.forEach((k) => {
+        if (datos.get(k) === '1') puntos += PESOS[k];
+        else if (!(k === 'ficha' && datos.get('maps') === '0')) faltas.push(FALTA[k]);
+      });
       document.getElementById('quiz-num').textContent = puntos;
       document.getElementById('quiz-bar').style.width = puntos + '%';
       document.getElementById('quiz-title').textContent = puntos <= 40
