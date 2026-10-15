@@ -91,6 +91,8 @@
   .hero h1 em{font-style:normal; color:var(--electric-soft);}
   .hero p{font-size:18px; color:var(--text-dim); max-width:540px; margin-bottom:34px;}
   .hero-ctas{display:flex; gap:16px; flex-wrap:wrap;}
+  .hero-price{margin-top:22px; margin-bottom:0 !important; font-size:13px !important; color:var(--electric-soft) !important; letter-spacing:.02em;}
+  .services-next{margin-top:22px; font-size:12.5px; color:var(--text-dim);}
   .btn-primary{background:var(--electric); color:#001217; padding:14px 26px; border-radius:10px; font-weight:600; font-size:15px; transition:transform .15s ease;}
   .btn-primary:hover{transform:translateY(-2px);}
   .btn-secondary{border:1px solid var(--line); padding:14px 26px; border-radius:10px; font-weight:500; font-size:15px; transition:border-color .15s ease, background .15s ease;}
@@ -347,18 +349,18 @@
         },
         {
           "@type": "Question",
-          "name": "¿Cuánto cuesta?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Los precios están publicados más arriba, en la sección Precios. En el diagnóstico gratuito te decimos cuál plan te conviene."
-          }
-        },
-        {
-          "@type": "Question",
           "name": "¿Cuánto tarda en estar funcionando?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Te damos un plazo concreto por escrito en la propuesta, antes de arrancar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Y si después necesito un cambio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Para eso está el acompañamiento mensual: según tu plan, tenés de 1 a 4 horas de soporte al mes para cambios, ajustes o lo que deje de andar."
           }
         },
         {
@@ -403,8 +405,9 @@
     <p>Hoy tu cliente busca en Google antes de decidir, y reserva desde el celular a cualquier hora. Ordenamos tu presencia y tus procesos para que te encuentre, te elija, y no se pierda en el camino.</p>
     <div class="hero-ctas">
       <a href="#contacto" class="btn-primary">Pedir diagnóstico gratis</a>
-      <a href="#problema" class="btn-secondary">Ver qué resolvemos</a>
+      <a href="#precios" class="btn-secondary">Ver precios</a>
     </div>
+    <p class="hero-price mono">Desde $140.000 · precio publicado · con factura</p>
   </div>
 </header>
 
@@ -433,90 +436,21 @@
   </div>
 </section>
 
-<!-- [3] SOLUCIÓN -->
-<section class="section border-top">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Cómo lo resolvemos</div>
-      <h2>Un flujo simple, de punta a punta</h2>
-      <p>No instalás nada raro. Nosotros armamos la conexión, vos seguís con tu negocio.</p>
-    </div>
-    <div class="pipeline">
-      <div class="pipe-track"></div>
-      <div class="pipe-node"><div class="dot mono">01</div><span class="label">Un cliente te busca, escribe o compra</span></div>
-      <div class="pipe-node"><div class="dot mono">→</div><span class="label">Te responde fuera de horario y las consultas de tu web quedan registradas</span></div>
-      <div class="pipe-node"><div class="dot mono">03</div><span class="label">Vos cerrás la venta, sin perseguir nada</span></div>
-    </div>
-  </div>
-</section>
-
 <!-- [4] SERVICIOS -->
 <section class="section border-top" id="servicios">
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">Qué hacemos</div>
       <h2>Servicios concretos, elegís lo que necesitás hoy</h2>
-      <p>Empezamos por lo que resuelve tu problema más urgente — el resto queda disponible para cuando lo necesites.</p>
+      <p>Empezamos por lo que resuelve tu problema más urgente.</p>
     </div>
     <div class="grid-services">
       <div class="service-card" id="s-maps"><span class="num mono">01</span><h3>Google Maps</h3><p>Ficha completa y optimizada para aparecer en búsquedas cercanas.</p></div>
-      <div class="service-card" id="s-whatsapp"><span class="num mono">02</span><h3>WhatsApp bien puesto</h3><p>Botón directo desde tu web, respuesta automática fuera de horario y perfil configurado, para que nadie quede sin respuesta inicial.</p></div>
+      <div class="service-card" id="s-whatsapp"><span class="num mono">02</span><h3>WhatsApp bien puesto</h3><p>Botón directo desde tu web y respuesta automática fuera de horario, para que nadie quede sin respuesta.</p></div>
       <div class="service-card" id="s-web"><span class="num mono">03</span><h3>Landing pages y sitios</h3><p>Una página clara, rápida, pensada para convertir visitas en clientes.</p></div>
       <div class="service-card" id="s-automatizacion"><span class="num mono">04</span><h3>Automatización a medida</h3><p>Que los pedidos y consultas se registren solos, sin que nadie los anote a mano.</p></div>
-      <div class="service-card later" id="s-datos"><span class="num mono">05</span><h3>Dashboards y analítica</h3><p>Tus datos ordenados, para entender tu negocio de un vistazo.</p></div>
-      <div class="service-card later" id="s-capacitacion"><span class="num mono">06</span><h3>Capacitación in-company</h3><p>Formamos a tu equipo para que use la IA sin depender de nadie.</p></div>
-      <div class="service-card later" id="s-satelital"><span class="num mono">07</span><h3>Conectividad satelital</h3><p>Para operaciones en zonas remotas sin buena conexión.</p></div>
     </div>
-  </div>
-</section>
-
-<!-- [5] CÓMO TRABAJAMOS -->
-<section class="section border-top">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Cómo trabajamos</div>
-      <h2>Cuatro pasos, sin vueltas</h2>
-    </div>
-    <div class="steps">
-      <div class="step"><span class="idx mono">01</span><div><h3>Diagnóstico gratuito</h3><p>Una charla corta para entender qué te está haciendo perder tiempo o clientes hoy.</p></div></div>
-      <div class="step"><span class="idx mono">02</span><div><h3>Propuesta clara</h3><p>Te decimos exactamente qué vamos a hacer, en cuánto tiempo y qué esperar — sin letra chica.</p></div></div>
-      <div class="step"><span class="idx mono">03</span><div><h3>Implementación con plazo concreto</h3><p>Armamos la solución puntual para tu caso, en el plazo que te damos por escrito en la propuesta.</p></div></div>
-      <div class="step"><span class="idx mono">04</span><div><h3>Acompañamiento</h3><p>Te mostramos cómo funciona, para que entiendas lo que te entregamos y no dependas de nadie.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- [6] CASOS / compromiso -->
-<section class="section border-top">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Programa de lanzamiento</div>
-      <h2>Cupos limitados, trato directo</h2>
-    </div>
-    <div class="commit-box">
-      <span class="icon mono">★</span>
-      <div>
-        <h3>Precio de lanzamiento para los primeros 10 negocios</h3>
-        <p>Trabajás directo con el fundador, sin intermediarios ni equipos rotativos. Los primeros 10 negocios (o hasta el 31/12/2026, lo que ocurra primero) acceden a precio de lanzamiento, con el abono congelado 6 meses y después ajustado por IPC.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- [7] POR QUÉ YOUNG NEXUS -->
-<section class="section border-top">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Por qué Young Nexus</div>
-      <h2>Lo que nos diferencia</h2>
-    </div>
-    <div class="why-grid">
-      <div class="why-card"><div class="mark mono">01</div><h3>100% remoto</h3><p>Trabajamos con vos estés donde estés, sin perder calidad ni cercanía.</p></div>
-      <div class="why-card"><div class="mark mono">02</div><h3>Precios publicados</h3><p>Sabés cuánto sale antes de escribirnos. Sin "consultanos" ni presupuestos que aparecen después.</p></div>
-      <div class="why-card"><div class="mark mono">03</div><h3>Precio accesible</h3><p>Tecnología que hoy solo usan las empresas grandes, a tu alcance.</p></div>
-      <div class="why-card"><div class="mark mono">04</div><h3>Sin dependencia</h3><p>Te formamos para que entiendas y controles lo que te entregamos.</p></div>
-      <div class="why-card"><div class="mark mono">05</div><h3>Sin letra chica</h3><p>Propuesta clara desde el primer día, sin sorpresas después.</p></div>
-    </div>
+    <p class="services-next mono">Próxima etapa: dashboards y analítica · capacitación in-company · conectividad satelital</p>
   </div>
 </section>
 
@@ -583,26 +517,35 @@
   </div>
 </section>
 
-<!-- [7c] SIN INTERMEDIARIOS -->
+<!-- [5] CÓMO TRABAJAMOS -->
 <section class="section border-top">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">Una aclaración honesta</div>
-      <h2>Hoy podés armar tu web solo, en minutos</h2>
+      <div class="eyebrow">Cómo trabajamos</div>
+      <h2>Cuatro pasos, sin vueltas</h2>
+      <p>Todo a distancia y por WhatsApp, en cualquier punto del país. No tenés que cerrar ni un día.</p>
     </div>
-    <p class="sub" style="max-width:760px;">Es cierto, y está bien que exista. La pregunta es qué pasa después: quién la arregla el día que deja de andar, quién la conecta con tus turnos, quién te avisa cuando tu ficha de Google quedó desactualizada, y quién revisa que las consultas estén llegando.</p>
-    <p class="sub" style="max-width:760px; margin-top:14px;">Una web sola no te trae clientes. Te traen aparecer cuando te buscan, que te puedan reservar sin escribirte, y que nada se pierda en el camino. Eso no se arma en cinco minutos.</p>
-    <p class="sub" style="max-width:760px; margin-top:14px;"><strong style="color:var(--text);">No somos un intermediario. Somos el que se queda.</strong></p>
+    <div class="steps">
+      <div class="step"><span class="idx mono">01</span><div><h3>Diagnóstico gratuito</h3><p>Una charla corta para ver qué te está haciendo perder clientes hoy.</p></div></div>
+      <div class="step"><span class="idx mono">02</span><div><h3>Propuesta por escrito</h3><p>Qué hacemos, en cuánto tiempo y cuánto sale. Sin letra chica.</p></div></div>
+      <div class="step"><span class="idx mono">03</span><div><h3>Implementación con plazo</h3><p>Ves los avances antes de que salga a la calle. Nada se publica sin tu OK.</p></div></div>
+      <div class="step"><span class="idx mono">04</span><div><h3>Acompañamiento</h3><p>Te mostramos cómo funciona, para que entiendas lo que te entregamos y no dependas de nadie.</p></div></div>
+    </div>
   </div>
 </section>
 
-<section class="section border-top" id="zona">
+<!-- [7] POR QUÉ YOUNG NEXUS -->
+<section class="section border-top">
   <div class="wrap">
-    <div class="eyebrow">Dónde trabajamos</div>
-    <h2>100% remoto, en todo el país</h2>
-    <p>No hace falta que estemos en tu barrio para resolverte el problema. Todo lo que hacemos —la web, los turnos online, tu ficha de Google, el orden de tus datos— se arma y se entrega a distancia, sin que tengas que cerrar ni un día.</p>
-    <p>Trabajamos por WhatsApp, con avances que mirás vos mismo antes de que salga a la calle. Nada se publica sin que lo apruebes.</p>
-    <p>Atendemos <strong>comercios, profesionales independientes y PyMEs de toda Argentina</strong>, y también a quienes facturan al exterior.</p>
+    <div class="section-head">
+      <div class="eyebrow">Por qué Young Nexus</div>
+      <h2>Lo que nos diferencia</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="mark mono">01</div><h3>Trato directo con el fundador</h3><p>Hablás siempre con quien hace el trabajo. Sin intermediarios ni equipos rotativos.</p></div>
+      <div class="why-card"><div class="mark mono">02</div><h3>Precio publicado, sin letra chica</h3><p>Sabés cuánto sale antes de escribirnos, y la propuesta llega por escrito, con plazo.</p></div>
+      <div class="why-card"><div class="mark mono">03</div><h3>Somos el que se queda</h3><p>Una web sola no te trae clientes. Después de entregar seguimos: tu ficha de Google al día, los turnos andando, las consultas llegando.</p></div>
+    </div>
   </div>
 </section>
 
@@ -619,12 +562,12 @@
         <p>No. Te explicamos todo en criollo y te acompañamos en cada paso — no hace falta que sepas programar ni entender de sistemas.</p>
       </details>
       <details class="faq-item">
-        <summary>¿Cuánto cuesta?</summary>
-        <p>Los precios están publicados más arriba, en la sección Precios. En el diagnóstico gratuito te decimos cuál plan te conviene.</p>
-      </details>
-      <details class="faq-item">
         <summary>¿Cuánto tarda en estar funcionando?</summary>
         <p>Te damos un plazo concreto por escrito en la propuesta, antes de arrancar.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Y si después necesito un cambio?</summary>
+        <p>Para eso está el acompañamiento mensual: según tu plan, tenés de 1 a 4 horas de soporte al mes para cambios, ajustes o lo que deje de andar.</p>
       </details>
       <details class="faq-item">
         <summary>¿Qué pasa con mis datos y los de mis clientes?</summary>
