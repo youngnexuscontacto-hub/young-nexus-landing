@@ -837,15 +837,27 @@
     let resumen = '';
     /* Si no aparece en Google Maps, no puede tener ficha completa: la pregunta 2 se marca "No" y se bloquea (sin disabled, para que FormData la siga leyendo). */
     const q2s = document.getElementById('q2s'), q2n = document.getElementById('q2n');
+    /* Tocar de nuevo una respuesta ya marcada la desmarca. */
+    quiz.querySelectorAll('.q label').forEach((l) => {
+      const inp = document.getElementById(l.htmlFor);
+      l.addEventListener('pointerdown', () => { inp.dataset.was = inp.checked ? '1' : ''; });
+    });
+    quiz.addEventListener('click', (ev) => {
+      const t = ev.target;
+      if (t.type !== 'radio') return;
+      if (t.dataset.was === '1') { t.checked = false; quiz.dispatchEvent(new CustomEvent('change', { detail: t.name })); }
+      t.dataset.was = '';
+    });
     quiz.addEventListener('change', (ev) => {
-      if (ev.target.name === 'maps') {
-        const sinMaps = ev.target.value === '0';
-        if (sinMaps) q2n.checked = true;
-        q2s.closest('.q').classList.toggle('q-off', sinMaps);
-      }
+      const nombre = ev.target.name || ev.detail;
+      const maps = quiz.querySelector('input[name="maps"]:checked');
+      const sinMaps = !!maps && maps.value === '0';
+      if (nombre === 'maps' && sinMaps) q2n.checked = true;
+      if (nombre === 'maps' && !maps) q2n.checked = false;
+      q2s.closest('.q').classList.toggle('q-off', sinMaps);
       const datos = new FormData(quiz);
       const claves = Object.keys(PESOS);
-      if (!claves.every((k) => datos.has(k))) return;
+      if (!claves.every((k) => datos.has(k))) { res.hidden = true; resumen = ''; return; }
       let puntos = 0; const faltas = [];
       claves.forEach((k) => {
         if (datos.get(k) === '1') puntos += PESOS[k];
