@@ -17,14 +17,15 @@
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="es_AR">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/instrument-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/instrument-serif-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
 <style>
   /* Tipografias alojadas en el propio sitio (licencia SIL OFL, ver /fonts). */
-  @font-face{font-family:'Space Grotesk'; font-style:normal; font-weight:300 700; font-display:swap; src:url(/fonts/space-grotesk-var.woff2) format('woff2');}
-  @font-face{font-family:'Inter'; font-style:normal; font-weight:100 900; font-display:swap; src:url(/fonts/inter-var.woff2) format('woff2');}
-  @font-face{font-family:'IBM Plex Mono'; font-style:normal; font-weight:400; font-display:swap; src:url(/fonts/ibm-plex-mono-400.woff2) format('woff2');}
-  @font-face{font-family:'IBM Plex Mono'; font-style:normal; font-weight:500; font-display:swap; src:url(/fonts/ibm-plex-mono-500.woff2) format('woff2');}
+  @font-face{font-family:'Instrument Serif'; font-style:normal; font-weight:400; font-display:swap; src:url(/fonts/instrument-serif-400.woff2) format('woff2');}
+  @font-face{font-family:'Instrument Serif'; font-style:italic; font-weight:400; font-display:swap; src:url(/fonts/instrument-serif-italic.woff2) format('woff2');}
+  @font-face{font-family:'Instrument Sans'; font-style:normal; font-weight:400 700; font-display:swap; src:url(/fonts/instrument-sans-var.woff2) format('woff2');}
+  @font-face{font-family:'JetBrains Mono'; font-style:normal; font-weight:100 800; font-display:swap; src:url(/fonts/jetbrains-mono-var.woff2) format('woff2');}
   :root{
     --ink:#0A0A0F;
     --surface:#111119;
@@ -41,9 +42,10 @@
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
-  body{background:var(--ink); color:var(--text); font-family:'Inter', sans-serif; line-height:1.55; overflow-x:hidden;}
-  h1,h2,h3{font-family:'Space Grotesk', sans-serif; font-weight:600; letter-spacing:-0.02em;}
-  .mono{font-family:'IBM Plex Mono', monospace;}
+  body{background:var(--ink); color:var(--text); font-family:'Instrument Sans', sans-serif; line-height:1.55; overflow-x:hidden;}
+  h1,h2{font-family:'Instrument Serif', Georgia, serif; font-weight:400; letter-spacing:-0.01em;}
+  h3{font-family:'Instrument Sans', sans-serif; font-weight:600; letter-spacing:-0.01em;}
+  .mono{font-family:'JetBrains Mono', monospace;}
   a{color:inherit; text-decoration:none;}
   .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
   ul{list-style:none;}
@@ -51,7 +53,7 @@
   /* NAV */
   nav{position:sticky; top:0; z-index:50; background:rgba(10,10,15,0.88); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
   nav .wrap{display:flex; align-items:center; justify-content:space-between; height:72px;}
-  .logo{font-family:'Space Grotesk'; font-weight:700; font-size:19px; display:flex; align-items:center; gap:8px;}
+  .logo{font-family:'JetBrains Mono', monospace; font-weight:500; text-transform:uppercase; letter-spacing:.12em; font-size:15px; display:flex; align-items:center; gap:10px;}
     .logo-img{height:26px; width:auto; display:block;}
   .nav-links{display:flex; gap:30px; font-size:14px; color:var(--text-dim);}
   .nav-links a:hover{color:var(--text);}
@@ -67,7 +69,7 @@
   .pricing-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; margin-top:8px;}
   .price-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:28px 24px; display:flex; flex-direction:column;}
   .price-card.featured{border-color:var(--electric); box-shadow:0 0 0 1px var(--electric) inset;}
-  .price-card .tier{font-family:'IBM Plex Mono'; font-size:12.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--electric); margin-bottom:14px;}
+  .price-card .tier{font-family:'JetBrains Mono', monospace; font-size:12.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--electric); margin-bottom:14px;}
   .price-card .amount{font-size:34px; font-weight:700; letter-spacing:-.02em; line-height:1;}
   .price-card .amount span{font-size:14px; font-weight:400; color:var(--text-dim);}
   .price-card .abono{font-size:14px; color:var(--text-dim); margin:10px 0 20px;}
@@ -86,19 +88,48 @@
   .term summary::-webkit-details-marker{display:none;}
   .term summary strong{color:var(--text);}
   .term summary span{color:var(--text-dim); font-size:13.5px;}
-  .term summary::after{content:'Ver más'; position:absolute; right:14px; top:14px; font-size:11px; color:var(--electric); font-family:'IBM Plex Mono',monospace;}
+  .term summary::after{content:'Ver más'; position:absolute; right:14px; top:14px; font-size:11px; color:var(--electric); font-family:'JetBrains Mono',monospace;}
   .term[open] summary::after{content:'Ver menos';}
   .term summary:focus-visible{outline:2px solid var(--electric); outline-offset:2px;}
   .term p{padding:0 18px 16px; font-size:14px; color:var(--text-dim);}
   .term a{color:var(--electric);}
   .price-note{font-size:13px; color:var(--text-dim); margin-top:14px;}
-  .eyebrow{font-family:'IBM Plex Mono'; font-size:12.5px; color:var(--electric); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:16px; display:flex; align-items:center; gap:10px;}
-  .eyebrow::before{content:''; width:20px; height:1px; background:var(--electric);}
+  .eyebrow{font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--electric); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:16px; display:flex; align-items:center; gap:10px;}
+  .eyebrow::before{content:''; width:22px; height:10px; background:repeating-linear-gradient(45deg, var(--electric) 0 2px, transparent 2px 5px);}
 
   /* [1] HERO */
-  .hero{padding:110px 0 80px; position:relative;}
-  .hero h1{font-size:clamp(32px,5vw,58px); line-height:1.08; max-width:800px; margin-bottom:22px;}
-  .hero h1 em{font-style:normal; color:var(--electric-soft);}
+  .hero{padding:110px 0 80px; position:relative; overflow:hidden;}
+  .hero > .wrap{position:relative; z-index:1;}
+  .hero-net{position:absolute; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; opacity:.75;
+    -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 45%, #000 100%); mask-image:linear-gradient(90deg, transparent 0%, #000 45%, #000 100%);}
+  @media (max-width:720px){ .hero-net{opacity:.45; -webkit-mask-image:linear-gradient(180deg, transparent 0%, #000 40%); mask-image:linear-gradient(180deg, transparent 0%, #000 40%);} }
+
+  /* AUTODIAGNÓSTICO */
+  .quiz{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:26px; display:grid; gap:14px;}
+  .q{border:0; border-bottom:1px solid var(--line); margin:0; min-width:0; display:flex; justify-content:space-between; align-items:center; gap:16px; padding:12px 0;}
+  .q:last-of-type{border-bottom:0;}
+  .q legend{float:left; font-size:15px; color:var(--text); max-width:560px;}
+  .q .opts{display:flex; gap:8px; flex:none;}
+  .q input{position:absolute; opacity:0; width:1px; height:1px;}
+  .q label{border:1px solid var(--line); border-radius:999px; padding:7px 16px; font-size:13.5px; color:var(--text-dim); cursor:pointer; user-select:none;}
+  .q input:checked + label{border-color:var(--electric); color:var(--text); background:rgba(43,168,220,.12);}
+  .q input:focus-visible + label{outline:2px solid var(--electric); outline-offset:2px;}
+  @media (max-width:640px){ .q{flex-direction:column; align-items:flex-start;} }
+  .quiz-result{background:var(--surface-2); border:1px solid var(--line); border-left:3px solid var(--electric); border-radius:10px; padding:20px 22px;}
+  .quiz-score{display:flex; align-items:baseline; gap:10px;}
+  .quiz-score b{font-family:'Instrument Serif', Georgia, serif,sans-serif; font-size:44px; line-height:1; color:var(--electric-soft);}
+  .quiz-score span{color:var(--text-dim); font-size:14px;}
+  .quiz-bar{height:6px; background:var(--line); border-radius:999px; margin:14px 0; overflow:hidden;}
+  .quiz-bar i{display:block; height:100%; width:0; background:var(--electric); transition:width .6s ease;}
+  .quiz-result h3{font-size:15.5px; margin-bottom:8px;}
+  .quiz-result ul{list-style:none; padding:0; margin:0 0 16px; color:var(--text-dim); font-size:14.5px;}
+  .quiz-result li::before{content:"→ "; color:var(--electric-soft);}
+  .quiz-result li + li{margin-top:6px;}
+  .quiz-result .btn-primary{display:inline-block; text-align:center;}
+  .quiz-note{font-size:12.5px; color:var(--text-dim); margin-top:12px;}
+  .hero h1{font-size:clamp(38px,6vw,68px); line-height:1.02; max-width:800px; margin-bottom:22px;}
+  .hero h1 em{font-family:'Instrument Serif', Georgia, serif; font-style:italic; font-weight:400; font-size:1.04em; letter-spacing:0; color:var(--electric-soft);}
+  @supports ((-webkit-background-clip:text) or (background-clip:text)){ .hero h1 em{background:linear-gradient(90deg,#0F91CF,#4268C2 55%,#8A4FB0); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;} }
   .hero p{font-size:18px; color:var(--text-dim); max-width:540px; margin-bottom:34px;}
   .hero-ctas{display:flex; gap:16px; flex-wrap:wrap;}
   .trust{margin-top:22px;}
@@ -129,14 +160,14 @@
 
   .section{padding:84px 0;}
   .section-head{max-width:600px; margin-bottom:48px;}
-  .section-head h2{font-size:clamp(26px,3.4vw,36px);}
+  .section-head h2{font-size:clamp(30px,4vw,44px); line-height:1.08;}
   .section-head p{color:var(--text-dim); margin-top:14px; font-size:16px;}
   .border-top{border-top:1px solid var(--line);}
 
   /* [2] PROBLEMA */
   .problem-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
   .problem-card{background:var(--surface); padding:30px 26px;}
-  .problem-card .quote{font-family:'Space Grotesk'; font-size:18px; color:var(--text); margin-bottom:12px;}
+  .problem-card .quote{font-family:'Instrument Serif', Georgia, serif; font-size:18px; color:var(--text); margin-bottom:12px;}
   .problem-card .quote::before{content:'"'; color:var(--electric);}
   .problem-card .quote::after{content:'"'; color:var(--electric);}
   .problem-card .fix{font-size:14px; color:var(--text-dim); display:flex; align-items:center; gap:8px;}
@@ -146,8 +177,8 @@
   /* [4] SERVICIOS */
   .grid-services{display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
   .service-card{background:var(--ink); padding:30px 24px;}
-  .service-card .num{font-family:'IBM Plex Mono'; font-size:13px; color:var(--violet-text); margin-bottom:16px; display:block;}
-  .service-card h3{font-size:17.5px; margin-bottom:8px;}
+  .service-card .num{font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--violet-text); margin-bottom:16px; display:block;}
+  .service-card h3{font-size:16px; margin-bottom:8px;}
   .service-card p{font-size:14px; color:var(--text-dim);}
   /* "Proxima etapa": se atenua con color, no con opacidad, para no romper el contraste. */
   .service-card.later h3, .service-card.later .num{color:var(--text-dim);}
@@ -157,8 +188,8 @@
   .steps{display:flex; flex-direction:column;}
   .step{display:grid; grid-template-columns:70px 1fr; gap:24px; padding:26px 0; border-bottom:1px solid var(--line);}
   .step:last-child{border-bottom:none;}
-  .step .idx{font-family:'IBM Plex Mono'; color:var(--electric-soft); font-size:15px;}
-  .step h3{font-size:17px; margin-bottom:6px;}
+  .step .idx{font-family:'JetBrains Mono', monospace; color:var(--electric-soft); font-size:15px;}
+  .step h3{font-size:15.5px; margin-bottom:6px;}
   .step p{color:var(--text-dim); font-size:14.5px; max-width:520px;}
 
   /* [6] CASOS / compromiso */
@@ -166,44 +197,46 @@
   /* [7] POR QUÉ */
   .why-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px;}
   .why-card{padding:4px 0;}
-  .why-card .mark{width:34px; height:34px; border-radius:8px; background:var(--surface-2); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--violet-text); font-family:'IBM Plex Mono'; margin-bottom:14px;}
-  .why-card h3{font-size:16.5px; margin-bottom:6px;}
+  .why-card .mark{width:34px; height:34px; border-radius:8px; background:var(--surface-2); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--violet-text); font-family:'JetBrains Mono', monospace; margin-bottom:14px;}
+  .why-card h3{font-size:15.5px; margin-bottom:6px;}
   .why-card p{font-size:14px; color:var(--text-dim);}
 
   /* [8] FAQ */
   .faq-item{border-bottom:1px solid var(--line);}
-  .faq-item summary{padding:20px 4px; cursor:pointer; font-family:'Space Grotesk'; font-size:15.5px; display:flex; justify-content:space-between; align-items:center; list-style:none;}
+  .faq-item summary{padding:20px 4px; cursor:pointer; font-family:'Instrument Serif', Georgia, serif; font-size:15.5px; display:flex; justify-content:space-between; align-items:center; list-style:none;}
   .faq-item summary::-webkit-details-marker{display:none;}
   .faq-item summary::after{content:'+'; color:var(--electric); font-size:20px; margin-left:16px;}
   .faq-item[open] summary::after{content:'–';}
   .faq-item p{padding:0 4px 22px; color:var(--text-dim); font-size:14.5px; max-width:640px;}
 
   /* [9] CTA final */
-  .final-cta{background:linear-gradient(160deg, var(--surface), var(--ink)); border:1px solid var(--line); border-radius:20px; padding:56px 40px; text-align:center;}
-  .final-cta h2{font-size:clamp(26px,3.6vw,38px); margin-bottom:14px;}
+  .final-cta{background:url(/marca/yn-isotipo.svg) no-repeat right -90px center / 340px auto, linear-gradient(160deg, var(--surface), var(--ink)); border:1px solid var(--line); border-radius:20px; padding:56px 40px; text-align:center; position:relative;}
+  .final-cta::before{content:''; position:absolute; inset:0; border-radius:20px; background:linear-gradient(160deg, rgba(17,17,25,.88), rgba(10,10,15,.88)); pointer-events:none;}
+  .final-cta > *{position:relative;}
+  .final-cta h2{font-size:clamp(30px,4.2vw,46px); margin-bottom:14px;}
   .final-cta p{color:var(--text-dim); max-width:480px; margin:0 auto 30px;}
   .final-cta .hero-ctas{justify-content:center;}
 
   .final-cta form, .final-cta .done{max-width:560px; margin:0 auto; text-align:left;}
   .contact-channels{max-width:560px; margin:48px auto 0;}
   .form-actions{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
-  @media (max-width:520px){ .form-actions{grid-template-columns:1fr;} .final-cta{padding:40px 20px;} }
+  @media (max-width:520px){ .form-actions{grid-template-columns:1fr;} .final-cta{padding:40px 20px; background:linear-gradient(160deg, var(--surface), var(--ink));} }
   .submit-btn.alt{background:transparent; color:var(--text); border:1px solid var(--electric);}
   .submit-btn:disabled{opacity:.6; cursor:default; transform:none;}
   .final-cta form p{margin:0; max-width:none;}
   form[hidden], .done[hidden]{display:none;}
   .form-hint{font-size:13px; color:var(--text-dim); line-height:1.5; margin:0;}
   .final-cta .done{text-align:center; border:1px solid var(--electric); border-radius:14px; padding:30px 22px;}
-  .done h3{font-family:'Space Grotesk'; font-size:21px; margin-bottom:10px;}
+  .done h3{font-family:'Instrument Serif', Georgia, serif; font-size:21px; margin-bottom:10px;}
   .done p{margin:0 auto 22px;}
   .done-actions{display:flex; flex-direction:column; gap:12px; align-items:stretch; max-width:340px; margin:0 auto;}
   .done-actions a{text-align:center;}
   .contact-channel{display:flex; align-items:center; gap:12px; padding:14px 0; border-top:1px solid var(--line); font-size:14.5px; min-width:0; overflow-wrap:anywhere;}
   .contact-channel:last-child{border-bottom:1px solid var(--line);}
-  .contact-channel .tag{font-family:'IBM Plex Mono'; color:var(--electric); font-size:12px; min-width:90px;}
+  .contact-channel .tag{font-family:'JetBrains Mono', monospace; color:var(--electric); font-size:12px; min-width:90px;}
   form{display:flex; flex-direction:column; gap:16px;}
   label{font-size:13px; color:var(--text-dim); margin-bottom:6px; display:block;}
-  input, textarea{width:100%; background:var(--ink); border:1px solid var(--line); border-radius:10px; padding:13px 14px; color:var(--text); font-family:'Inter'; font-size:14.5px; transition:border-color .15s ease;}
+  input, textarea{width:100%; background:var(--ink); border:1px solid var(--line); border-radius:10px; padding:13px 14px; color:var(--text); font-family:'Instrument Sans', sans-serif; font-size:14.5px; transition:border-color .15s ease;}
   input:focus, textarea:focus{outline:none; border-color:var(--electric-soft);}
   textarea{resize:vertical; min-height:100px;}
   .submit-btn{background:var(--electric); color:#001217; padding:14px; border:none; border-radius:10px; font-weight:600; font-size:15px; cursor:pointer; transition:transform .15s ease;}
@@ -226,9 +259,9 @@
   footer .foot-links a:hover{color:var(--text);}
   details.sec{border-top:1px solid var(--line);}
   details.sec:last-of-type{border-bottom:1px solid var(--line);}
-  details.sec summary{list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:12px; padding:18px 0; font-family:'Space Grotesk', sans-serif; font-size:18px; font-weight:600; color:var(--text);}
+  details.sec summary{list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:12px; padding:18px 0; font-family:'Instrument Serif', Georgia, serif; font-size:18px; font-weight:600; color:var(--text);}
   details.sec summary::-webkit-details-marker{display:none;}
-  details.sec summary::after{content:'+'; font-family:'IBM Plex Mono', monospace; color:var(--electric); font-size:22px; line-height:1; flex:0 0 auto;}
+  details.sec summary::after{content:'+'; font-family:'JetBrains Mono', monospace; color:var(--electric); font-size:22px; line-height:1; flex:0 0 auto;}
   details.sec[open] summary::after{content:'−';}
   details.sec summary:focus-visible{outline:2px solid var(--electric); outline-offset:4px;}
   details.sec .body{padding:0 0 20px;}
@@ -430,6 +463,7 @@
 
 <!-- [1] HERO -->
 <header class="hero">
+  <canvas class="hero-net" id="hero-net" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="eyebrow">100% remoto · Toda Argentina</div>
     <h1>Tu negocio pierde clientes por cosas <em>que se resuelven rápido</em>, con plazos por escrito.</h1>
@@ -442,13 +476,13 @@
       <div class="trust-chips" role="group" aria-label="Datos de confianza">
         <button type="button" class="chip mono" aria-expanded="false" aria-controls="trust-panel" data-k="precio">Desde $140.000</button>
         <button type="button" class="chip mono" aria-expanded="false" aria-controls="trust-panel" data-k="factura">Factura por ARCA</button>
-        <button type="button" class="chip mono" aria-expanded="false" aria-controls="trust-panel" data-k="aaip">Inscriptos ante la AAIP</button>
+        <button type="button" class="chip mono" aria-expanded="false" aria-controls="trust-panel" data-k="aaip">Registro Nacional de Bases de Datos</button>
         <button type="button" class="chip mono" aria-expanded="false" aria-controls="trust-panel" data-k="garantia">Garantía de plazo</button>
       </div>
       <div class="trust-panel" id="trust-panel" role="region" aria-live="polite" hidden></div>
       <template data-k="precio">Precio final publicado, en pesos y con factura. <a href="#precios">Ver precios</a></template>
       <template data-k="factura">Todos los trabajos se entregan con factura, emitida por ARCA a nombre de Luis Areco Galeano (CUIT 20-18866406-8).</template>
-      <template data-k="aaip">Estamos inscriptos ante la Agencia de Acceso a la Información Pública (registro RL-2026-85177920-APN-DNPDP#AAIP) y tratamos tus datos según la Ley 25.326. <a href="#privacidad">Cómo tratamos tus datos</a></template>
+      <template data-k="aaip">Registro Nacional de Bases de Datos (Legajo RL-2026-85177920). Tratamos tus datos según la Ley 25.326. <a href="#privacidad">Cómo tratamos tus datos</a></template>
       <template data-k="garantia">Si no entregamos en la fecha de tu propuesta, el primer mes de acompañamiento no se cobra (con condiciones). <a href="/terminos.html">Ver condiciones</a></template>
     </div>
   </div>
@@ -476,6 +510,32 @@
         <div class="fix">Landing pages que sí convierten</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- [2b] AUTODIAGNÓSTICO -->
+<section class="section border-top" id="autodiagnostico">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Autodiagnóstico · 30 segundos</div>
+      <h2>¿Cuántos clientes se te están escapando?</h2>
+      <p>Cinco preguntas con un toque. Te mostramos tu puntaje y qué arreglaríamos primero.</p>
+    </div>
+    <form class="quiz" id="quiz" novalidate>
+      <fieldset class="q"><legend>¿Aparecés en Google Maps cuando buscan tu rubro cerca?</legend><div class="opts"><input type="radio" name="maps" id="q1s" value="1"><label for="q1s">Sí</label><input type="radio" name="maps" id="q1n" value="0"><label for="q1n">No</label></div></fieldset>
+      <fieldset class="q"><legend>¿Tu ficha de Google tiene fotos, horarios y reseñas al día?</legend><div class="opts"><input type="radio" name="ficha" id="q2s" value="1"><label for="q2s">Sí</label><input type="radio" name="ficha" id="q2n" value="0"><label for="q2n">No</label></div></fieldset>
+      <fieldset class="q"><legend>¿Te pueden reservar o pedir sin tener que escribirte?</legend><div class="opts"><input type="radio" name="turnos" id="q3s" value="1"><label for="q3s">Sí</label><input type="radio" name="turnos" id="q3n" value="0"><label for="q3n">No</label></div></fieldset>
+      <fieldset class="q"><legend>¿Respondés WhatsApp fuera de horario, aunque sea con un mensaje automático?</legend><div class="opts"><input type="radio" name="whatsapp" id="q4s" value="1"><label for="q4s">Sí</label><input type="radio" name="whatsapp" id="q4n" value="0"><label for="q4n">No</label></div></fieldset>
+      <fieldset class="q"><legend>¿Tenés una web propia que diga qué hacés y cuánto sale?</legend><div class="opts"><input type="radio" name="web" id="q5s" value="1"><label for="q5s">Sí</label><input type="radio" name="web" id="q5n" value="0"><label for="q5n">No</label></div></fieldset>
+      <div class="quiz-result" id="quiz-result" hidden aria-live="polite">
+        <div class="quiz-score"><b id="quiz-num">0</b><span>/ 100 de presencia digital</span></div>
+        <div class="quiz-bar"><i id="quiz-bar"></i></div>
+        <h3 id="quiz-title"></h3>
+        <ul id="quiz-list"></ul>
+        <a href="#contacto" class="btn-primary" id="quiz-cta">Pedir mi Diagnóstico Digital</a>
+        <p class="quiz-note">Es orientativo. El Diagnóstico Digital lo revisamos sobre tu negocio real, sin costo.</p>
+      </div>
+    </form>
   </div>
 </section>
 
@@ -709,7 +769,7 @@
   <div class="wrap">
     <div class="eyebrow">Tus datos</div>
     <h2>Cómo tratamos tu información</h2>
-    <details class="sec"><summary>Quién es responsable</summary><div class="body"><p>Luis Areco Galeano, CUIT 20-18866406-8, nombre comercial Young Nexus, domicilio fiscal Santo Domingo 3900, Ciudad Autónoma de Buenos Aires (CP 1437). Responsable inscripto ante la AAIP: RL-2026-85177920-APN-DNPDP#AAIP.</p></div></details>
+    <details class="sec"><summary>Quién es responsable</summary><div class="body"><p>Luis Areco Galeano, CUIT 20-18866406-8, nombre comercial Young Nexus, domicilio fiscal Santo Domingo 3900, Ciudad Autónoma de Buenos Aires (CP 1437). Registro Nacional de Bases de Datos (Legajo RL-2026-85177920).</p></div></details>
     <details class="sec"><summary>Qué hacemos con tus datos</summary><div class="body"><p>Usamos lo que nos dejás en los formularios solo para responderte y preparar una propuesta. Lo procesan Google, Cal.com y Meta en servidores de EE.UU. No vendemos tus datos, no usamos cookies y podés pedir que los borremos cuando quieras.</p></div></details>
     <p style="margin-top:18px;"><a href="/privacidad.html" style="color:var(--electric);">Leé la política de privacidad completa</a> · <a href="/terminos.html" style="color:var(--electric);">Términos y condiciones</a></p>
     <p class="mono" style="font-size:12px; color:var(--text-dim); margin-top:18px;">El titular de los datos personales tiene la facultad de ejercer el derecho de acceso a los mismos en forma gratuita a intervalos no inferiores a seis meses, salvo que se acredite un interés legítimo al efecto conforme lo establecido en el artículo 14, inciso 3 de la Ley Nº 25.326. La AGENCIA DE ACCESO A LA INFORMACIÓN PÚBLICA, en su carácter de Órgano de Control de la Ley Nº 25.326, tiene la atribución de atender las denuncias y reclamos que interpongan quienes resulten afectados en sus derechos por incumplimiento de las normas vigentes en materia de protección de datos personales.</p>
@@ -757,6 +817,45 @@
   /* Qué botón se usó. e.submitter no existe en Safari < 15.4, así que lo anotamos al hacer clic. */
   let elegido = 'whatsapp';
   buttons.forEach((b) => b.addEventListener('click', () => { elegido = b.value; }));
+
+  /* Autodiagnóstico: calcula el puntaje en el navegador, no guarda ni envía nada.
+     El botón final lleva las respuestas al campo "¿Qué te gustaría resolver?". */
+  (function () {
+    const quiz = document.getElementById('quiz');
+    if (!quiz) return;
+    const PESOS = { maps: 25, ficha: 15, turnos: 20, whatsapp: 20, web: 20 };
+    const FALTA = {
+      maps: 'No aparecés en Google Maps cuando te buscan cerca.',
+      ficha: 'Tu ficha de Google está incompleta o desactualizada.',
+      turnos: 'Para reservar o pedir, te tienen que escribir.',
+      whatsapp: 'Fuera de horario, las consultas quedan sin respuesta.',
+      web: 'No tenés una web propia que explique qué hacés y cuánto sale.'
+    };
+    const res = document.getElementById('quiz-result');
+    let resumen = '';
+    quiz.addEventListener('change', () => {
+      const datos = new FormData(quiz);
+      const claves = Object.keys(PESOS);
+      if (!claves.every((k) => datos.has(k))) return;
+      let puntos = 0; const faltas = [];
+      claves.forEach((k) => { if (datos.get(k) === '1') puntos += PESOS[k]; else faltas.push(FALTA[k]); });
+      document.getElementById('quiz-num').textContent = puntos;
+      document.getElementById('quiz-bar').style.width = puntos + '%';
+      document.getElementById('quiz-title').textContent = puntos <= 40
+        ? 'Estás perdiendo clientes todos los días.'
+        : puntos <= 75 ? 'Tenés una base, pero con fugas.' : 'Vas bien encaminado.';
+      const lista = document.getElementById('quiz-list');
+      lista.replaceChildren(...(faltas.length ? faltas : ['Lo básico está cubierto: el siguiente paso es automatizar.']).map((t) => {
+        const li = document.createElement('li'); li.textContent = t; return li;
+      }));
+      resumen = 'Autodiagnóstico: ' + puntos + '/100.' + (faltas.length ? ' A mejorar: ' + faltas.join(' ') : '');
+      res.hidden = false;
+    });
+    document.getElementById('quiz-cta').addEventListener('click', () => {
+      const msg = document.getElementById('mensaje');
+      if (msg && resumen && !msg.value.trim()) msg.value = resumen.slice(0, 1000);
+    });
+  })();
 
   /* Datos de confianza del hero: cada botón abre su explicación; tocar de nuevo la cierra. */
   (function () {
@@ -918,5 +1017,44 @@
 
 
 
+<script>
+  /* Red de nodos de la portada (identidad visual "sistema nervioso").
+     Se pausa fuera de pantalla y con la pestaña oculta; con "reducir movimiento" queda quieta. */
+  (function () {
+    const cv = document.getElementById('hero-net');
+    if (!cv || !cv.getContext) return;
+    const ctx = cv.getContext('2d');
+    const quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let W = 0, H = 0, nodos = [], visible = true, raf = 0;
+    const DIST = 130;
+    function medir() {
+      const r = cv.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const n = Math.round(Math.min(60, Math.max(22, W * H / 16000)));
+      nodos = Array.from({ length: n }, () => ({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .25, vy: (Math.random() - .5) * .25, r: Math.random() * 1.6 + .8 }));
+    }
+    function dibujar() {
+      ctx.clearRect(0, 0, W, H);
+      for (let i = 0; i < nodos.length; i++) {
+        const a = nodos[i];
+        for (let j = i + 1; j < nodos.length; j++) {
+          const b = nodos[j], dx = a.x - b.x, dy = a.y - b.y, d = Math.hypot(dx, dy);
+          if (d < DIST) { ctx.strokeStyle = 'rgba(84,190,230,' + (1 - d / DIST) * .5 + ')'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); }
+        }
+      }
+      nodos.forEach((p, i) => { ctx.fillStyle = i % 4 === 0 ? 'rgba(176,127,208,.9)' : 'rgba(84,190,230,.9)'; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill(); });
+    }
+    function paso() {
+      nodos.forEach((p) => { p.x += p.vx; p.y += p.vy; if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1; });
+      dibujar();
+      if (visible && !document.hidden) raf = requestAnimationFrame(paso); else raf = 0;
+    }
+    function arrancar() { if (!quieto && !raf && visible && !document.hidden) raf = requestAnimationFrame(paso); }
+    medir(); dibujar(); arrancar();
+    let t; window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { medir(); dibujar(); }, 200); });
+    document.addEventListener('visibilitychange', arrancar);
+    if ('IntersectionObserver' in window) new IntersectionObserver((e) => { visible = e[0].isIntersecting; arrancar(); }).observe(cv);
+  })();
+</script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "90c286bae06d48c3ba4586170937ef60"}'></script><!-- End Cloudflare Web Analytics -->
 </body></html>

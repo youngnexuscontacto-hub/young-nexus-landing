@@ -10,7 +10,7 @@ Sistema de marca de Young Nexus: agencia 100% remota que ayuda a comercios, prof
 - **Promesas que se cumplen.** Nunca "duplicá tus ventas", ni clientes o testimonios inventados. Lo publicado es oferta vinculante (Ley 24.240).
 - **Siempre un cierre con acción:** diagnóstico digital sin costo + www.youngnexus.com.ar.
 - **Emojis:** LinkedIn 0–1. WhatsApp e Instagram, hasta 3. Nunca 🚀.
-- **Confianza legal:** una línea al pie en landing, propuestas y formularios: "Cuidamos tus datos y los de tus clientes conforme a la Ley 25.326". No en carruseles ni historias. Nunca "certificados" ni "registrados ante la AAIP" hasta tener la constancia.
+- **Confianza legal:** una línea al pie en landing, propuestas y formularios: "Cuidamos tus datos y los de tus clientes conforme a la Ley 25.326". No en carruseles ni historias. Se menciona solo como "Registro Nacional de Bases de Datos (Legajo RL-2026-85177920)" (notificado el 02/09/2026). No usar "inscriptos" ni "registrados ante la AAIP". No usar "Responsable inscripto": se confunde con la categoría de IVA de ARCA; la inscripción de la base de datos sigue en trámite. Nunca "certificados".
 
 Frases de referencia:
 - "Que tu negocio funcione aunque no estés mirando el teléfono." (lema)
@@ -20,8 +20,9 @@ Frases de referencia:
 ## Fundamentos visuales
 
 - **Oscuro primero.** Fondo `ink` (#0A0A0F), tarjetas en `surface`. El tema claro existe para documentos y propuestas.
-- **El degradé del isotipo** va de `electric` a `violet`. Se usa en una sola cosa por pieza: una palabra del título, una barra superior de 12px o el número de un paso. Nunca de fondo completo.
-- **Tipografía:** títulos en Space Grotesk bold, texto en Inter, etiquetas en IBM Plex Mono mayúscula con 2px de espaciado.
+- **El degradé del isotipo** va de `#0F91CF` a `#3A5DB5` y `#7B409C` (los del isotipo). Se usa en una sola cosa por pieza: una palabra del título, una barra superior de 12px o el número de un paso. Nunca de fondo completo.
+- **Tipografía (desde 15/10/2026):** títulos en Instrument Serif; la palabra clave del título en Instrument Serif itálica con el degradé del isotipo; subtítulos de tarjetas y texto en Instrument Sans; etiquetas y wordmark "YOUNG NEXUS" en JetBrains Mono mayúscula con espaciado amplio. Todas con licencia SIL OFL 1.1, alojadas en el sitio.
+- **Motivo de bandas:** las bandas diagonales de la N se repiten como marcador de las etiquetas (rayado a 45°) y como marca de agua del isotipo en el cierre. No se agregan otras formas decorativas.
 - **Radios:** `radius-md` (10px) en botones y tarjetas; `radius-lg` en cajas de piezas.
 - **Aire:** márgenes de `space-6` (64px) en piezas de 1080px.
 
