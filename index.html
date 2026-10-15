@@ -81,6 +81,18 @@
   .price-card.featured .price-cta{background:var(--electric); color:#001217; border-color:var(--electric);}
   .promo-band{margin-top:22px; background:var(--surface-2); border:1px solid var(--line); border-left:3px solid var(--electric); border-radius:10px; padding:18px 22px; font-size:14.5px; color:var(--text-dim);}
   .promo-band strong{color:var(--text);}
+  .terms-grid{margin-top:22px; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; align-items:start;}
+  @media (max-width:820px){ .terms-grid{grid-template-columns:1fr;} }
+  .term{background:var(--surface-2); border:1px solid var(--line); border-left:3px solid var(--electric); border-radius:10px;}
+  .term summary{list-style:none; cursor:pointer; padding:14px 84px 14px 18px; position:relative; display:flex; flex-direction:column; gap:2px; font-size:14.5px;}
+  .term summary::-webkit-details-marker{display:none;}
+  .term summary strong{color:var(--text);}
+  .term summary span{color:var(--text-dim); font-size:13.5px;}
+  .term summary::after{content:'Ver más'; position:absolute; right:14px; top:14px; font-size:11px; color:var(--electric); font-family:'IBM Plex Mono',monospace;}
+  .term[open] summary::after{content:'Ver menos';}
+  .term summary:focus-visible{outline:2px solid var(--electric); outline-offset:2px;}
+  .term p{padding:0 18px 16px; font-size:14px; color:var(--text-dim);}
+  .term a{color:var(--electric);}
   .price-note{font-size:13px; color:var(--text-dim); margin-top:14px;}
   .eyebrow{font-family:'IBM Plex Mono'; font-size:12.5px; color:var(--electric); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:16px; display:flex; align-items:center; gap:10px;}
   .eyebrow::before{content:''; width:20px; height:1px; background:var(--electric);}
@@ -540,15 +552,19 @@
       </div>
     </div>
 
-    <div class="promo-band">
-      <strong>Precio de lanzamiento.</strong> Estos valores se mantienen hasta nuestros primeros 10 negocios o hasta el 31 de diciembre de 2026, lo que ocurra primero. Si entrás ahora, tu abono mensual queda congelado 6 meses y después se ajusta por IPC.
-    </div>
-
-    <div class="promo-band">
-      <strong>Pagás en dos partes:</strong> 50% al arrancar y 50% cuando recibís el trabajo. Por transferencia, sin recargo. Si preferís tarjeta de crédito, podés pagar en cuotas a través de una plataforma de pago; la plataforma te informa el costo de la financiación antes de confirmar.
-    </div>
-    <div class="promo-band">
-      <strong>Garantía de plazo.</strong> Si no entregamos en la fecha que figura en tu propuesta, el primer mes de acompañamiento no se cobra. <a href="/terminos.html" style="color:var(--electric);">Ver condiciones</a>.
+    <div class="terms-grid">
+      <details class="term">
+        <summary><strong>Precio de lanzamiento</strong><span>Primeros 10 negocios o hasta el 31/12/2026</span></summary>
+        <p>Estos valores se mantienen hasta nuestros primeros 10 negocios o hasta el 31 de diciembre de 2026, lo que ocurra primero. Si entrás ahora, tu abono mensual queda congelado 6 meses y después se ajusta por IPC.</p>
+      </details>
+      <details class="term">
+        <summary><strong>Pagás en dos partes</strong><span>50% al arrancar, 50% al recibir</span></summary>
+        <p>Por transferencia, sin recargo. Si preferís tarjeta de crédito, podés pagar en cuotas a través de una plataforma de pago; la plataforma te informa el costo de la financiación antes de confirmar.</p>
+      </details>
+      <details class="term">
+        <summary><strong>Garantía de plazo</strong><span>Si nos atrasamos, el primer mes no se cobra</span></summary>
+        <p>Si no entregamos en la fecha que figura en tu propuesta, el primer mes de acompañamiento no se cobra. <a href="/terminos.html">Ver condiciones</a>.</p>
+      </details>
     </div>
 
     <p class="price-note">Valores finales en pesos. Todos los trabajos se entregan con factura, emitida por ARCA (CUIT 20-18866406-8). El dominio (.com o .com.ar) lo contratás vos y queda siempre a tu nombre.</p>
