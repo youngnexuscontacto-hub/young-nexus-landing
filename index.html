@@ -79,8 +79,18 @@
   .price-list li.off::before{content:'✕ '; color:var(--text-dim);}
   .price-cta{display:block; text-align:center; padding:12px 18px; border-radius:10px; font-size:14.5px; font-weight:600; border:1px solid var(--line);}
   .price-card.featured .price-cta{background:var(--electric); color:#001217; border-color:var(--electric);}
-  .promo-band{margin-top:22px; background:var(--surface-2); border:1px solid var(--line); border-left:3px solid var(--electric); border-radius:10px; padding:18px 22px; font-size:14.5px; color:var(--text-dim);}
-  .promo-band strong{color:var(--text);}
+  .terms-grid{margin-top:22px; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; align-items:start;}
+  @media (max-width:820px){ .terms-grid{grid-template-columns:1fr;} }
+  .term{background:var(--surface-2); border:1px solid var(--line); border-left:3px solid var(--electric); border-radius:10px;}
+  .term summary{list-style:none; cursor:pointer; padding:14px 84px 14px 18px; position:relative; display:flex; flex-direction:column; gap:2px; font-size:14.5px;}
+  .term summary::-webkit-details-marker{display:none;}
+  .term summary strong{color:var(--text);}
+  .term summary span{color:var(--text-dim); font-size:13.5px;}
+  .term summary::after{content:'Ver más'; position:absolute; right:14px; top:14px; font-size:11px; color:var(--electric); font-family:'IBM Plex Mono',monospace;}
+  .term[open] summary::after{content:'Ver menos';}
+  .term summary:focus-visible{outline:2px solid var(--electric); outline-offset:2px;}
+  .term p{padding:0 18px 16px; font-size:14px; color:var(--text-dim);}
+  .term a{color:var(--electric);}
   .price-note{font-size:13px; color:var(--text-dim); margin-top:14px;}
   .eyebrow{font-family:'IBM Plex Mono'; font-size:12.5px; color:var(--electric); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:16px; display:flex; align-items:center; gap:10px;}
   .eyebrow::before{content:''; width:20px; height:1px; background:var(--electric);}
@@ -91,6 +101,27 @@
   .hero h1 em{font-style:normal; color:var(--electric-soft);}
   .hero p{font-size:18px; color:var(--text-dim); max-width:540px; margin-bottom:34px;}
   .hero-ctas{display:flex; gap:16px; flex-wrap:wrap;}
+  .trust{margin-top:22px;}
+  #contact-form input, #contact-form textarea{scroll-margin-top:96px;}
+  .trust-chips{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{background:transparent; border:1px solid var(--line); color:var(--electric-soft); font-size:12px; padding:7px 12px; border-radius:999px; cursor:pointer; line-height:1.2;}
+  .chip:hover, .chip[aria-expanded="true"]{border-color:var(--electric); color:var(--text);}
+  .chip:focus-visible{outline:2px solid var(--electric); outline-offset:2px;}
+  .trust-panel{margin-top:12px; max-width:540px; background:var(--surface-2); border:1px solid var(--line); border-left:3px solid var(--electric); border-radius:10px; padding:12px 16px; font-size:14px; color:var(--text-dim);}
+  .trust-panel a{color:var(--electric);}
+  .example{display:grid; grid-template-columns:minmax(0,300px) 1fr; gap:40px; align-items:center;}
+  .example img{width:100%; height:auto; border:1px solid var(--line); border-radius:var(--radius); display:block;}
+  .example .tag{display:inline-block; font-size:11px; letter-spacing:.08em; color:var(--electric-soft); border:1px solid var(--line); border-radius:999px; padding:4px 10px; margin-bottom:14px;}
+  .example h2{margin-bottom:12px;}
+  .example ul{margin-top:18px; padding:0; list-style:none; color:var(--text-dim);}
+  .example li::before{content:"→ "; color:var(--electric-soft);}
+  .example li + li{margin-top:6px;}
+  @media (max-width:720px){ .example{grid-template-columns:1fr; gap:24px;} .example img{max-width:280px; margin:0 auto;} }
+  .wa-float{position:fixed; right:18px; bottom:18px; z-index:50; display:flex; align-items:center; gap:8px; background:#25D366; color:#0b1410; font-weight:600; font-size:14px; padding:12px 16px; border-radius:999px; box-shadow:0 6px 20px rgba(0,0,0,.35); text-decoration:none; transition:opacity .2s, transform .2s;}
+  .wa-float svg{width:20px; height:20px; flex:none;}
+  .wa-float.is-hidden{opacity:0; transform:translateY(12px); pointer-events:none;}
+  @media (max-width:480px){ .wa-float span{display:none;} .wa-float{padding:14px;} }
+  .services-next{margin-top:22px; font-size:12.5px; color:var(--text-dim);}
   .btn-primary{background:var(--electric); color:#001217; padding:14px 26px; border-radius:10px; font-weight:600; font-size:15px; transition:transform .15s ease;}
   .btn-primary:hover{transform:translateY(-2px);}
   .btn-secondary{border:1px solid var(--line); padding:14px 26px; border-radius:10px; font-weight:500; font-size:15px; transition:border-color .15s ease, background .15s ease;}
@@ -111,16 +142,6 @@
   .problem-card .fix{font-size:14px; color:var(--text-dim); display:flex; align-items:center; gap:8px;}
   .problem-card .fix::before{content:'→'; color:var(--violet-text); font-weight:700;}
 
-  /* [3] SOLUCIÓN pipeline */
-  .pipeline{position:relative; padding:36px 20px; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); display:flex; align-items:center; justify-content:space-between; gap:12px; overflow:hidden;}
-  .pipe-track{position:absolute; top:50%; left:60px; right:60px; height:2px; background:var(--line); transform:translateY(-50%); z-index:0;}
-  .pipe-track::after{content:''; position:absolute; top:0; left:-40%; height:100%; width:40%; background:linear-gradient(90deg, transparent, var(--electric-soft), transparent); animation:flow 3.2s linear infinite;}
-  @keyframes flow{0%{left:-40%;} 100%{left:100%;}}
-  .pipe-node{position:relative; z-index:1; background:var(--surface); text-align:center; display:flex; flex-direction:column; align-items:center; gap:10px; flex:1;}
-  .pipe-node .dot{width:44px; height:44px; border-radius:50%; background:var(--surface-2); border:1.5px solid var(--line); display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono'; font-size:13px; color:var(--electric-soft);}
-  .pipe-node span.label{font-size:13px; color:var(--text-dim); max-width:130px;}
-  @media (max-width:640px){ .pipeline{flex-direction:column; gap:26px;} .pipe-track{display:none;} }
-  @media (prefers-reduced-motion: reduce){ .pipe-track::after{animation:none; width:100%; left:0;} }
 
   /* [4] SERVICIOS */
   .grid-services{display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
@@ -141,10 +162,6 @@
   .step p{color:var(--text-dim); font-size:14.5px; max-width:520px;}
 
   /* [6] CASOS / compromiso */
-  .commit-box{background:var(--surface); border:1px solid var(--electric); border-radius:var(--radius); padding:34px 30px; display:flex; gap:22px; align-items:flex-start;}
-  .commit-box .icon{font-family:'IBM Plex Mono'; font-size:24px; color:var(--electric);}
-  .commit-box h3{font-size:19px; margin-bottom:10px;}
-  .commit-box p{color:var(--text-dim); font-size:14.5px; max-width:600px;}
 
   /* [7] POR QUÉ */
   .why-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px;}
@@ -198,8 +215,8 @@
   .consent input{width:19px; height:19px; flex:0 0 19px; margin-top:1px; accent-color:var(--electric); padding:0;}
   .consent a{color:var(--electric); text-decoration:underline;}
   .hp{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;}
-  #zona h2, #privacidad h2{margin-bottom:18px;}
-  #zona p + p, #privacidad p + p{margin-top:14px;}
+  #privacidad h2{margin-bottom:18px;}
+  #privacidad p + p{margin-top:14px;}
 
   /* [10] FOOTER */
   footer{padding:40px 0; border-top:1px solid var(--line); color:var(--text-dim); font-size:13px;}
@@ -347,18 +364,34 @@
         },
         {
           "@type": "Question",
-          "name": "¿Cuánto cuesta?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Los precios están publicados más arriba, en la sección Precios. En el diagnóstico gratuito te decimos cuál plan te conviene."
-          }
-        },
-        {
-          "@type": "Question",
           "name": "¿Cuánto tarda en estar funcionando?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Te damos un plazo concreto por escrito en la propuesta, antes de arrancar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Y si no me gusta lo que entregan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ves los avances antes de publicar y nada sale sin tu OK. Al recibir el trabajo tenés 5 días hábiles para pedir ajustes sobre lo acordado en la propuesta. Y si te arrepentís dentro de los 10 días de contratar, te devolvemos lo pagado (Ley 24.240)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Tengo que pagar todo junto?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Pagás 50% al arrancar y 50% al recibir, por transferencia y sin recargo. También podés pagar con tarjeta en cuotas a través de una plataforma de pago."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Y si después necesito un cambio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Para eso está el acompañamiento mensual: según tu plan, tenés de 1 a 4 horas de soporte al mes para cambios, ajustes o lo que deje de andar."
           }
         },
         {
@@ -403,7 +436,20 @@
     <p>Hoy tu cliente busca en Google antes de decidir, y reserva desde el celular a cualquier hora. Ordenamos tu presencia y tus procesos para que te encuentre, te elija, y no se pierda en el camino.</p>
     <div class="hero-ctas">
       <a href="#contacto" class="btn-primary">Pedir diagnóstico gratis</a>
-      <a href="#problema" class="btn-secondary">Ver qué resolvemos</a>
+      <a href="#precios" class="btn-secondary">Ver precios</a>
+    </div>
+    <div class="trust" id="trust">
+      <div class="trust-chips" role="group" aria-label="Datos de confianza">
+        <button type="button" class="chip mono" aria-expanded="false" aria-controls="trust-panel" data-k="precio">Desde $140.000</button>
+        <button type="button" class="chip mono" aria-expanded="false" aria-controls="trust-panel" data-k="factura">Factura por ARCA</button>
+        <button type="button" class="chip mono" aria-expanded="false" aria-controls="trust-panel" data-k="aaip">Inscriptos ante la AAIP</button>
+        <button type="button" class="chip mono" aria-expanded="false" aria-controls="trust-panel" data-k="garantia">Garantía de plazo</button>
+      </div>
+      <div class="trust-panel" id="trust-panel" role="region" aria-live="polite" hidden></div>
+      <template data-k="precio">Precio final publicado, en pesos y con factura. <a href="#precios">Ver precios</a></template>
+      <template data-k="factura">Todos los trabajos se entregan con factura, emitida por ARCA a nombre de Luis Areco Galeano (CUIT 20-18866406-8).</template>
+      <template data-k="aaip">Estamos inscriptos ante la Agencia de Acceso a la Información Pública (registro RL-2026-85177920-APN-DNPDP#AAIP) y tratamos tus datos según la Ley 25.326. <a href="#privacidad">Cómo tratamos tus datos</a></template>
+      <template data-k="garantia">Si no entregamos en la fecha de tu propuesta, el primer mes de acompañamiento no se cobra (con condiciones). <a href="/terminos.html">Ver condiciones</a></template>
     </div>
   </div>
 </header>
@@ -433,89 +479,39 @@
   </div>
 </section>
 
-<!-- [3] SOLUCIÓN -->
-<section class="section border-top">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Cómo lo resolvemos</div>
-      <h2>Un flujo simple, de punta a punta</h2>
-      <p>No instalás nada raro. Nosotros armamos la conexión, vos seguís con tu negocio.</p>
-    </div>
-    <div class="pipeline">
-      <div class="pipe-track"></div>
-      <div class="pipe-node"><div class="dot mono">01</div><span class="label">Un cliente te busca, escribe o compra</span></div>
-      <div class="pipe-node"><div class="dot mono">→</div><span class="label">Te responde fuera de horario y las consultas de tu web quedan registradas</span></div>
-      <div class="pipe-node"><div class="dot mono">03</div><span class="label">Vos cerrás la venta, sin perseguir nada</span></div>
-    </div>
-  </div>
-</section>
-
 <!-- [4] SERVICIOS -->
 <section class="section border-top" id="servicios">
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">Qué hacemos</div>
       <h2>Servicios concretos, elegís lo que necesitás hoy</h2>
-      <p>Empezamos por lo que resuelve tu problema más urgente — el resto queda disponible para cuando lo necesites.</p>
+      <p>Empezamos por lo que resuelve tu problema más urgente.</p>
     </div>
     <div class="grid-services">
       <div class="service-card" id="s-maps"><span class="num mono">01</span><h3>Google Maps</h3><p>Ficha completa y optimizada para aparecer en búsquedas cercanas.</p></div>
-      <div class="service-card" id="s-whatsapp"><span class="num mono">02</span><h3>WhatsApp bien puesto</h3><p>Botón directo desde tu web, respuesta automática fuera de horario y perfil configurado, para que nadie quede sin respuesta inicial.</p></div>
+      <div class="service-card" id="s-whatsapp"><span class="num mono">02</span><h3>WhatsApp bien puesto</h3><p>Botón directo desde tu web y respuesta automática fuera de horario, para que nadie quede sin respuesta.</p></div>
       <div class="service-card" id="s-web"><span class="num mono">03</span><h3>Landing pages y sitios</h3><p>Una página clara, rápida, pensada para convertir visitas en clientes.</p></div>
       <div class="service-card" id="s-automatizacion"><span class="num mono">04</span><h3>Automatización a medida</h3><p>Que los pedidos y consultas se registren solos, sin que nadie los anote a mano.</p></div>
-      <div class="service-card later" id="s-datos"><span class="num mono">05</span><h3>Dashboards y analítica</h3><p>Tus datos ordenados, para entender tu negocio de un vistazo.</p></div>
-      <div class="service-card later" id="s-capacitacion"><span class="num mono">06</span><h3>Capacitación in-company</h3><p>Formamos a tu equipo para que use la IA sin depender de nadie.</p></div>
-      <div class="service-card later" id="s-satelital"><span class="num mono">07</span><h3>Conectividad satelital</h3><p>Para operaciones en zonas remotas sin buena conexión.</p></div>
     </div>
+    <p class="services-next mono">Próxima etapa: dashboards y analítica · capacitación in-company · conectividad satelital</p>
   </div>
 </section>
 
-<!-- [5] CÓMO TRABAJAMOS -->
-<section class="section border-top">
+<!-- [4b] EJEMPLO -->
+<section class="section border-top" id="ejemplo">
   <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Cómo trabajamos</div>
-      <h2>Cuatro pasos, sin vueltas</h2>
-    </div>
-    <div class="steps">
-      <div class="step"><span class="idx mono">01</span><div><h3>Diagnóstico gratuito</h3><p>Una charla corta para entender qué te está haciendo perder tiempo o clientes hoy.</p></div></div>
-      <div class="step"><span class="idx mono">02</span><div><h3>Propuesta clara</h3><p>Te decimos exactamente qué vamos a hacer, en cuánto tiempo y qué esperar — sin letra chica.</p></div></div>
-      <div class="step"><span class="idx mono">03</span><div><h3>Implementación con plazo concreto</h3><p>Armamos la solución puntual para tu caso, en el plazo que te damos por escrito en la propuesta.</p></div></div>
-      <div class="step"><span class="idx mono">04</span><div><h3>Acompañamiento</h3><p>Te mostramos cómo funciona, para que entiendas lo que te entregamos y no dependas de nadie.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- [6] CASOS / compromiso -->
-<section class="section border-top">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Programa de lanzamiento</div>
-      <h2>Cupos limitados, trato directo</h2>
-    </div>
-    <div class="commit-box">
-      <span class="icon mono">★</span>
+    <div class="example">
+      <img src="/ejemplo-consultorio.webp" width="390" height="780" loading="lazy" decoding="async" alt="Captura de una landing de ejemplo para un consultorio odontológico ficticio, vista en celular">
       <div>
-        <h3>Precio de lanzamiento para los primeros 10 negocios</h3>
-        <p>Trabajás directo con el fundador, sin intermediarios ni equipos rotativos. Los primeros 10 negocios (o hasta el 31/12/2026, lo que ocurra primero) acceden a precio de lanzamiento, con el abono congelado 6 meses y después ajustado por IPC.</p>
+        <span class="tag mono">EJEMPLO · NOMBRE FICTICIO</span>
+        <h2>Así se ve un trabajo terminado</h2>
+        <p class="sub">Una landing para un consultorio odontológico, armada con el mismo método que usamos con vos.</p>
+        <ul>
+          <li>El paciente reserva turno sin llamar.</li>
+          <li>WhatsApp directo, con el mensaje ya escrito.</li>
+          <li>Precio y propuesta claros desde la primera pantalla.</li>
+        </ul>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- [7] POR QUÉ YOUNG NEXUS -->
-<section class="section border-top">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Por qué Young Nexus</div>
-      <h2>Lo que nos diferencia</h2>
-    </div>
-    <div class="why-grid">
-      <div class="why-card"><div class="mark mono">01</div><h3>100% remoto</h3><p>Trabajamos con vos estés donde estés, sin perder calidad ni cercanía.</p></div>
-      <div class="why-card"><div class="mark mono">02</div><h3>Precios publicados</h3><p>Sabés cuánto sale antes de escribirnos. Sin "consultanos" ni presupuestos que aparecen después.</p></div>
-      <div class="why-card"><div class="mark mono">03</div><h3>Precio accesible</h3><p>Tecnología que hoy solo usan las empresas grandes, a tu alcance.</p></div>
-      <div class="why-card"><div class="mark mono">04</div><h3>Sin dependencia</h3><p>Te formamos para que entiendas y controles lo que te entregamos.</p></div>
-      <div class="why-card"><div class="mark mono">05</div><h3>Sin letra chica</h3><p>Propuesta clara desde el primer día, sin sorpresas después.</p></div>
     </div>
   </div>
 </section>
@@ -575,34 +571,54 @@
       </div>
     </div>
 
-    <div class="promo-band">
-      <strong>Precio de lanzamiento.</strong> Estos valores se mantienen hasta nuestros primeros 10 negocios o hasta el 31 de diciembre de 2026, lo que ocurra primero. Si entrás ahora, tu abono mensual queda congelado 6 meses y después se ajusta por IPC.
+    <div class="terms-grid">
+      <details class="term">
+        <summary><strong>Precio de lanzamiento</strong><span>Primeros 10 negocios o hasta el 31/12/2026</span></summary>
+        <p>Estos valores se mantienen hasta nuestros primeros 10 negocios o hasta el 31 de diciembre de 2026, lo que ocurra primero. Si entrás ahora, tu abono mensual queda congelado 6 meses y después se ajusta por IPC.</p>
+      </details>
+      <details class="term">
+        <summary><strong>Pagás en dos partes</strong><span>50% al arrancar, 50% al recibir</span></summary>
+        <p>Por transferencia, sin recargo. Si preferís tarjeta de crédito, podés pagar en cuotas a través de una plataforma de pago; la plataforma te informa el costo de la financiación antes de confirmar.</p>
+      </details>
+      <details class="term">
+        <summary><strong>Garantía de plazo</strong><span>Si nos atrasamos, el primer mes no se cobra (con condiciones)</span></summary>
+        <p>Si no entregamos en la fecha que figura en tu propuesta, el primer mes de acompañamiento no se cobra. <a href="/terminos.html">Ver condiciones</a>.</p>
+      </details>
     </div>
 
-    <p class="price-note">Valores finales en pesos. Todos los trabajos se entregan con factura. El dominio (.com o .com.ar) lo contratás vos y queda siempre a tu nombre.</p>
+    <p class="price-note">Valores finales en pesos. Todos los trabajos se entregan con factura, emitida por ARCA (CUIT 20-18866406-8). El dominio (.com o .com.ar) lo contratás vos y queda siempre a tu nombre.</p>
   </div>
 </section>
 
-<!-- [7c] SIN INTERMEDIARIOS -->
+<!-- [5] CÓMO TRABAJAMOS -->
 <section class="section border-top">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">Una aclaración honesta</div>
-      <h2>Hoy podés armar tu web solo, en minutos</h2>
+      <div class="eyebrow">Cómo trabajamos</div>
+      <h2>Cuatro pasos, sin vueltas</h2>
+      <p>Todo a distancia y por WhatsApp, en cualquier punto del país. No tenés que cerrar ni un día.</p>
     </div>
-    <p class="sub" style="max-width:760px;">Es cierto, y está bien que exista. La pregunta es qué pasa después: quién la arregla el día que deja de andar, quién la conecta con tus turnos, quién te avisa cuando tu ficha de Google quedó desactualizada, y quién revisa que las consultas estén llegando.</p>
-    <p class="sub" style="max-width:760px; margin-top:14px;">Una web sola no te trae clientes. Te traen aparecer cuando te buscan, que te puedan reservar sin escribirte, y que nada se pierda en el camino. Eso no se arma en cinco minutos.</p>
-    <p class="sub" style="max-width:760px; margin-top:14px;"><strong style="color:var(--text);">No somos un intermediario. Somos el que se queda.</strong></p>
+    <div class="steps">
+      <div class="step"><span class="idx mono">01</span><div><h3>Diagnóstico gratuito</h3><p>Una charla corta para ver qué te está haciendo perder clientes hoy.</p></div></div>
+      <div class="step"><span class="idx mono">02</span><div><h3>Propuesta por escrito</h3><p>Qué hacemos, en cuánto tiempo y cuánto sale. Sin letra chica.</p></div></div>
+      <div class="step"><span class="idx mono">03</span><div><h3>Implementación con plazo</h3><p>Ves los avances antes de que salga a la calle. Nada se publica sin tu OK.</p></div></div>
+      <div class="step"><span class="idx mono">04</span><div><h3>Acompañamiento</h3><p>Te mostramos cómo funciona, para que entiendas lo que te entregamos y no dependas de nadie.</p></div></div>
+    </div>
   </div>
 </section>
 
-<section class="section border-top" id="zona">
+<!-- [7] POR QUÉ YOUNG NEXUS -->
+<section class="section border-top">
   <div class="wrap">
-    <div class="eyebrow">Dónde trabajamos</div>
-    <h2>100% remoto, en todo el país</h2>
-    <p>No hace falta que estemos en tu barrio para resolverte el problema. Todo lo que hacemos —la web, los turnos online, tu ficha de Google, el orden de tus datos— se arma y se entrega a distancia, sin que tengas que cerrar ni un día.</p>
-    <p>Trabajamos por WhatsApp, con avances que mirás vos mismo antes de que salga a la calle. Nada se publica sin que lo apruebes.</p>
-    <p>Atendemos <strong>comercios, profesionales independientes y PyMEs de toda Argentina</strong>, y también a quienes facturan al exterior.</p>
+    <div class="section-head">
+      <div class="eyebrow">Por qué Young Nexus</div>
+      <h2>Lo que nos diferencia</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="mark mono">01</div><h3>Todo queda a tu nombre</h3><p>Dominio, accesos y datos son tuyos. Te enseñamos a usar lo que entregamos, para que no dependas de nadie.</p></div>
+      <div class="why-card"><div class="mark mono">02</div><h3>Precio publicado, sin letra chica</h3><p>Sabés cuánto sale antes de escribirnos, y la propuesta llega por escrito, con plazo.</p></div>
+      <div class="why-card"><div class="mark mono">03</div><h3>Somos el que se queda</h3><p>Una web sola no te trae clientes. Después de entregar seguimos: tu ficha de Google al día, los turnos andando, las consultas llegando.</p></div>
+    </div>
   </div>
 </section>
 
@@ -619,12 +635,20 @@
         <p>No. Te explicamos todo en criollo y te acompañamos en cada paso — no hace falta que sepas programar ni entender de sistemas.</p>
       </details>
       <details class="faq-item">
-        <summary>¿Cuánto cuesta?</summary>
-        <p>Los precios están publicados más arriba, en la sección Precios. En el diagnóstico gratuito te decimos cuál plan te conviene.</p>
-      </details>
-      <details class="faq-item">
         <summary>¿Cuánto tarda en estar funcionando?</summary>
         <p>Te damos un plazo concreto por escrito en la propuesta, antes de arrancar.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Y si no me gusta lo que entregan?</summary>
+        <p>Ves los avances antes de publicar y nada sale sin tu OK. Al recibir el trabajo tenés 5 días hábiles para pedir ajustes sobre lo acordado en la propuesta. Y si te arrepentís dentro de los 10 días de contratar, te devolvemos lo pagado (Ley 24.240).</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Tengo que pagar todo junto?</summary>
+        <p>No. Pagás 50% al arrancar y 50% al recibir, por transferencia y sin recargo. También podés pagar con tarjeta en cuotas a través de una plataforma de pago.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Y si después necesito un cambio?</summary>
+        <p>Para eso está el acompañamiento mensual: según tu plan, tenés de 1 a 4 horas de soporte al mes para cambios, ajustes o lo que deje de andar.</p>
       </details>
       <details class="faq-item">
         <summary>¿Qué pasa con mis datos y los de mis clientes?</summary>
@@ -640,7 +664,7 @@
     <div class="final-cta">
       <div class="eyebrow" style="justify-content:center;">Empecemos</div>
       <h2>Contanos qué te está frenando hoy</h2>
-      <p>Te preparamos una <strong>Diagnóstico Digital</strong> de tu negocio: una hoja con lo que Google muestra de vos hoy, qué te está costando y qué haríamos primero. Sin costo y sin compromiso.</p>
+      <p>Te preparamos un <strong>Diagnóstico Digital</strong> de tu negocio: una hoja con lo que Google muestra de vos hoy, qué te está costando y qué haríamos primero. Sin costo y sin compromiso.</p>
 
       <form id="contact-form">
         <div><label for="nombre">Nombre</label><input type="text" id="nombre" name="nombre" autocomplete="name" maxlength="100" required=""></div>
@@ -691,6 +715,10 @@
     <p class="mono" style="font-size:12px; color:var(--text-dim); margin-top:18px;">El titular de los datos personales tiene la facultad de ejercer el derecho de acceso a los mismos en forma gratuita a intervalos no inferiores a seis meses, salvo que se acredite un interés legítimo al efecto conforme lo establecido en el artículo 14, inciso 3 de la Ley Nº 25.326. La AGENCIA DE ACCESO A LA INFORMACIÓN PÚBLICA, en su carácter de Órgano de Control de la Ley Nº 25.326, tiene la atribución de atender las denuncias y reclamos que interpongan quienes resulten afectados en sus derechos por incumplimiento de las normas vigentes en materia de protección de datos personales.</p>
   </div>
 </section>
+  <a href="https://wa.me/5491123536686?text=Hola%2C%20vengo%20de%20la%20web%20y%20quiero%20el%20diagn%C3%B3stico%20gratis" class="wa-float" id="wa-float" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3Z"/></svg>
+    <span>Escribinos</span>
+  </a>
   <!-- [10] FOOTER -->
 <footer>
   <div class="wrap">
@@ -729,6 +757,33 @@
   /* Qué botón se usó. e.submitter no existe en Safari < 15.4, así que lo anotamos al hacer clic. */
   let elegido = 'whatsapp';
   buttons.forEach((b) => b.addEventListener('click', () => { elegido = b.value; }));
+
+  /* Datos de confianza del hero: cada botón abre su explicación; tocar de nuevo la cierra. */
+  (function () {
+    const box = document.getElementById('trust');
+    if (!box) return;
+    const panel = document.getElementById('trust-panel');
+    const chips = box.querySelectorAll('.chip');
+    chips.forEach((chip) => chip.addEventListener('click', () => {
+      const abierto = chip.getAttribute('aria-expanded') === 'true';
+      chips.forEach((c) => c.setAttribute('aria-expanded', 'false'));
+      if (abierto) { panel.hidden = true; return; }
+      const tpl = box.querySelector('template[data-k="' + chip.dataset.k + '"]');
+      panel.replaceChildren(tpl.content.cloneNode(true));
+      chip.setAttribute('aria-expanded', 'true');
+      panel.hidden = false;
+    }));
+  })();
+
+  /* Botón flotante: se oculta cuando el formulario de contacto está a la vista, para no taparlo. */
+  (function () {
+    const fab = document.getElementById('wa-float');
+    const contacto = document.getElementById('contacto');
+    if (!fab || !contacto || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver((entries) => {
+      entries.forEach((en) => fab.classList.toggle('is-hidden', en.isIntersecting));
+    }, { threshold: 0 }).observe(contacto);
+  })();
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
