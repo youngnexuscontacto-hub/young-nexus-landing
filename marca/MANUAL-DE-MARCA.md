@@ -10,7 +10,7 @@ Sistema de marca de Young Nexus: agencia 100% remota que ayuda a comercios, prof
 - **Promesas que se cumplen.** Nunca "duplicá tus ventas", ni clientes o testimonios inventados. Lo publicado es oferta vinculante (Ley 24.240).
 - **Siempre un cierre con acción:** diagnóstico digital sin costo + www.youngnexus.com.ar.
 - **Emojis:** LinkedIn 0–1. WhatsApp e Instagram, hasta 3. Nunca 🚀.
-- **Confianza legal:** una línea al pie en landing, propuestas y formularios: "Cuidamos tus datos y los de tus clientes conforme a la Ley 25.326". No en carruseles ni historias. Responsable inscripto ante la AAIP (Legajo RL-2026-85177920-APN-DNPDP#AAIP, notificado el 02/09/2026); la inscripción de la base de datos sigue en trámite. Nunca "certificados".
+- **Confianza legal:** una línea al pie en landing, propuestas y formularios: "Cuidamos tus datos y los de tus clientes conforme a la Ley 25.326". No en carruseles ni historias. Registrado ante la AAIP en el Registro Nacional de Bases de Datos (legajo RL-2026-85177920-APN-DNPDP#AAIP, notificado el 02/09/2026). No usar "Responsable inscripto": se confunde con la categoría de IVA de ARCA; la inscripción de la base de datos sigue en trámite. Nunca "certificados".
 
 Frases de referencia:
 - "Que tu negocio funcione aunque no estés mirando el teléfono." (lema)
