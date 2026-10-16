@@ -64,7 +64,9 @@
   .nav-legal:hover{color:var(--text);}
   @media (max-width:480px){ .nav-right{flex-direction:column-reverse; align-items:flex-end; gap:5px;} .nav-cta{padding:7px 14px; font-size:13px; white-space:nowrap;} .nav-legal{font-size:11px;} }
   @media (max-width:340px){ .logo{font-size:16px;} .nav-cta{padding:7px 12px; font-size:12.5px;} }
-  @media (max-width:780px){ .nav-links{display:none;} }
+  @media (max-width:1100px){ .nav-links{gap:20px;} }
+  @media (max-width:960px){ .nav-links{display:none;} }
+  .logo, .nav-cta{white-space:nowrap;}
 
   .pricing-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; margin-top:8px;}
   .price-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:28px 24px; display:flex; flex-direction:column;}
@@ -142,14 +144,60 @@
   .chip:focus-visible{outline:2px solid var(--electric); outline-offset:2px;}
   .trust-panel{margin-top:12px; max-width:540px; background:var(--surface-2); border:1px solid var(--line); border-left:3px solid var(--electric); border-radius:10px; padding:12px 16px; font-size:14px; color:var(--text-dim);}
   .trust-panel a{color:var(--electric);}
-  .example{display:grid; grid-template-columns:minmax(0,300px) 1fr; gap:40px; align-items:center;}
-  .example img{width:100%; height:auto; border:1px solid var(--line); border-radius:var(--radius); display:block;}
-  .example .tag{display:inline-block; font-size:11px; letter-spacing:.08em; color:var(--electric-soft); border:1px solid var(--line); border-radius:999px; padding:4px 10px; margin-bottom:14px;}
-  .example h2{margin-bottom:12px;}
-  .example ul{margin-top:18px; padding:0; list-style:none; color:var(--text-dim);}
-  .example li::before{content:"→ "; color:var(--electric-soft);}
-  .example li + li{margin-top:6px;}
-  @media (max-width:720px){ .example{grid-template-columns:1fr; gap:24px;} .example img{max-width:280px; margin:0 auto;} }
+  /* DEMO EN VIVO */
+  .demo{display:grid; grid-template-columns:minmax(0,1fr) 300px minmax(0,300px); grid-template-areas:'intro phone owner' 'act phone owner'; column-gap:36px; row-gap:0; align-items:center;}
+  .demo-intro{grid-area:intro; align-self:end;} .demo-act{grid-area:act; align-self:start;} .phone{grid-area:phone;} .owner{grid-area:owner;}
+  .demo-tabs{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 20px;}
+  .demo-tab{position:relative; overflow:hidden; font:500 12.5px 'JetBrains Mono',monospace; letter-spacing:.04em; color:var(--text-dim); background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:9px 14px; cursor:pointer;}
+  .demo-tab[aria-selected="true"]{color:var(--text); border-color:var(--electric);}
+  .demo-tab i{position:absolute; left:0; bottom:0; height:2px; width:0; background:var(--electric);}
+  .demo-tab[aria-selected="true"] i{animation:demoBar var(--dur,7s) linear forwards;}
+  .demo.paused .demo-tab i{animation-play-state:paused;}
+  @keyframes demoBar{to{width:100%;}}
+  .demo-try label{display:block; font-size:13px; color:var(--text-dim); margin-bottom:8px;}
+  .demo-try input{max-width:300px;}
+  .demo-cta{margin-top:20px; display:inline-block;}
+  .demo-note{font-size:12.5px; color:var(--text-dim); margin-top:12px;}
+  .phone{--a:#0F7F72; position:relative; width:300px; height:600px; border-radius:38px; padding:10px; background:#1b1c26; border:1px solid var(--line); box-shadow:0 30px 80px -30px rgba(43,168,220,.35);}
+  .phone-in{position:relative; height:100%; border-radius:30px; overflow:hidden; background:#f6f6f8; color:#14141b; font-family:'Instrument Sans',sans-serif; transition:background .5s;}
+  .ribbon{position:absolute; z-index:5; top:0; left:0; right:0; text-align:center; font:600 10px 'JetBrains Mono',monospace; letter-spacing:.14em; color:#fff; background:#14141b; padding:7px 0 6px;}
+  .ps{position:absolute; inset:28px 0 0; padding:18px 18px 0; transition:opacity .45s ease, transform .45s ease;}
+  .ps.out{opacity:0; transform:translateY(10px);}
+  .ps-head{display:flex; align-items:center; gap:9px; font-weight:600; font-size:14px;}
+  .ps-logo{width:28px; height:28px; border-radius:8px; background:var(--a); color:#fff; display:grid; place-items:center; font-weight:700; font-size:14px; transition:background .5s;}
+  .ps-kind{font-size:11px; color:#6b6c7a; font-weight:500;}
+  .ps h4{font-family:'Instrument Serif',Georgia,serif; font-weight:400; font-size:34px; line-height:1.02; margin:26px 0 12px; letter-spacing:-.01em;}
+  .ps p{font-size:13.5px; line-height:1.45; color:#4a4b58;}
+  .ps-btn{display:block; width:100%; margin-top:18px; border:0; border-radius:12px; padding:14px; background:var(--a); color:#fff; font:600 14.5px 'Instrument Sans',sans-serif; cursor:pointer; transition:background .5s, transform .12s;}
+  .ps-btn:active,.ps-btn.tap{transform:scale(.96);}
+  .ps-wa{cursor:pointer; display:block; width:100%; margin-top:9px; border:1px solid #d8d9e2; border-radius:12px; padding:12px; background:#fff; font:500 13.5px 'Instrument Sans',sans-serif; color:#14141b;}
+  .ps-trust{display:flex; gap:6px; flex-wrap:wrap; margin-top:16px;}
+  .ps-trust span{font-size:11px; background:#ebecf1; border-radius:999px; padding:5px 9px; color:#4a4b58;}
+  .sheet{position:absolute; z-index:4; left:0; right:0; bottom:0; background:#fff; border-radius:20px 20px 0 0; padding:16px 18px 22px; box-shadow:0 -10px 30px rgba(0,0,0,.12); transform:translateY(105%); transition:transform .4s cubic-bezier(.2,.8,.2,1);}
+  .sheet.on{transform:none;}
+  .sheet b{display:block; font-size:13px; margin-bottom:12px;}
+  .slots{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
+  .slot{border:1px solid #d8d9e2; background:#fff; border-radius:10px; padding:11px 6px; font:500 13px 'Instrument Sans',sans-serif; color:#14141b; cursor:pointer; transition:background .2s, color .2s, transform .12s;}
+  .slot.sel,.slot:hover{background:var(--a); border-color:var(--a); color:#fff;}
+  .slot.tap{transform:scale(.94);}
+  .ok{position:absolute; z-index:6; left:14px; right:14px; bottom:18px; background:#14141b; color:#fff; border-radius:14px; padding:13px 14px; font-size:12.5px; line-height:1.4; opacity:0; transform:translateY(12px); transition:opacity .35s, transform .35s;}
+  .ok.on{opacity:1; transform:none;}
+  .ok strong{display:block; font-size:13.5px; margin-bottom:2px;}
+  .ok strong::before{content:'✓ '; color:var(--a);}
+  .finger{position:absolute; z-index:7; width:26px; height:26px; border-radius:50%; background:rgba(20,20,27,.25); border:2px solid rgba(255,255,255,.9); pointer-events:none; opacity:0; transition:left .6s cubic-bezier(.3,.7,.2,1), top .6s cubic-bezier(.3,.7,.2,1), opacity .25s;}
+  .owner{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:20px;}
+  .owner h3{font-size:15px; margin-bottom:4px;}
+  .owner .sim{font:500 11px 'JetBrains Mono',monospace; letter-spacing:.08em; color:var(--text-dim); text-transform:uppercase;}
+  .owner-stat{display:flex; align-items:baseline; gap:10px; margin:16px 0 14px; padding-bottom:14px; border-bottom:1px solid var(--line);}
+  .owner-stat b{font-family:'Instrument Serif',Georgia,serif; font-weight:400; font-size:44px; line-height:1; color:var(--electric-soft);}
+  .owner-stat span{font-size:13px; color:var(--text-dim); line-height:1.35;}
+  .feed{list-style:none; display:grid; gap:9px; min-height:186px;}
+  .feed li{background:var(--surface-2); border:1px solid var(--line); border-radius:10px; padding:10px 12px; font-size:13px; line-height:1.4; animation:feedIn .45s ease;}
+  .feed li small{display:block; font:500 10.5px 'JetBrains Mono',monospace; color:var(--text-dim); letter-spacing:.06em; margin-bottom:3px;}
+  @keyframes feedIn{from{opacity:0; transform:translateY(-8px);}}
+  @media (max-width:980px){ .demo{grid-template-columns:1fr 300px; grid-template-areas:'intro phone' 'act phone' 'owner owner'; row-gap:28px;} .feed{min-height:0;} }
+  @media (max-width:720px){ .demo{grid-template-columns:1fr; grid-template-areas:'intro' 'phone' 'owner' 'act'; gap:26px;} .phone{margin:0 auto;} .feed{min-height:0;} .demo-try input{max-width:none;} }
+  @media (prefers-reduced-motion:reduce){ .ps,.sheet,.ok,.finger,.feed li,.demo-tab i{transition:none; animation:none;} }
   .wa-float{position:fixed; right:18px; bottom:18px; z-index:50; display:flex; align-items:center; gap:8px; background:#25D366; color:#0b1410; font-weight:600; font-size:14px; padding:12px 16px; border-radius:999px; box-shadow:0 6px 20px rgba(0,0,0,.35); text-decoration:none; transition:opacity .2s, transform .2s;}
   .wa-float svg{width:20px; height:20px; flex:none;}
   .wa-float.is-hidden{opacity:0; transform:translateY(12px); pointer-events:none;}
@@ -452,6 +500,7 @@
     <div class="nav-links">
       <a href="#problema">Problemas</a>
       <a href="#servicios">Servicios</a>
+      <a href="#demo">Demo</a>
       <a href="#precios">Precios</a>
       <a href="#faq">Preguntas</a>
       <a href="#contacto">Contacto</a>
@@ -559,21 +608,46 @@
   </div>
 </section>
 
-<!-- [4b] EJEMPLO -->
-<section class="section border-top" id="ejemplo">
+<!-- [4b] DEMO EN VIVO -->
+<section class="section border-top" id="demo" aria-labelledby="demo-title">
   <div class="wrap">
-    <div class="example">
-      <img src="/ejemplo-consultorio.webp" width="390" height="780" loading="lazy" decoding="async" alt="Captura de una landing de ejemplo para un consultorio odontológico ficticio, vista en celular">
-      <div>
-        <span class="tag mono">EJEMPLO · NOMBRE FICTICIO</span>
-        <h2>Así se ve un trabajo terminado</h2>
-        <p class="sub">Una landing para un consultorio odontológico, armada con el mismo método que usamos con vos.</p>
-        <ul>
-          <li>El paciente reserva turno sin llamar.</li>
-          <li>WhatsApp directo, con el mensaje ya escrito.</li>
-          <li>Precio y propuesta claros desde la primera pantalla.</li>
-        </ul>
+    <div class="demo" id="demo-box">
+      <div class="demo-intro">
+        <div class="eyebrow">Demo en vivo · negocios ficticios</div>
+        <h2 id="demo-title" style="font-size:clamp(30px,4vw,44px); line-height:1.08;">Mirá cómo funciona, <em style="font-style:italic;color:var(--electric-soft)">de los dos lados</em></h2>
+        <p class="sub" style="color:var(--text-dim); margin-top:14px;">En el teléfono, lo que ve tu cliente. En el panel, lo que te llega a vos. Tocá los botones: responden.</p>
+        <div class="demo-tabs" role="tablist" aria-label="Rubros de ejemplo"></div>
       </div>
+      <div class="demo-act">
+        <div class="demo-try">
+          <label for="demo-nombre">Probalo con el nombre de tu negocio</label>
+          <input id="demo-nombre" type="text" maxlength="28" autocomplete="off" placeholder="Ej.: Estudio Gómez">
+        </div>
+        <a href="#contacto" class="btn-primary demo-cta" id="demo-cta">Quiero esto para mi negocio</a>
+        <p class="demo-note">Es una simulación: los botones no envían ni guardan nada.</p>
+      </div>
+      <div class="phone" id="demo-phone" aria-label="Vista de un sitio de ejemplo en un celular">
+        <div class="phone-in">
+          <div class="ribbon">DEMO · NEGOCIO FICTICIO</div>
+          <div class="ps" id="demo-ps">
+            <div class="ps-head"><span class="ps-logo" id="d-logo" aria-hidden="true">O</span><span><span id="d-name">Odontología Arce</span><br><span class="ps-kind" id="d-kind">Consultorio</span></span></div>
+            <h4 id="d-h">Tu turno, sin llamar por teléfono.</h4>
+            <p id="d-p">Elegís día y horario desde el celular y te llega el recordatorio.</p>
+            <button type="button" class="ps-btn" id="d-cta">Reservar turno</button>
+            <button type="button" class="ps-wa" id="d-wa">Escribir por WhatsApp</button>
+            <div class="ps-trust" id="d-trust"></div>
+          </div>
+          <div class="sheet" id="d-sheet"><b id="d-sheet-t">Elegí un horario</b><div class="slots" id="d-slots"></div></div>
+          <div class="ok" id="d-ok" role="status" aria-live="polite"><strong id="d-ok-t"></strong><span id="d-ok-p"></span></div>
+          <span class="finger" id="d-finger" aria-hidden="true"></span>
+        </div>
+      </div>
+      <aside class="owner" aria-label="Lo que le llega al dueño del negocio">
+        <span class="sim">Simulación · tu panel</span>
+        <h3>Lo que te llega a vos</h3>
+        <div class="owner-stat"><b id="o-count">0</b><span id="o-label">reservas esta semana sin atender el teléfono</span></div>
+        <ul class="feed" id="o-feed" aria-live="polite"></ul>
+      </aside>
     </div>
   </div>
 </section>
@@ -1078,6 +1152,83 @@
     document.addEventListener('visibilitychange', arrancar);
     if ('IntersectionObserver' in window) new IntersectionObserver((e) => { visible = e[0].isIntersecting; arrancar(); }).observe(cv);
   })();
+</script>
+<script>
+(() => {
+  const R = [
+    {id:'salud', tab:'Consultorio', name:'Odontología Arce', kind:'Consultorio', a:'#0F7F72', h:'Tu turno, sin llamar por teléfono.', p:'Elegís día y horario desde el celular y te llega el recordatorio.', cta:'Reservar turno', trust:['Matrícula visible','Recordatorio automático'], st:'Miércoles · elegí un horario', slots:['9:00','10:30','12:00','16:30'], pick:1, ok:'Turno confirmado · Mié 10:30', okp:'Te llega el recordatorio por WhatsApp el día antes.', ev:'Nuevo turno · Mié 10:30 · Lucía M.', lab:'turnos esta semana sin atender el teléfono'},
+    {id:'oficios', tab:'Electricista', name:'Voltio Servicios', kind:'Electricista matriculado', a:'#A95C14', h:'Presupuesto en el día, sin vueltas.', p:'Contás qué necesitás, mandás una foto y coordinás la visita.', cta:'Pedir presupuesto', trust:['Matriculado','Respuesta en el día'], st:'¿Qué necesitás?', slots:['Corte de luz','Tablero','Instalación','Otro'], pick:1, ok:'Pedido recibido', okp:'Te escribimos por WhatsApp para coordinar la visita.', ev:'Pedido de presupuesto · Tablero · Martín R.', lab:'pedidos esta semana, ninguno perdido'},
+    {id:'estudio', tab:'Estudio contable', name:'Estudio Ledesma', kind:'Contadores', a:'#6E5BD6', h:'Tu consulta, agendada en un minuto.', p:'Elegís el horario y te llega el link de la reunión.', cta:'Agendar consulta', trust:['Online o presencial','Link automático'], st:'Jueves · consulta online', slots:['9:30','11:00','15:00','17:30'], pick:1, ok:'Consulta agendada · Jue 11:00', okp:'El link de la reunión llega a tu correo.', ev:'Consulta agendada · Jue 11:00 · Sofía G.', lab:'consultas agendadas sin ida y vuelta'},
+    {id:'comercio', tab:'Barbería', name:'Corte Fino', kind:'Barbería', a:'#C0392B', h:'Reservá tu corte en diez segundos.', p:'Ves los horarios libres y elegís el que te queda.', cta:'Reservar', trust:['Sin esperar respuesta','Aviso si se libera un turno'], st:'Hoy · horarios libres', slots:['14:00','15:30','17:00','19:30'], pick:2, ok:'Reserva confirmada · Hoy 17:00', okp:'Si no podés venir, cancelás con un toque.', ev:'Reserva · Hoy 17:00 · Nico P.', lab:'reservas esta semana sin atender el teléfono'}
+  ];
+  const box = document.getElementById('demo-box'); if (!box) return;
+  const $ = (id) => document.getElementById(id);
+  const tabs = box.querySelector('.demo-tabs'), phone = $('demo-phone'), ps = $('demo-ps'), sheet = $('d-sheet'), slots = $('d-slots'), ok = $('d-ok'), finger = $('d-finger'), feed = $('o-feed'), input = $('demo-nombre');
+  const quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const DUR = 7000; let i = 0, timers = [], auto = !quieto, visible = false, custom = '', counts = R.map((r, k) => 6 + k * 3), hecho = false;
+  box.style.setProperty('--dur', DUR + 'ms');
+  R.forEach((r, k) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'demo-tab'; b.setAttribute('role', 'tab'); b.textContent = r.tab; b.appendChild(document.createElement('i')); b.addEventListener('click', () => { stopAuto(); show(k); }); tabs.appendChild(b); });
+  const clear = () => { timers.forEach(clearTimeout); timers = []; };
+  const at = (ms, fn) => timers.push(setTimeout(fn, ms));
+  const nombre = (r) => custom || r.name;
+  function tapOn(el) {
+    if (quieto) return;
+    const pr = phone.querySelector('.phone-in').getBoundingClientRect(), er = el.getBoundingClientRect();
+    finger.style.left = (er.left - pr.left + er.width / 2 - 13) + 'px'; finger.style.top = (er.top - pr.top + er.height / 2 - 13) + 'px'; finger.style.opacity = 1;
+    setTimeout(() => { el.classList.add('tap'); setTimeout(() => el.classList.remove('tap'), 160); }, 520);
+  }
+  function confirmar(r, k) {
+    slots.querySelectorAll('.slot').forEach((s, j) => s.classList.toggle('sel', j === k));
+    setTimeout(() => {
+      sheet.classList.remove('on'); $('d-ok-t').textContent = r.ok; $('d-ok-p').textContent = r.okp; setTimeout(() => ok.classList.add('on'), quieto ? 0 : 380);
+      counts[i]++; $('o-count').textContent = counts[i];
+      const li = document.createElement('li'); const sm = document.createElement('small'); sm.textContent = 'AHORA · ' + nombre(r).toUpperCase();
+      feed.querySelectorAll('small').forEach((x) => { x.textContent = x.textContent.replace(/^AHORA/, 'HACE UN RATO'); });
+      li.append(sm, document.createTextNode(r.ev)); feed.prepend(li); while (feed.children.length > 3) feed.lastChild.remove();
+    }, 260);
+  }
+  function abrir(r) {
+    ok.classList.remove('on'); slots.innerHTML = '';
+    r.slots.forEach((t, k) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'slot'; b.textContent = t; b.addEventListener('click', () => { stopAuto(); confirmar(r, k); }); slots.appendChild(b); });
+    sheet.classList.add('on');
+  }
+  function show(k, play) {
+    clear(); i = k; const r = R[k];
+    tabs.querySelectorAll('.demo-tab').forEach((t, j) => { t.setAttribute('aria-selected', j === k); const bar = t.querySelector('i'); bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = ''; });
+    sheet.classList.remove('on'); ok.classList.remove('on'); finger.style.opacity = 0; ps.classList.add('out');
+    setTimeout(() => {
+      phone.style.setProperty('--a', r.a); $('d-sheet-t').textContent = r.st;
+      $('d-name').textContent = nombre(r); $('d-logo').textContent = nombre(r).trim().charAt(0).toUpperCase() || 'D';
+      $('d-kind').textContent = r.kind; $('d-h').textContent = r.h; $('d-p').textContent = r.p; $('d-cta').textContent = r.cta;
+      const tr = $('d-trust'); tr.innerHTML = ''; r.trust.forEach((t) => { const s = document.createElement('span'); s.textContent = t; tr.appendChild(s); });
+      $('o-count').textContent = counts[k]; $('o-label').textContent = r.lab; ps.classList.remove('out');
+    }, quieto ? 0 : 280);
+    if (play) {
+      at(1300, () => tapOn($('d-cta'))); at(1900, () => abrir(r));
+      at(3000, () => { const s = slots.children[r.pick]; if (s) tapOn(s); }); at(3600, () => { finger.style.opacity = 0; confirmar(r, r.pick); });
+      at(DUR, () => { if (auto && visible) show((i + 1) % R.length, true); });
+    }
+    box.classList.toggle('paused', !play);
+  }
+  function stopAuto() { auto = false; clear(); finger.style.opacity = 0; box.classList.add('paused'); }
+  $('d-cta').addEventListener('click', () => { stopAuto(); abrir(R[i]); });
+  $('d-wa').addEventListener('click', () => { stopAuto(); sheet.classList.remove('on'); $('d-ok-t').textContent = 'Se abre tu WhatsApp'; $('d-ok-p').textContent = 'En tu sitio real, con el mensaje ya escrito para tu cliente.'; ok.classList.add('on'); });
+  input.addEventListener('input', () => { custom = input.value.replace(/\s+/g, ' ').trim(); $('d-name').textContent = nombre(R[i]); $('d-logo').textContent = (nombre(R[i]).charAt(0) || 'D').toUpperCase(); });
+  input.addEventListener('focus', stopAuto);
+  $('demo-cta').addEventListener('click', () => {
+    const msg = document.getElementById('mensaje');
+    if (msg && !msg.value.trim()) msg.value = 'Vi la demo de ' + R[i].tab.toLowerCase() + (custom ? '. Mi negocio: ' + custom : '') + '. Quiero algo así.';
+  });
+  show(0, false);
+  if (quieto) { abrir(R[0]); confirmar(R[0], R[0].pick); return; }
+  if ('IntersectionObserver' in window) new IntersectionObserver((en) => {
+    visible = en[0].isIntersecting;
+    if (visible && auto && !hecho) { hecho = true; show(i, true); }
+    else if (visible && auto) show(i, true);
+    else if (!visible) { clear(); box.classList.add('paused'); }
+  }, {threshold: .35}).observe(box);
+  document.addEventListener('visibilitychange', () => { if (document.hidden) { clear(); box.classList.add('paused'); } });
+})();
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "90c286bae06d48c3ba4586170937ef60"}'></script><!-- End Cloudflare Web Analytics -->
 </body></html>
