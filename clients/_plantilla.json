@@ -1,5 +1,6 @@
 {
   "lang": "es-AR",
+  "style": "oscuro",
   "site": {
     "url": "https://www.DOMINIO.com.ar",
     "domain": "www.DOMINIO.com.ar"
@@ -27,11 +28,7 @@
       ""
     ]
   },
-  "theme": {
-    "accent": "#2BA8DC",
-    "accent2": "#7C3E9C",
-    "accentDeep": "#401A67"
-  },
+  "theme": {},
   "seo": {
     "title": "",
     "description": "",

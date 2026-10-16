@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{lang}}">
+<html lang="{{lang}}" data-estilo="{{style}}">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,11 +30,9 @@
 <meta name="twitter:description" content="{{seo.ogDescription}}">
 <meta name="twitter:image" content="{{site.url}}{{seo.ogImage}}">
 
-<link rel="preconnect" href="https://fonts.googleapis.com/">
-<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
+{{{fontFaces}}}
 {{{styles}}}
 </style>
 <style>
@@ -49,6 +47,15 @@
     --electric-soft:{{theme.accentSoft}};
     --violet:{{theme.accent2}};
     --violet-deep:{{theme.accentDeep}};
+    --violet-text:{{theme.accent2Text}};
+    --on-accent:{{theme.onAccent}};
+    --nav-bg:{{theme.navBg}};
+    --font-head:'{{fonts.head}}', system-ui, sans-serif;
+    --font-body:'{{fonts.body}}', system-ui, sans-serif;
+    --font-mono:'{{fonts.mono}}', ui-monospace, monospace;
+    --head-weight:{{fonts.headWeight}};
+    --head-track:{{fonts.headTrack}};
+    --head-scale:{{fonts.headScale}};
   }
 </style>
 
@@ -128,8 +135,10 @@
       {{#each steps}}
       <div class="step">
         <div class="idx mono">{{idx}}</div>
-        <h3>{{title}}</h3>
-        <p>{{description}}</p>
+        <div>
+          <h3>{{title}}</h3>
+          <p>{{description}}</p>
+        </div>
       </div>
       {{/each}}
     </div>

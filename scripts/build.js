@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Fabrica de landings Young Nexus.
- * Uso:  node scripts/build.js [slug|--all]
+ * Uso:  node scripts/build.js [slug|--all] [--estilo oscuro|claro|editorial]
  * Entrada:  clients/<slug>.json   Salida:  dist/<slug>/
  * Sin dependencias: solo Node >= 18.
  */
@@ -202,16 +202,103 @@ function checkPalette() {
   return Object.keys(site).length;
 }
 
-/* ---------- defaults ---------- */
+/* ---------- estilos ---------- */
+/*
+ * Tres puntos de partida que el cliente elige (campo "style" del JSON):
+ *   oscuro    -> tecnologico, contraste alto (el de siempre)
+ *   claro     -> limpio, fondo blanco, para rubros que venden confianza
+ *   editorial -> calido, tipografia serif, para estudios y profesiones
+ * Sobre el estilo elegido se aplican los colores propios del cliente ("theme").
+ * Las fuentes se sirven desde /fonts del propio sitio: sin pedidos a terceros.
+ */
 
-const THEME = {
-  ink: '#0A0A0F', surface: '#111119', surface2: '#191A26', line: '#2A2A3D',
-  text: '#FFFFFF', textDim: '#A0A0B0', accent: '#2BA8DC', accentSoft: '#54BEE6', accent2: '#7C3E9C', accentDeep: '#401A67'
+const FONT_FILES = {
+  'Space Grotesk':   [{ file: 'space-grotesk-var.woff2', weight: '300 700' }],
+  'Inter':           [{ file: 'inter-var.woff2', weight: '100 900' }],
+  'IBM Plex Mono':   [{ file: 'ibm-plex-mono-400.woff2', weight: '400' }, { file: 'ibm-plex-mono-500.woff2', weight: '500' }],
+  'Instrument Sans': [{ file: 'instrument-sans-var.woff2', weight: '400 700' }],
+  'Instrument Serif':[{ file: 'instrument-serif-400.woff2', weight: '400' }, { file: 'instrument-serif-italic.woff2', weight: '400', style: 'italic' }],
+  'JetBrains Mono':  [{ file: 'jetbrains-mono-var.woff2', weight: '100 800' }]
+};
+const FONT_LICENSE = {
+  'Space Grotesk': 'LICENSE-space-grotesk.txt', 'Inter': 'LICENSE-inter.txt', 'IBM Plex Mono': 'LICENSE-ibm-plex-mono.txt',
+  'Instrument Sans': 'LICENSE-instrument-sans.txt', 'Instrument Serif': 'LICENSE-instrument-serif.txt', 'JetBrains Mono': 'LICENSE-jetbrains-mono.txt'
 };
 
-function normalize(c) {
+const STYLES = {
+  oscuro: {
+    label: 'Oscuro',
+    theme: {
+      ink: '#0A0A0F', surface: '#111119', surface2: '#191A26', line: '#2A2A3D',
+      text: '#FFFFFF', textDim: '#A0A0B0', accent: '#2BA8DC', accentSoft: '#54BEE6',
+      accent2: '#7C3E9C', accentDeep: '#401A67', accent2Text: '#B07FD0',
+      onAccent: '#001217', navBg: 'rgba(10,10,15,0.88)'
+    },
+    fonts: { head: 'Space Grotesk', body: 'Inter', mono: 'IBM Plex Mono', headWeight: 600, headTrack: '-0.02em', headScale: 1 }
+  },
+  claro: {
+    label: 'Claro',
+    theme: {
+      ink: '#FFFFFF', surface: '#F5F6FA', surface2: '#ECEEF4', line: '#D8DBE6',
+      text: '#0A0A0F', textDim: '#55586A', accent: '#0B6E99', accentSoft: '#0A5F84',
+      accent2: '#7C3E9C', accentDeep: '#401A67', accent2Text: '#6B2F8A',
+      onAccent: '#FFFFFF', navBg: 'rgba(255,255,255,0.9)'
+    },
+    fonts: { head: 'Instrument Sans', body: 'Inter', mono: 'JetBrains Mono', headWeight: 650, headTrack: '-0.025em', headScale: 1 }
+  },
+  editorial: {
+    label: 'Editorial',
+    theme: {
+      ink: '#F6F1E8', surface: '#FFFDF8', surface2: '#EFE8DC', line: '#DDD3C4',
+      text: '#1D1A16', textDim: '#5E574D', accent: '#8A3B12', accentSoft: '#9A4A1E',
+      accent2: '#2F4A3A', accentDeep: '#1F3328', accent2Text: '#2F4A3A',
+      onAccent: '#FFFFFF', navBg: 'rgba(246,241,232,0.92)'
+    },
+    fonts: { head: 'Instrument Serif', body: 'Instrument Sans', mono: 'IBM Plex Mono', headWeight: 400, headTrack: '-0.01em', headScale: 1.12 }
+  }
+};
+
+/* ---------- contraste (WCAG 2.1) ---------- */
+
+function lum(hex) {
+  let h = hex.replace('#', '');
+  if (h.length === 3) h = h.split('').map(x => x + x).join('');
+  const [r, g, b] = [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16) / 255)
+    .map(v => v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4));
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+const ratio = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m); return (x + 0.05) / (y + 0.05); };
+
+// pares texto/fondo que la plantilla usa de verdad; minimo AA 4.5:1
+function checkContrast(t, slug) {
+  const pairs = [
+    ['text', 'ink'], ['text', 'surface'], ['textDim', 'ink'], ['textDim', 'surface'],
+    ['accent', 'ink'], ['accent', 'surface'], ['accentSoft', 'surface'], ['accentSoft', 'surface2'],
+    ['accent2Text', 'surface'], ['accent2Text', 'surface2'], ['onAccent', 'accent']
+  ];
+  const bad = pairs.map(([f, b]) => [f, b, ratio(t[f], t[b])]).filter(p => p[2] < 4.5);
+  if (bad.length) throw new Error(`contraste insuficiente en ${slug}: ` +
+    bad.map(([f, b, r]) => `${f} ${t[f]} sobre ${b} ${t[b]} = ${r.toFixed(2)}:1`).join('; ') + ' (minimo 4.5:1)');
+}
+
+function fontFaces(f) {
+  return [...new Set([f.head, f.body, f.mono])].flatMap(name =>
+    FONT_FILES[name].map(v => `@font-face{font-family:'${name}'; font-style:${v.style || 'normal'}; font-weight:${v.weight}; font-display:swap; src:url(/fonts/${v.file}) format('woff2');}`)
+  ).join('\n');
+}
+
+function normalize(c, forceStyle) {
   c.lang = c.lang || 'es-AR';
-  c.theme = Object.assign({}, THEME, c.theme || {});
+  const style = forceStyle || c.style || 'oscuro';
+  if (!STYLES[style]) throw new Error(`estilo "${style}" no existe -> usar: ${Object.keys(STYLES).join(', ')}`);
+  const preset = STYLES[style];
+  // los colores propios del cliente valen para el estilo que eligio; en una vista previa de otro estilo se usan los del preset
+  const own = (!forceStyle || forceStyle === (c.style || 'oscuro')) ? (c.theme || {}) : {};
+  c.style = style;
+  c.styleLabel = preset.label;
+  c.theme = Object.assign({}, preset.theme, own);
+  c.fonts = Object.assign({}, preset.fonts);
+  c.fontFaces = fontFaces(c.fonts);
   c.copy = c.copy || {};
   c.seo = c.seo || {};
   c.seo.ogImage = c.seo.ogImage || '/og.jpg';
@@ -225,6 +312,17 @@ function normalize(c) {
   (c.steps || []).forEach((s, i) => { if (!s.idx) s.idx = String(i + 1).padStart(2, '0'); });
   (c.area && c.area.points || []).forEach((p, i) => { if (!p.mark) p.mark = String(i + 1).padStart(2, '0'); });
   return c;
+}
+
+function copyFonts(f, out) {
+  const dir = path.join(out, 'fonts');
+  fs.mkdirSync(dir, { recursive: true });
+  let n = 0;
+  for (const name of new Set([f.head, f.body, f.mono])) {
+    for (const v of FONT_FILES[name]) { fs.copyFileSync(path.join(ROOT, 'fonts', v.file), path.join(dir, v.file)); n++; }
+    fs.copyFileSync(path.join(ROOT, 'fonts', FONT_LICENSE[name]), path.join(dir, FONT_LICENSE[name])); n++;
+  }
+  return n;
 }
 
 function required(c, slug) {
@@ -253,19 +351,20 @@ function copyDir(src, dest) {
 
 /* ---------- build ---------- */
 
-function build(slug) {
+function build(slug, forceStyle) {
   const cfgPath = path.join(CLIENTS, slug + '.json');
-  const c = normalize(JSON.parse(fs.readFileSync(cfgPath, 'utf8')));
+  const c = normalize(JSON.parse(fs.readFileSync(cfgPath, 'utf8')), forceStyle);
   required(c, slug);
+  checkContrast(c.theme, slug);
 
   c.styles = fs.readFileSync(path.join(TPL, 'styles.css'), 'utf8');
   c.jsonld = buildJsonLd(c);
 
   const html = render(fs.readFileSync(path.join(TPL, 'base.html'), 'utf8'), c, null);
-  const out = path.join(DIST, slug);
+  const out = path.join(DIST, forceStyle ? `${slug}--${forceStyle}` : slug);
   fs.mkdirSync(out, { recursive: true });
 
-  const assets = copyDir(path.join(TPL, 'assets'), out) + copyDir(path.join(CLIENTS, slug + '.assets'), out);
+  const assets = copyDir(path.join(TPL, 'assets'), out) + copyDir(path.join(CLIENTS, slug + '.assets'), out) + copyFonts(c.fonts, out);
 
   fs.writeFileSync(path.join(out, 'index.html'), html);
   fs.writeFileSync(path.join(out, 'sitemap.xml'), sitemap(c));
@@ -274,14 +373,16 @@ function build(slug) {
   if (c.site.spa404) fs.copyFileSync(path.join(out, 'index.html'), path.join(out, '404.html'));
 
   const leftover = html.match(/\{\{[^}]+\}\}/g);
-  console.log(`  ${slug}  ->  dist/${slug}/  (${(html.length / 1024).toFixed(1)} KB, ${assets} assets)`);
+  console.log(`  ${slug} [${c.style}]  ->  ${path.relative(ROOT, out)}/  (${(html.length / 1024).toFixed(1)} KB, ${assets} assets)`);
   if (leftover) console.warn(`  aviso: variables sin resolver -> ${[...new Set(leftover)].join(' ')}`);
   return out;
 }
 
 const arg = process.argv[2];
+const ei = process.argv.indexOf('--estilo');
+const forceStyle = ei > -1 ? process.argv[ei + 1] : null;
 if (!arg) {
-  console.error('Uso: node scripts/build.js <slug> | --all');
+  console.error('Uso: node scripts/build.js <slug> | --all   [--estilo oscuro|claro|editorial]  (vista previa en dist/<slug>--<estilo>/)');
   process.exit(1);
 }
 const slugs = arg === '--all'
@@ -293,6 +394,6 @@ console.log(`Paleta sincronizada (${tokens} tokens).`);
 console.log('Generando landings:');
 let fail = 0;
 for (const s of slugs) {
-  try { build(s); } catch (e) { fail++; console.error(`  ${s}  ERROR: ${e.message}`); }
+  try { build(s, forceStyle); } catch (e) { fail++; console.error(`  ${s}  ERROR: ${e.message}`); }
 }
 process.exit(fail ? 1 : 0);

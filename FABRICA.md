@@ -21,6 +21,7 @@ Salida en `dist/kiosco-perez/`:
 | `robots.txt` | Apunta al sitemap |
 | `CNAME` | Dominio propio del cliente en GitHub Pages |
 | `favicon.png`, `apple-touch-icon.png` | Íconos (reemplazables por cliente) |
+| `fonts/` | Solo las tipografías del estilo elegido, con sus licencias. Cero pedidos a Google Fonts |
 
 Generar todos los clientes de una: `npm run build:all`.
 
@@ -58,6 +59,33 @@ Cada landing sale con:
 - iframe de Cal.com con `loading="lazy"` e imágenes con dimensiones explícitas (no rompe el CLS)
 
 Validar antes de entregar: [Rich Results Test](https://search.google.com/test/rich-results).
+
+## Estilos
+
+Cada cliente elige uno con `"style"` en su JSON. Si no lo pone, sale `oscuro`.
+
+| Estilo | Fondo | Títulos / texto | Para quién |
+|---|---|---|---|
+| `oscuro` | Negro azulado | Space Grotesk / Inter | Tecnología, servicios técnicos, rubros que quieren verse modernos |
+| `claro` | Blanco | Instrument Sans / Inter | Salud, comercio, rubros que venden confianza y limpieza |
+| `editorial` | Crema cálido | Instrument Serif / Instrument Sans | Estudios contables y legales, profesiones, gastronomía de autor |
+
+`"theme"` pisa colores del estilo elegido (por ejemplo `"accent": "#C0392B"` para el
+color de marca del cliente). Claves: `ink`, `surface`, `surface2`, `line`, `text`,
+`textDim`, `accent`, `accentSoft`, `accent2`, `accentDeep`, `accent2Text`, `onAccent`, `navBg`.
+
+Para mostrarle al cliente los tres estilos antes de que elija:
+
+```bash
+node scripts/build.js kiosco-perez --estilo claro       # -> dist/kiosco-perez--claro/
+node scripts/build.js kiosco-perez --estilo editorial   # -> dist/kiosco-perez--editorial/
+```
+
+En una vista previa de otro estilo se usan los colores del preset, no los del cliente.
+
+**Guarda de contraste:** el build calcula el contraste WCAG de cada par texto/fondo que
+usa la plantilla y corta si alguno queda debajo de 4.5:1 (nivel AA). Si un color de marca
+no pasa sobre fondo claro, oscurecelo hasta que pase; el error dice cuál par falla.
 
 ## Estructura del JSON
 
