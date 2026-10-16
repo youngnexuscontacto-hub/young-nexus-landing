@@ -26,6 +26,7 @@
   @font-face{font-family:'Instrument Serif'; font-style:italic; font-weight:400; font-display:swap; src:url(/fonts/instrument-serif-italic.woff2) format('woff2');}
   @font-face{font-family:'Instrument Sans'; font-style:normal; font-weight:400 700; font-display:swap; src:url(/fonts/instrument-sans-var.woff2) format('woff2');}
   @font-face{font-family:'JetBrains Mono'; font-style:normal; font-weight:100 800; font-display:swap; src:url(/fonts/jetbrains-mono-var.woff2) format('woff2');}
+  @font-face{font-family:'Space Grotesk'; font-style:normal; font-weight:300 700; font-display:swap; src:url(/fonts/space-grotesk-var.woff2) format('woff2');}
   :root{
     --ink:#0A0A0F;
     --surface:#111119;
@@ -146,7 +147,7 @@
   .trust-panel a{color:var(--electric);}
   /* DEMO EN VIVO */
   .demo{display:grid; grid-template-columns:minmax(0,1fr) 300px minmax(0,300px); grid-template-areas:'intro phone owner' 'act phone owner'; column-gap:36px; row-gap:0; align-items:center;}
-  .demo-intro{grid-area:intro; align-self:end;} .demo-act{grid-area:act; align-self:start;} .phone{grid-area:phone;} .owner{grid-area:owner;}
+  .demo-intro{grid-area:intro; align-self:end;} .demo-act{grid-area:act; align-self:start;} .phone-col{grid-area:phone;} .owner{grid-area:owner;}
   .demo-tabs{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 20px;}
   .demo-tab{position:relative; overflow:hidden; font:500 12.5px 'JetBrains Mono',monospace; letter-spacing:.04em; color:var(--text-dim); background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:9px 14px; cursor:pointer;}
   .demo-tab[aria-selected="true"]{color:var(--text); border-color:var(--electric);}
@@ -159,28 +160,30 @@
   .demo-cta{margin-top:20px; display:inline-block;}
   .demo-note{font-size:12.5px; color:var(--text-dim); margin-top:12px;}
   .phone{--a:#0F7F72; position:relative; width:300px; height:600px; border-radius:38px; padding:10px; background:#1b1c26; border:1px solid var(--line); box-shadow:0 30px 80px -30px rgba(43,168,220,.35);}
-  .phone-in{position:relative; height:100%; border-radius:30px; overflow:hidden; background:#f6f6f8; color:#14141b; font-family:'Instrument Sans',sans-serif; transition:background .5s;}
+  .phone-in{--pbg:#F6F6F8; --pfg:#14141B; --pdim:#4A4B58; --pdim2:#5F606E; --pcard:#FFFFFF; --pline:#D8D9E2; --pchip:#EBECF1; --okbg:#14141B; --okfg:#FFFFFF; --phead:'Instrument Sans'; --phw:650; --phs:31px; --pht:-.03em; --pbody:'Instrument Sans'; position:relative; height:100%; border-radius:30px; overflow:hidden; background:var(--pbg); color:var(--pfg); font-family:var(--pbody),sans-serif; transition:background .5s, color .5s;}
+  .phone-in[data-estilo="oscuro"]{--pbg:#0E0F16; --pfg:#F3F3F7; --pdim:#A6A7B5; --pdim2:#9495A6; --pcard:#181924; --pline:#2B2C3B; --pchip:#1F2030; --okbg:#F3F3F7; --okfg:#14141B; --phead:'Space Grotesk'; --phw:600; --phs:30px; --pht:-.02em;}
+  .phone-in[data-estilo="editorial"]{--pbg:#F6F1E8; --pfg:#1D1A16; --pdim:#5E574D; --pdim2:#6A6256; --pcard:#FFFDF8; --pline:#DDD3C4; --pchip:#EFE8DC; --okbg:#1D1A16; --okfg:#FFFFFF; --phead:'Instrument Serif'; --phw:400; --phs:35px; --pht:-.01em;}
   .ribbon{position:absolute; z-index:5; top:0; left:0; right:0; text-align:center; font:600 10px 'JetBrains Mono',monospace; letter-spacing:.14em; color:#fff; background:#14141b; padding:7px 0 6px;}
   .ps{position:absolute; inset:28px 0 0; padding:18px 18px 0; transition:opacity .45s ease, transform .45s ease;}
   .ps.out{opacity:0; transform:translateY(10px);}
   .ps-head{display:flex; align-items:center; gap:9px; font-weight:600; font-size:14px;}
   .ps-logo{width:28px; height:28px; border-radius:8px; background:var(--a); color:#fff; display:grid; place-items:center; font-weight:700; font-size:14px; transition:background .5s;}
-  .ps-kind{font-size:11px; color:#6b6c7a; font-weight:500;}
-  .ps h4{font-family:'Instrument Serif',Georgia,serif; font-weight:400; font-size:34px; line-height:1.02; margin:26px 0 12px; letter-spacing:-.01em;}
-  .ps p{font-size:13.5px; line-height:1.45; color:#4a4b58;}
-  .ps-btn{display:block; width:100%; margin-top:18px; border:0; border-radius:12px; padding:14px; background:var(--a); color:#fff; font:600 14.5px 'Instrument Sans',sans-serif; cursor:pointer; transition:background .5s, transform .12s;}
+  .ps-kind{font-size:11px; color:var(--pdim2); font-weight:500;}
+  .ps h4{font-family:var(--phead),Georgia,serif; font-weight:var(--phw); font-size:var(--phs); line-height:1.04; margin:26px 0 12px; letter-spacing:var(--pht);}
+  .ps p{font-size:13.5px; line-height:1.45; color:var(--pdim);}
+  .ps-btn{display:block; width:100%; margin-top:18px; border:0; border-radius:12px; padding:14px; background:var(--a); color:#fff; font:600 14.5px var(--pbody),sans-serif; cursor:pointer; transition:background .5s, transform .12s;}
   .ps-btn:active,.ps-btn.tap{transform:scale(.96);}
-  .ps-wa{cursor:pointer; display:block; width:100%; margin-top:9px; border:1px solid #d8d9e2; border-radius:12px; padding:12px; background:#fff; font:500 13.5px 'Instrument Sans',sans-serif; color:#14141b;}
+  .ps-wa{cursor:pointer; display:block; width:100%; margin-top:9px; border:1px solid var(--pline); border-radius:12px; padding:12px; background:var(--pcard); font:500 13.5px var(--pbody),sans-serif; color:var(--pfg);}
   .ps-trust{display:flex; gap:6px; flex-wrap:wrap; margin-top:16px;}
-  .ps-trust span{font-size:11px; background:#ebecf1; border-radius:999px; padding:5px 9px; color:#4a4b58;}
-  .sheet{position:absolute; z-index:4; left:0; right:0; bottom:0; background:#fff; border-radius:20px 20px 0 0; padding:16px 18px 22px; box-shadow:0 -10px 30px rgba(0,0,0,.12); transform:translateY(105%); transition:transform .4s cubic-bezier(.2,.8,.2,1);}
+  .ps-trust span{font-size:11px; background:var(--pchip); border-radius:999px; padding:5px 9px; color:var(--pdim);}
+  .sheet{position:absolute; z-index:4; left:0; right:0; bottom:0; background:var(--pcard); border-top:1px solid var(--pline); border-radius:20px 20px 0 0; padding:16px 18px 22px; box-shadow:0 -10px 30px rgba(0,0,0,.12); transform:translateY(105%); transition:transform .4s cubic-bezier(.2,.8,.2,1);}
   .sheet.on{transform:none;}
   .sheet b{display:block; font-size:13px; margin-bottom:12px;}
   .slots{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
-  .slot{border:1px solid #d8d9e2; background:#fff; border-radius:10px; padding:11px 6px; font:500 13px 'Instrument Sans',sans-serif; color:#14141b; cursor:pointer; transition:background .2s, color .2s, transform .12s;}
+  .slot{border:1px solid var(--pline); background:var(--pcard); border-radius:10px; padding:11px 6px; font:500 13px var(--pbody),sans-serif; color:var(--pfg); cursor:pointer; transition:background .2s, color .2s, transform .12s;}
   .slot.sel,.slot:hover{background:var(--a); border-color:var(--a); color:#fff;}
   .slot.tap{transform:scale(.94);}
-  .ok{position:absolute; z-index:6; left:14px; right:14px; bottom:18px; background:#14141b; color:#fff; border-radius:14px; padding:13px 14px; font-size:12.5px; line-height:1.4; opacity:0; transform:translateY(12px); transition:opacity .35s, transform .35s;}
+  .ok{position:absolute; z-index:6; left:14px; right:14px; bottom:18px; background:var(--okbg); color:var(--okfg); border-radius:14px; padding:13px 14px; font-size:12.5px; line-height:1.4; opacity:0; transform:translateY(12px); transition:opacity .35s, transform .35s;}
   .ok.on{opacity:1; transform:none;}
   .ok strong{display:block; font-size:13.5px; margin-bottom:2px;}
   .ok strong::before{content:'✓ '; color:var(--a);}
@@ -196,6 +199,25 @@
   .feed li small{display:block; font:500 10.5px 'JetBrains Mono',monospace; color:var(--text-dim); letter-spacing:.06em; margin-bottom:3px;}
   @keyframes feedIn{from{opacity:0; transform:translateY(-8px);}}
   @media (max-width:980px){ .demo{grid-template-columns:1fr 300px; grid-template-areas:'intro phone' 'act phone' 'owner owner'; row-gap:28px;} .feed{min-height:0;} }
+  .demo-styles{display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:5px; margin-top:14px;}
+  .demo-style{font:500 12.5px 'Instrument Sans',sans-serif; color:var(--text-dim); background:transparent; border:1px solid var(--line); border-radius:999px; padding:7px 10px; cursor:pointer; display:inline-flex; align-items:center; gap:6px;}
+  .demo-style::before{content:''; width:10px; height:10px; border-radius:50%; border:1px solid var(--line); background:var(--sw);}
+  .demo-style[aria-pressed="true"]{color:var(--text); border-color:var(--electric);}
+  .demo-style:focus-visible, .demo-tab:focus-visible{outline:2px solid var(--electric); outline-offset:2px;}
+  /* HECHA PARA TU NEGOCIO */
+  .custom{display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:48px; align-items:start;}
+  .custom-list{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; counter-reset:c;}
+  .custom-item{background:var(--ink); padding:26px 22px;}
+  .custom-item::before{counter-increment:c; content:counter(c, decimal-leading-zero); display:block; font:500 13px 'JetBrains Mono',monospace; color:var(--violet-text); margin-bottom:14px;}
+  .custom-item h3{font-size:16px; margin-bottom:8px;}
+  .custom-item p{font-size:14px; color:var(--text-dim);}
+  .custom-item a{color:var(--electric-soft); text-decoration:underline; text-underline-offset:3px;}
+  .rounds{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;}
+  .rounds span{font:500 11.5px 'JetBrains Mono',monospace; letter-spacing:.04em; border:1px solid var(--line); border-radius:999px; padding:5px 10px; color:var(--text);}
+  .rounds b{color:var(--electric-soft); font-weight:600;}
+  .custom-proof{margin-top:22px; font-size:13.5px; color:var(--text-dim); border-left:2px solid var(--electric); padding-left:14px; max-width:440px;}
+  @media (max-width:860px){ .custom{grid-template-columns:1fr; gap:28px;} }
+  @media (max-width:560px){ .custom-list{grid-template-columns:1fr;} }
   @media (max-width:720px){ .demo{grid-template-columns:1fr; grid-template-areas:'intro' 'phone' 'owner' 'act'; gap:26px;} .phone{margin:0 auto;} .feed{min-height:0;} .demo-try input{max-width:none;} }
   @media (prefers-reduced-motion:reduce){ .ps,.sheet,.ok,.finger,.feed li,.demo-tab i{transition:none; animation:none;} }
   .wa-float{position:fixed; right:18px; bottom:18px; z-index:50; display:flex; align-items:center; gap:8px; background:#25D366; color:#0b1410; font-weight:600; font-size:14px; padding:12px 16px; border-radius:999px; box-shadow:0 6px 20px rgba(0,0,0,.35); text-decoration:none; transition:opacity .2s, transform .2s;}
@@ -474,7 +496,7 @@
           "name": "¿Y si después necesito un cambio?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Para eso está el acompañamiento mensual: según tu plan, tenés de 1 a 4 horas de soporte al mes para cambios, ajustes o lo que deje de andar."
+            "text": "Mientras armamos tu sitio tenés rondas de cambios incluidas (2 o 3 según el plan). Una vez entregado, para eso está el acompañamiento mensual: según tu plan, tenés de 1 a 4 horas de soporte al mes para cambios, ajustes o lo que deje de andar."
           }
         },
         {
@@ -615,7 +637,7 @@
       <div class="demo-intro">
         <div class="eyebrow">Demo en vivo · negocios ficticios</div>
         <h2 id="demo-title" style="font-size:clamp(30px,4vw,44px); line-height:1.08;">Mirá cómo funciona, <em style="font-style:italic;color:var(--electric-soft)">de los dos lados</em></h2>
-        <p class="sub" style="color:var(--text-dim); margin-top:14px;">En el teléfono, lo que ve tu cliente. En el panel, lo que te llega a vos. Tocá los botones: responden.</p>
+        <p class="sub" style="color:var(--text-dim); margin-top:14px;">En el teléfono, lo que ve tu cliente. En el panel, lo que te llega a vos. Tocá los botones: responden. Y cambiá el estilo debajo del teléfono.</p>
         <div class="demo-tabs" role="tablist" aria-label="Rubros de ejemplo"></div>
       </div>
       <div class="demo-act">
@@ -626,8 +648,9 @@
         <a href="#contacto" class="btn-primary demo-cta" id="demo-cta">Quiero esto para mi negocio</a>
         <p class="demo-note">Es una simulación: los botones no envían ni guardan nada.</p>
       </div>
+      <div class="phone-col">
       <div class="phone" id="demo-phone" aria-label="Vista de un sitio de ejemplo en un celular">
-        <div class="phone-in">
+        <div class="phone-in" id="demo-phone-in" data-estilo="claro">
           <div class="ribbon">DEMO · NEGOCIO FICTICIO</div>
           <div class="ps" id="demo-ps">
             <div class="ps-head"><span class="ps-logo" id="d-logo" aria-hidden="true">C</span><span><span id="d-name">Consultorio Demo</span><br><span class="ps-kind" id="d-kind">Odontología</span></span></div>
@@ -642,12 +665,36 @@
           <span class="finger" id="d-finger" aria-hidden="true"></span>
         </div>
       </div>
+      <div class="demo-styles" role="group" aria-label="Estilo visual del sitio de ejemplo">
+        <button type="button" class="demo-style" data-estilo="claro" aria-pressed="true" style="--sw:#F6F6F8">Claro</button>
+        <button type="button" class="demo-style" data-estilo="oscuro" aria-pressed="false" style="--sw:#0E0F16">Oscuro</button>
+        <button type="button" class="demo-style" data-estilo="editorial" aria-pressed="false" style="--sw:#F6F1E8">Editorial</button>
+      </div>
+      </div>
       <aside class="owner" aria-label="Lo que le llega al dueño del negocio">
         <span class="sim">Simulación · tu panel</span>
         <h3>Lo que te llega a vos</h3>
         <div class="owner-stat"><b id="o-count">0</b><span id="o-label">reservas esta semana sin atender el teléfono</span></div>
         <ul class="feed" id="o-feed" aria-live="polite"></ul>
       </aside>
+    </div>
+  </div>
+</section>
+
+<!-- [4c] HECHA PARA TU NEGOCIO -->
+<section class="section border-top" id="a-medida" aria-labelledby="medida-title">
+  <div class="wrap custom">
+    <div class="section-head" style="margin-bottom:0">
+      <div class="eyebrow">Hecha para tu negocio</div>
+      <h2 id="medida-title">Tu sitio no sale <em style="font-style:italic;color:var(--electric-soft)">de un molde</em></h2>
+      <p class="sub">Partimos de una base probada, que ya carga rápido y se lee bien en el celular, y la vestimos con la identidad de tu negocio. Vos decidís cómo se ve; nosotros cuidamos que funcione.</p>
+      <p class="custom-proof">Antes de publicar verificamos que cada combinación de colores se lea bien (contraste nivel AA de las pautas de accesibilidad web WCAG). Si un color de tu marca no pasa, te proponemos el tono más cercano que sí.</p>
+    </div>
+    <div class="custom-list">
+      <div class="custom-item"><h3>Tu marca</h3><p>Tu logo, tus colores y fotos de tu local o tu trabajo. Si todavía no tenés logo, arrancamos con tu nombre bien escrito.</p></div>
+      <div class="custom-item"><h3>Tu rubro</h3><p>Textos escritos con vos, en el idioma de tus clientes: lo que preguntan, lo que les preocupa, lo que los hace elegirte.</p></div>
+      <div class="custom-item"><h3>Tu estilo</h3><p>Claro, Oscuro o Editorial, cada uno con su tipografía y su clima. <a href="#demo">Probalos en la demo</a>.</p></div>
+      <div class="custom-item"><h3>Ajustes hasta que te cierre</h3><p>Rondas de cambios incluidas en el precio:</p><div class="rounds"><span>Arranque <b>2</b></span><span>Completo <b>3</b></span><span>Sector sensible <b>3</b></span></div></div>
     </div>
   </div>
 </section>
@@ -669,6 +716,7 @@
         <ul class="price-list">
           <li>Sitio web con tu dominio propio</li>
           <li>Tu negocio en Google Maps</li>
+          <li>Diseño con tu marca + 2 rondas de cambios</li>
           <li>1 hora de soporte al mes</li>
           <li class="off-label">No incluye:</li>
           <li class="off">Turnos online</li>
@@ -687,6 +735,7 @@
           <li>Turnos que se reservan solos</li>
           <li>1 automatización a medida</li>
           <li>Tus datos ordenados en un solo lugar</li>
+          <li>Diseño con tu marca + 3 rondas de cambios</li>
           <li>2 horas de soporte al mes</li>
         </ul>
         <a href="#contacto" class="price-cta">Lo quiero</a>
@@ -701,6 +750,7 @@
           <li>3 automatizaciones a medida</li>
           <li>Datos con acceso restringido</li>
           <li>Configuración con buenas prácticas de privacidad (no incluye asesoramiento legal)</li>
+          <li>Diseño con tu marca + 3 rondas de cambios</li>
           <li>4 horas de soporte al mes</li>
         </ul>
         <a href="#contacto" class="price-cta">Lo quiero</a>
@@ -784,7 +834,7 @@
       </details>
       <details class="faq-item">
         <summary>¿Y si después necesito un cambio?</summary>
-        <p>Para eso está el acompañamiento mensual: según tu plan, tenés de 1 a 4 horas de soporte al mes para cambios, ajustes o lo que deje de andar.</p>
+        <p>Mientras armamos tu sitio tenés rondas de cambios incluidas (2 o 3 según el plan). Una vez entregado, para eso está el acompañamiento mensual: según tu plan, tenés de 1 a 4 horas de soporte al mes para cambios, ajustes o lo que deje de andar.</p>
       </details>
       <details class="faq-item">
         <summary>¿Qué pasa con mis datos y los de mis clientes?</summary>
@@ -1156,16 +1206,19 @@
 <script>
 (() => {
   const R = [
-    {id:'salud', tab:'Consultorio', name:'Consultorio Demo', kind:'Odontología', a:'#0F7F72', h:'Tu turno, sin llamar por teléfono.', p:'Elegís día y horario desde el celular y te llega el recordatorio.', cta:'Reservar turno', trust:['Matrícula visible','Recordatorio automático'], st:'Miércoles · elegí un horario', slots:['9:00','10:30','12:00','16:30'], pick:1, ok:'Turno confirmado · Mié 10:30', okp:'Te llega el recordatorio por WhatsApp el día antes.', ev:'Nuevo turno · Mié 10:30 · Lucía M.', lab:'turnos esta semana sin atender el teléfono'},
-    {id:'oficios', tab:'Electricista', name:'Electricidad Demo', kind:'Electricista matriculado', a:'#A95C14', h:'Presupuesto en el día, sin vueltas.', p:'Contás qué necesitás, mandás una foto y coordinás la visita.', cta:'Pedir presupuesto', trust:['Matriculado','Respuesta en el día'], st:'¿Qué necesitás?', slots:['Corte de luz','Tablero','Instalación','Otro'], pick:1, ok:'Pedido recibido', okp:'Te escribimos por WhatsApp para coordinar la visita.', ev:'Pedido de presupuesto · Tablero · Martín R.', lab:'pedidos esta semana, ninguno perdido'},
-    {id:'estudio', tab:'Estudio contable', name:'Estudio Contable Demo', kind:'Contadores', a:'#6E5BD6', h:'Tu consulta, agendada en un minuto.', p:'Elegís el horario y te llega el link de la reunión.', cta:'Agendar consulta', trust:['Online o presencial','Link automático'], st:'Jueves · consulta online', slots:['9:30','11:00','15:00','17:30'], pick:1, ok:'Consulta agendada · Jue 11:00', okp:'El link de la reunión llega a tu correo.', ev:'Consulta agendada · Jue 11:00 · Sofía G.', lab:'consultas agendadas sin ida y vuelta'},
-    {id:'comercio', tab:'Barbería', name:'Barbería Demo', kind:'Barbería', a:'#C0392B', h:'Reservá tu corte en diez segundos.', p:'Ves los horarios libres y elegís el que te queda.', cta:'Reservar', trust:['Sin esperar respuesta','Aviso si se libera un turno'], st:'Hoy · horarios libres', slots:['14:00','15:30','17:00','19:30'], pick:2, ok:'Reserva confirmada · Hoy 17:00', okp:'Si no podés venir, cancelás con un toque.', ev:'Reserva · Hoy 17:00 · Nico P.', lab:'reservas esta semana sin atender el teléfono'}
+    {id:'salud', est:'claro', tab:'Consultorio', name:'Consultorio Demo', kind:'Odontología', a:'#0F7F72', h:'Tu turno, sin llamar por teléfono.', p:'Elegís día y horario desde el celular y te llega el recordatorio.', cta:'Reservar turno', trust:['Matrícula visible','Recordatorio automático'], st:'Miércoles · elegí un horario', slots:['9:00','10:30','12:00','16:30'], pick:1, ok:'Turno confirmado · Mié 10:30', okp:'Te llega el recordatorio por WhatsApp el día antes.', ev:'Nuevo turno · Mié 10:30 · Lucía M.', lab:'turnos esta semana sin atender el teléfono'},
+    {id:'oficios', est:'oscuro', tab:'Electricista', name:'Electricidad Demo', kind:'Electricista matriculado', a:'#A95C14', h:'Presupuesto en el día, sin vueltas.', p:'Contás qué necesitás, mandás una foto y coordinás la visita.', cta:'Pedir presupuesto', trust:['Matriculado','Respuesta en el día'], st:'¿Qué necesitás?', slots:['Corte de luz','Tablero','Instalación','Otro'], pick:1, ok:'Pedido recibido', okp:'Te escribimos por WhatsApp para coordinar la visita.', ev:'Pedido de presupuesto · Tablero · Martín R.', lab:'pedidos esta semana, ninguno perdido'},
+    {id:'estudio', est:'editorial', tab:'Estudio contable', name:'Estudio Contable Demo', kind:'Contadores', a:'#6E5BD6', h:'Tu consulta, agendada en un minuto.', p:'Elegís el horario y te llega el link de la reunión.', cta:'Agendar consulta', trust:['Online o presencial','Link automático'], st:'Jueves · consulta online', slots:['9:30','11:00','15:00','17:30'], pick:1, ok:'Consulta agendada · Jue 11:00', okp:'El link de la reunión llega a tu correo.', ev:'Consulta agendada · Jue 11:00 · Sofía G.', lab:'consultas agendadas sin ida y vuelta'},
+    {id:'comercio', est:'oscuro', tab:'Barbería', name:'Barbería Demo', kind:'Barbería', a:'#C0392B', h:'Reservá tu corte en diez segundos.', p:'Ves los horarios libres y elegís el que te queda.', cta:'Reservar', trust:['Sin esperar respuesta','Aviso si se libera un turno'], st:'Hoy · horarios libres', slots:['14:00','15:30','17:00','19:30'], pick:2, ok:'Reserva confirmada · Hoy 17:00', okp:'Si no podés venir, cancelás con un toque.', ev:'Reserva · Hoy 17:00 · Nico P.', lab:'reservas esta semana sin atender el teléfono'}
   ];
   const box = document.getElementById('demo-box'); if (!box) return;
   const $ = (id) => document.getElementById(id);
   const tabs = box.querySelector('.demo-tabs'), phone = $('demo-phone'), ps = $('demo-ps'), sheet = $('d-sheet'), slots = $('d-slots'), ok = $('d-ok'), finger = $('d-finger'), feed = $('o-feed'), input = $('demo-nombre');
   const quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const DUR = 7000; let i = 0, timers = [], auto = !quieto, visible = false, custom = '', counts = R.map((r, k) => 6 + k * 3), hecho = false;
+  const DUR = 7000; let i = 0, timers = [], auto = !quieto, visible = false, custom = '', counts = R.map((r, k) => 6 + k * 3), hecho = false, estilo = '';
+  const pin = $('demo-phone-in'), estBtns = box.querySelectorAll('.demo-style');
+  function pintar(e) { pin.dataset.estilo = e; estBtns.forEach((b) => b.setAttribute('aria-pressed', b.dataset.estilo === e)); }
+  estBtns.forEach((b) => b.addEventListener('click', () => { stopAuto(); estilo = b.dataset.estilo; pintar(estilo); }));
   box.style.setProperty('--dur', DUR + 'ms');
   R.forEach((r, k) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'demo-tab'; b.setAttribute('role', 'tab'); b.textContent = r.tab; b.appendChild(document.createElement('i')); b.addEventListener('click', () => { stopAuto(); show(k); }); tabs.appendChild(b); });
   const clear = () => { timers.forEach(clearTimeout); timers = []; };
@@ -1197,7 +1250,7 @@
     tabs.querySelectorAll('.demo-tab').forEach((t, j) => { t.setAttribute('aria-selected', j === k); const bar = t.querySelector('i'); bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = ''; });
     sheet.classList.remove('on'); ok.classList.remove('on'); finger.style.opacity = 0; ps.classList.add('out');
     setTimeout(() => {
-      phone.style.setProperty('--a', r.a); $('d-sheet-t').textContent = r.st;
+      phone.style.setProperty('--a', r.a); pintar(estilo || r.est); $('d-sheet-t').textContent = r.st;
       $('d-name').textContent = nombre(r); $('d-logo').textContent = nombre(r).trim().charAt(0).toUpperCase() || 'D';
       $('d-kind').textContent = r.kind; $('d-h').textContent = r.h; $('d-p').textContent = r.p; $('d-cta').textContent = r.cta;
       const tr = $('d-trust'); tr.innerHTML = ''; r.trust.forEach((t) => { const s = document.createElement('span'); s.textContent = t; tr.appendChild(s); });
@@ -1217,7 +1270,7 @@
   input.addEventListener('focus', stopAuto);
   $('demo-cta').addEventListener('click', () => {
     const msg = document.getElementById('mensaje');
-    if (msg && !msg.value.trim()) msg.value = 'Vi la demo de ' + R[i].tab.toLowerCase() + (custom ? '. Mi negocio: ' + custom : '') + '. Quiero algo así.';
+    if (msg && !msg.value.trim()) msg.value = 'Vi la demo de ' + R[i].tab.toLowerCase() + ' en estilo ' + pin.dataset.estilo + (custom ? '. Mi negocio: ' + custom : '') + '. Quiero algo así.';
   });
   show(0, false);
   if (quieto) { abrir(R[0]); confirmar(R[0], R[0].pick); return; }
