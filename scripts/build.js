@@ -360,7 +360,9 @@ function build(slug, forceStyle) {
   c.styles = fs.readFileSync(path.join(TPL, 'styles.css'), 'utf8');
   c.jsonld = buildJsonLd(c);
 
-  const html = render(fs.readFileSync(path.join(TPL, 'base.html'), 'utf8'), c, null);
+  let html = render(fs.readFileSync(path.join(TPL, 'base.html'), 'utf8'), c, null);
+  // una pagina noindex (demos) no declara canonical: apuntaria a un dominio que no es el de publicacion
+  if (/noindex/i.test(c.seo.robots)) html = html.replace(/^[ \t]*<link rel="canonical"[^>]*>\r?\n?/m, '');
   const out = path.join(DIST, forceStyle ? `${slug}--${forceStyle}` : slug);
   fs.mkdirSync(out, { recursive: true });
 
