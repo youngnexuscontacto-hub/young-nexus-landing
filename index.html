@@ -169,7 +169,7 @@
   .ps-head{display:flex; align-items:center; gap:9px; font-weight:600; font-size:14px;}
   .ps-logo{width:28px; height:28px; border-radius:8px; background:var(--a); color:#fff; display:grid; place-items:center; font-weight:700; font-size:14px; transition:background .5s;}
   .ps-kind{font-size:11px; color:var(--pdim2); font-weight:500;}
-  .ps h4{font-family:var(--phead),Georgia,serif; font-weight:var(--phw); font-size:var(--phs); line-height:1.04; margin:26px 0 12px; letter-spacing:var(--pht);}
+  .ps #d-h{font-family:var(--phead),Georgia,serif; font-weight:var(--phw); font-size:var(--phs); line-height:1.04; margin:26px 0 12px; letter-spacing:var(--pht);}
   .ps p{font-size:13.5px; line-height:1.45; color:var(--pdim);}
   .ps-btn{display:block; width:100%; margin-top:18px; border:0; border-radius:12px; padding:14px; background:var(--a); color:#fff; font:600 14.5px var(--pbody),sans-serif; cursor:pointer; transition:background .5s, transform .12s;}
   .ps-btn:active,.ps-btn.tap{transform:scale(.96);}
@@ -224,7 +224,6 @@
   .wa-float svg{width:20px; height:20px; flex:none;}
   .wa-float.is-hidden{opacity:0; transform:translateY(12px); pointer-events:none;}
   @media (max-width:480px){ .wa-float span{display:none;} .wa-float{padding:14px;} }
-  .services-next{margin-top:22px; font-size:12.5px; color:var(--text-dim);}
   .btn-primary{background:var(--electric); color:#001217; padding:14px 26px; border-radius:10px; font-weight:600; font-size:15px; transition:transform .15s ease;}
   .btn-primary:hover{transform:translateY(-2px);}
   .btn-secondary{border:1px solid var(--line); padding:14px 26px; border-radius:10px; font-weight:500; font-size:15px; transition:border-color .15s ease, background .15s ease;}
@@ -662,7 +661,6 @@
       <div class="service-card" id="s-web"><span class="num mono">03</span><h3>Landing pages y sitios</h3><p>Una página clara, rápida, pensada para convertir visitas en clientes.</p></div>
       <div class="service-card" id="s-automatizacion"><span class="num mono">04</span><h3>Automatización a medida</h3><p>Que los pedidos y consultas se registren solos, sin que nadie los anote a mano.</p></div>
     </div>
-    <p class="services-next mono">Próxima etapa: dashboards y analítica · capacitación in-company · conectividad satelital</p>
   </div>
 </section>
 
@@ -690,7 +688,7 @@
           <div class="ribbon">DEMO · NEGOCIO DE EJEMPLO</div>
           <div class="ps" id="demo-ps">
             <div class="ps-head"><span class="ps-logo" id="d-logo" aria-hidden="true">C</span><span><span id="d-name">Consultorio Demo</span><br><span class="ps-kind" id="d-kind">Odontología</span></span></div>
-            <h4 id="d-h">Tu turno, sin llamar por teléfono.</h4>
+            <h3 id="d-h">Tu turno, sin llamar por teléfono.</h3>
             <p id="d-p">Elegís día y horario desde el celular y te llega el recordatorio.</p>
             <button type="button" class="ps-btn" id="d-cta">Reservar turno</button>
             <button type="button" class="ps-wa" id="d-wa">Escribir por WhatsApp</button>
@@ -886,7 +884,7 @@
     <div class="final-cta">
       <div class="eyebrow" style="justify-content:center;">Empecemos</div>
       <h2>Contanos qué te está frenando hoy</h2>
-      <p>Te preparamos un <strong>Diagnóstico Digital</strong> de tu negocio: una hoja con lo que Google muestra de vos hoy, qué te está costando y qué haríamos primero. Sin costo y sin compromiso.</p>
+      <p>Te preparamos un <strong>Diagnóstico Digital</strong> de tu negocio: una hoja con lo que Google muestra de vos hoy, qué te está costando y qué haríamos primero. Sin costo y sin compromiso. Te respondemos dentro de las 24 h hábiles.</p>
 
       <form id="contact-form">
         <div><label for="nombre">Nombre</label><input type="text" id="nombre" name="nombre" autocomplete="name" maxlength="100" required=""></div>
