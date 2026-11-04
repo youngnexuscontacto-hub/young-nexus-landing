@@ -3,6 +3,15 @@
  * Inyecta la capa SEO (canonical, datos estructurados, sitemap, robots)
  * en el index.html propio de Young Nexus. Idempotente: se puede correr N veces.
  */
+
+// DESACTIVADO (nov-2026): los datos estructurados de index.html (planes con precio),
+// sitemap.xml (varias páginas) y robots.txt hoy se mantienen a mano y están más completos
+// que lo que genera este script. Correrlo borraría los planes y dejaría el sitemap con
+// una sola URL. Para forzarlo a propósito: SEO_INJECT_FORCE=1 npm run seo
+if (process.env.SEO_INJECT_FORCE !== '1') {
+  console.error('seo-inject desactivado: el SEO de index.html, sitemap.xml y robots.txt se edita a mano. No se modificó nada.');
+  process.exit(1);
+}
 const fs = require('fs');
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..');

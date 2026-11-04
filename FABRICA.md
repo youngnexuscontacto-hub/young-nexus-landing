@@ -141,5 +141,5 @@ template/assets/        íconos por defecto
 clients/<slug>.json     datos de cada cliente
 clients/<slug>.assets/  imágenes propias del cliente (opcional)
 scripts/build.js        generador, sin dependencias
-scripts/seo-inject.js   aplica la capa SEO al index.html de Young Nexus
+scripts/seo-inject.js   (desactivado) el SEO de index.html se edita a mano
 ```
