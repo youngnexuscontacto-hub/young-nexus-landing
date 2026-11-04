@@ -228,7 +228,7 @@
 
       <button type="submit" class="submit-btn">Enviar mi diagnóstico</button>
       <p class="form-status" id="form-status"></p>
-      <p class="form-legal">No vendemos tus datos: los procesan Google y Meta (WhatsApp), en EE.UU., solo para responderte. Podés pedir acceso, rectificación o supresión cuando quieras escribiendo a youngnexus.contacto@gmail.com.</p>
+      <p class="form-legal">No vendemos tus datos: los procesan Google y Meta (WhatsApp), en EE.UU., solo para responderte. Podés pedir acceso, rectificación o supresión cuando quieras escribiendo a contacto@youngnexus.com.ar.</p>
     </form>
 
     <div class="done" id="done">
@@ -247,8 +247,8 @@
       <a href="/">Inicio</a>
       <a href="/privacidad.html">Privacidad</a>
       <a href="/terminos.html">Términos</a>
-      <a href="mailto:youngnexus.contacto@gmail.com?subject=Bot%C3%B3n%20de%20arrepentimiento">Botón de arrepentimiento</a>
-      <a href="mailto:youngnexus.contacto@gmail.com?subject=Bot%C3%B3n%20de%20baja">Botón de baja</a>
+      <a href="mailto:contacto@youngnexus.com.ar?subject=Bot%C3%B3n%20de%20arrepentimiento">Botón de arrepentimiento</a>
+      <a href="mailto:contacto@youngnexus.com.ar?subject=Bot%C3%B3n%20de%20baja">Botón de baja</a>
     </div>
   </div>
 </footer>
@@ -301,7 +301,7 @@
     }
 
     if (ENDPOINT.indexOf('https://') !== 0) {
-      statusEl.textContent = 'El formulario está en mantenimiento. Escribinos a youngnexus.contacto@gmail.com y te respondemos igual.';
+      statusEl.textContent = 'El formulario está en mantenimiento. Escribinos a contacto@youngnexus.com.ar y te respondemos igual.';
       return;
     }
 
@@ -392,7 +392,7 @@
       doneEl.scrollIntoView({ block: 'center' });
     } catch (err) {
       statusEl.className = 'form-status';
-      statusEl.textContent = 'No se pudo enviar. Escribinos a youngnexus.contacto@gmail.com y lo resolvemos por ahí.';
+      statusEl.textContent = 'No se pudo enviar. Escribinos a contacto@youngnexus.com.ar y lo resolvemos por ahí.';
     } finally {
       btn.disabled = false;
       btn.textContent = original;

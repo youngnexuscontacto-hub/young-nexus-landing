@@ -35,7 +35,7 @@ const graph = [
     url: URL,
     image: URL + 'young-nexus-og.jpg',
     logo: URL + 'apple-touch-icon.png',
-    email: 'youngnexus.contacto@gmail.com',
+    email: 'contacto@youngnexus.com.ar',
     priceRange: '$$',
     currenciesAccepted: 'ARS, USD',
     address: {
